@@ -128,6 +128,7 @@ STATIC_ROOT = BASE_DIR / 'static'
 
 STATICFILES_DIRS = [
     BASE_DIR / 'ext' / 'bootstrap-5.3.0-alpha1-dist',
+    BASE_DIR / 'ext' / 'bootstrap-icons-1.10.3',
 ]
 
 # Default primary key field type
