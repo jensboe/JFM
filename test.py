@@ -2,12 +2,12 @@ import cv2
 from pathlib import Path
 
 # load image
-image = cv2.imread("input.jpg")
+image = cv2.imread('media/input.jpg')
 
 
 # face detection
-modelpath = Path(cv2.__file__).parent / "data"
-frontalface = modelpath / "haarcascade_frontalface_default.xml"
+modelpath = Path(cv2.__file__).parent / 'data'
+frontalface = modelpath / 'haarcascade_frontalface_default.xml'
 face_cascade = cv2.CascadeClassifier(str(frontalface))
 
 
