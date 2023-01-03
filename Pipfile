@@ -11,6 +11,7 @@ django = "*"
 autopep8 = "*"
 djlint = "*"
 pillow = "*"
+django-cleanup = "*"
 
 [requires]
 python_version = "3.11"
