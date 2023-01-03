@@ -1,0 +1,8 @@
+<ul>
+    {% for member in members %}
+        <li>
+            <a href="{% url 'members:detail' member.id %}">{{ member }}</a>
+        </li>
+    {% endfor %}
+</ul>
+<a href="{% url 'members:create' %}">Create member</a>
