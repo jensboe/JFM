@@ -1,8 +1,16 @@
-<ul>
-    {% for member in members %}
-        <li>
-            <a href="{% url 'members:detail' member.id %}">{{ member }}</a>
-        </li>
-    {% endfor %}
-</ul>
-<a href="{% url 'members:create' %}">Create member</a>
+{% extends 'base.html' %}
+{% load i18n %}
+{% block title %}
+    {% translate "Members" %}
+{% endblock title %}
+{% block content %}
+    <div class="list-group">
+        {% for member in members %}
+            <a class="list-group-item list-group-item-action"
+               href="{% url 'members:detail' member.id %}">{{ member }}</a>
+        {% endfor %}
+    </div>
+    <a class="btn btn-primary"
+       href="{% url 'members:create' %}"
+       role="button">{% translate "Create member" %}</a>
+{% endblock content %}
