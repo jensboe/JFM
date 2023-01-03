@@ -10,6 +10,7 @@ django = "*"
 [dev-packages]
 autopep8 = "*"
 djlint = "*"
+pillow = "*"
 
 [requires]
 python_version = "3.11"
