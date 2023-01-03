@@ -1,0 +1,6 @@
+<h1>{{ member.fullname }}</h1>
+<div>{{ member.firstname }}</div>
+<div>{{ member.lastname }}</div>
+<a href="{% url 'members:update' member.id %}">Edit</a>
+</form>
+<a href="{% url 'members:list' %}">back to list</a>
