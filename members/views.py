@@ -17,10 +17,10 @@ class DetailView(generic.DetailView):
 class UpdateView(generic.UpdateView):
     model = Member
     success_url = reverse_lazy('members:list')
-    fields = ['firstname', 'lastname']
+    fields = ['firstname', 'lastname', 'image']
 
 
 class CreateView(generic.CreateView):
     model = Member
     success_url = reverse_lazy('members:list')
-    fields = ['firstname', 'lastname']
+    fields = ['firstname', 'lastname', 'image']
