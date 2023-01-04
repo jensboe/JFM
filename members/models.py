@@ -1,11 +1,10 @@
-import cv2
 from pathlib import Path
-from django.db import models
-from jfm.settings import MEDIA_ROOT
-from django.core.files.base import ContentFile
-import logging
-from PIL import Image, ImageOps
+from collections import namedtuple
+import cv2
 import numpy
+from PIL import Image, ImageOps
+from django.db import models
+from django.core.files.base import ContentFile
 
 
 class Member(models.Model):
@@ -16,6 +15,7 @@ class Member(models.Model):
         upload_to='members/square', null=True, blank=True)
     image_passport = models.ImageField(
         upload_to='members/passport', null=True, blank=True)
+    Point = namedtuple("Point", "x y")
 
     @property
     def fullname(self) -> str:
@@ -26,44 +26,37 @@ class Member(models.Model):
 
     def save(self, *args, **kwargs) -> None:
         self.image_square = self._create_headshoot_square(self.image)
-        self.image_passport = self._create_headshoot(self.image, 9, 7)
+        self.image_passport = self._create_headshoot(self.image, 7, 9)
         return super().save(*args, **kwargs)
 
-    def _convertImageFile2opencv(self, field) -> numpy.array:
-        before = Image.open(field).convert('RGB')
-        after = ImageOps.exif_transpose(before)
-        img = numpy.array(after)
-        return img[:, :, ::-1].copy()  # convert RGB to BGR
-
-    def _create_headshoot_square(self, src_img_field) -> ContentFile:
+    def _create_headshoot_square(
+            self, src_img_field: models.ImageField) -> ContentFile:
         return self._create_headshoot(src_img_field)
 
     def _create_headshoot(
             self,
-            src_img_field,
-            y_ratio: int = 1,
-            x_ratio: int = 1) -> ContentFile:
+            src_img_field: models.ImageField,
+            x_ratio: int = 1,
+            y_ratio: int = 1) -> ContentFile:
         img = self._convertImageFile2opencv(src_img_field)
-
-        modelpath = Path(cv2.__file__).parent / 'data'
-
-        frontalface = modelpath / 'haarcascade_frontalface_default.xml'
-        face_cascade = cv2.CascadeClassifier(str(frontalface))
-        gray_image = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
-
-        faces = face_cascade.detectMultiScale(gray_image)
-
+        faces = self._detectFaces(img)
         (x, y, w, h) = faces[0]
+
         # calculate the face center
-        xc = x + (w / 2)
-        yc = y + (h / 2)
+        face_center = self.Point(x + (w / 2), y + (h / 2))
         # Debug circle in center
         # cv2.circle(img, (int(xc), int(yc)), 200, (0, 0, 255), 100)
 
-        x_max_size = min(xc, (img.shape[1] - xc))
-        y_max_size = min(yc, (img.shape[0] - yc))
+        # Calculate distance between face_center and image boarder)
+        # Thats the maximum size an Image can have.
+        # The real max. width and hight is 2*x_max_size and 2*y_max_size
+        # We always use the center as reference  so lets save the multiply by 2
+        # and divide by 2
+        x_max_size = min(face_center.x, (img.shape[1] - face_center.x))
+        y_max_size = min(face_center.y, (img.shape[0] - face_center.y))
 
-        # Get the maximum size while respecting the ratio
+        # With the ratio in mind, calculate which size is the size is the
+        # limmiting factor for cropping
         if x_max_size * x_ratio > y_max_size * y_ratio:
             x_size = y_max_size * x_ratio / y_ratio
             y_size = y_max_size
@@ -71,16 +64,38 @@ class Member(models.Model):
             x_size = x_max_size
             y_size = x_max_size * y_ratio / x_ratio
 
+        # Only integer can be used to slice an array
         x_size = int(x_size)
         y_size = int(y_size)
 
-        img = img[yc - y_size:yc + y_size, xc - x_size:xc + x_size]
-        # Debug crop rectangle
+        img = img[int(face_center.y - y_size):int(face_center.y + y_size),
+                  int(face_center.x - x_size):int(face_center.x + x_size)]
+
+        # Debug crop draw rectangle
         # cv2.rectangle(img,
-        #               (xc - x_size, yc - y_size),
-        #               (xc + x_size, yc + y_size),
+        #               (face_center.x - x_size, face_center.y - y_size),
+        #               (face_center.x + x_size, face_center.y + y_size),
         #               (255, 0, 0),
         #               30
         #               )
+
+        # Save as jpg
         ret, buf = cv2.imencode('.jpg', img)
         return ContentFile(buf.tobytes(), name=f'{self.fullname}.jpg')
+
+    def _convertImageFile2opencv(self, field) -> numpy.array:
+        before = Image.open(field).convert('RGB')
+        after = ImageOps.exif_transpose(before)
+        img = numpy.array(after)
+        return img[:, :, ::-1].copy()  # convert RGB to BGR
+
+    def _detectFaces(self, img: numpy.array) -> numpy.array:
+        gray_image: numpy.array = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+
+        modelpath: Path = Path(cv2.__file__).parent / 'data'
+        frontalface: Path = modelpath / 'haarcascade_frontalface_default.xml'
+        face_cascade: cv2.CascadeClassifier = cv2.CascadeClassifier(
+            str(frontalface))
+
+        faces: numpy.array = face_cascade.detectMultiScale(gray_image)
+        return faces
