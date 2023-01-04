@@ -23,13 +23,24 @@ class Member(models.Model):
         return self.fullname
 
     def save(self, *args, **kwargs) -> None:
-        self._create_square()
+        self.image_square = self._create_headshoot_square(self.image)
         return super().save(*args, **kwargs)
 
-    def _create_square(self) -> None:
-        pil_image = Image.open(self.image).convert('RGB')
+    def _convertImageFile2opencv(self, field) -> numpy.array:
+        pil_image = Image.open(field).convert('RGB')
         img = numpy.array(pil_image)
-        img = img[:, :, ::-1].copy()
+        return img[:, :, ::-1].copy()  # convert RGB to BGR
+
+    def _create_headshoot_square(self, src_img_field) -> ContentFile:
+        return self._create_headshoot(src_img_field)
+
+    def _create_headshoot(
+            self,
+            src_img_field,
+            y_ratio: int = 1,
+            x_ratio: int = 1) -> ContentFile:
+        img = self._convertImageFile2opencv(src_img_field)
+
         modelpath = Path(cv2.__file__).parent / 'data'
 
         frontalface = modelpath / 'haarcascade_frontalface_default.xml'
@@ -37,18 +48,25 @@ class Member(models.Model):
         gray_image = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 
         faces = face_cascade.detectMultiScale(gray_image)
-        if len(faces) > 0:
-            (x, y, w, h) = faces[0]
-            # calculate the face center
-            yc = int(y + (h / 2))
-            xc = int(x + (w / 2))
 
-            size = min(yc, xc, (img.shape[1] - yc), (img.shape[0] - xc))
+        (x, y, w, h) = faces[0]
+        # calculate the face center
+        yc = int(y + (h / 2))
+        xc = int(x + (w / 2))
 
-            face_cropped = img[yc - size:yc + size, xc - size:xc + size]
+        x_max_size = min(xc, (img.shape[0] - xc))
+        y_max_size = min(yc, (img.shape[1] - yc))
 
-            ret, buf = cv2.imencode('.jpg', face_cropped)
-            self.image_square = ContentFile(
-                buf.tobytes(), name=f'{self.fullname}.jpg')
+        if x_max_size * x_ratio < y_max_size * y_ratio:
+            x_size = y_max_size * x_ratio / y_ratio
+            y_size = y_max_size
         else:
-            logging.error(f'Detect {len(faces)} faces instead of one')
+            x_size = x_max_size
+            y_size = x_max_size * y_ratio / x_ratio
+
+        x_size = int(x_size)
+        y_size = int(y_size)
+        face_cropped = img[yc - y_size:yc + y_size, xc - x_size:xc + x_size]
+
+        ret, buf = cv2.imencode('.jpg', face_cropped)
+        return ContentFile(buf.tobytes(), name=f'{self.fullname}.jpg')
