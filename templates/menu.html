@@ -1,0 +1,78 @@
+{% load i18n %}
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#"><i class="bi bi-fire"></i> JFM</a>
+        <button class="navbar-toggler"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent"
+                aria-expanded="false"
+                aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#"><i class="bi bi-house"></i> {% translate "Home" %}</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#"><i class="bi bi-calendar-week"></i> Events</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle"
+                       href="#"
+                       id="navbarDropdown"
+                       role="button"
+                       data-bs-toggle="dropdown"
+                       aria-expanded="false">
+                        <i class="bi bi-list-check"></i> {% translate "Participant List" %}
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li>
+                            <a class="dropdown-item" href="#"><i class="bi bi-calendar-heart"></i> 1.1.23 Current event title</a>
+                        </li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="#"><i class="bi bi-calendar-event"></i> 2.1.23 Upcomming event title</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="#"><i class="bi bi-calendar-event"></i> 3.1.23 Another upcoming event title</a>
+                        </li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="#"><i class="bi bi-calendar-check"></i> 4.1.23 Last event title</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="#"><i class="bi bi-calendar-check"></i> 5.1.23 Before the last event title</a>
+                        </li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="#">Statistics</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'members:list' %}" tabindex="-1"><i class="bi bi-people"></i> {% translate "Member" %}</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#" tabindex="-1"><i class="bi bi-gear"></i> {% translate "Settings" %}</a>
+                </li>
+            </ul>
+            <form class="d-flex">
+                <input class="form-control me-2"
+                       type="search"
+                       placeholder="Search"
+                       aria-label="Search">
+                <button class="btn btn-primary disable" type="submit">{% translate "Search" %}</button>
+            </form>
+            <button class="btn btn-primary disable" type="submit">{% translate "Login" %}</button>
+        </div>
+    </div>
+</nav>
