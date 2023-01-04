@@ -4,7 +4,7 @@ from django.db import models
 from jfm.settings import MEDIA_ROOT
 from django.core.files.base import ContentFile
 import logging
-from PIL import Image
+from PIL import Image, ImageOps
 import numpy
 
 
@@ -30,8 +30,9 @@ class Member(models.Model):
         return super().save(*args, **kwargs)
 
     def _convertImageFile2opencv(self, field) -> numpy.array:
-        pil_image = Image.open(field).convert('RGB')
-        img = numpy.array(pil_image)
+        before = Image.open(field).convert('RGB')
+        after = ImageOps.exif_transpose(before)
+        img = numpy.array(after)
         return img[:, :, ::-1].copy()  # convert RGB to BGR
 
     def _create_headshoot_square(self, src_img_field) -> ContentFile:
@@ -54,13 +55,16 @@ class Member(models.Model):
 
         (x, y, w, h) = faces[0]
         # calculate the face center
-        yc = int(y + (h / 2))
-        xc = int(x + (w / 2))
+        xc = x + (w / 2)
+        yc = y + (h / 2)
+        # Debug circle in center
+        # cv2.circle(img, (int(xc), int(yc)), 200, (0, 0, 255), 100)
 
-        x_max_size = min(xc, (img.shape[0] - xc))
-        y_max_size = min(yc, (img.shape[1] - yc))
+        x_max_size = min(xc, (img.shape[1] - xc))
+        y_max_size = min(yc, (img.shape[0] - yc))
 
-        if x_max_size * x_ratio < y_max_size * y_ratio:
+        # Get the maximum size while respecting the ratio
+        if x_max_size * x_ratio > y_max_size * y_ratio:
             x_size = y_max_size * x_ratio / y_ratio
             y_size = y_max_size
         else:
@@ -69,7 +73,14 @@ class Member(models.Model):
 
         x_size = int(x_size)
         y_size = int(y_size)
-        face_cropped = img[yc - y_size:yc + y_size, xc - x_size:xc + x_size]
 
-        ret, buf = cv2.imencode('.jpg', face_cropped)
+        img = img[yc - y_size:yc + y_size, xc - x_size:xc + x_size]
+        # Debug crop rectangle
+        # cv2.rectangle(img,
+        #               (xc - x_size, yc - y_size),
+        #               (xc + x_size, yc + y_size),
+        #               (255, 0, 0),
+        #               30
+        #               )
+        ret, buf = cv2.imencode('.jpg', img)
         return ContentFile(buf.tobytes(), name=f'{self.fullname}.jpg')
