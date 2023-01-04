@@ -16,11 +16,13 @@ class DetailView(generic.DetailView):
 
 class UpdateView(generic.UpdateView):
     model = Member
-    success_url = reverse_lazy('members:list')
-    fields = ['firstname', 'lastname', 'image']
+    fields = ['firstname', 'lastname', 'image', 'image_square']
+
+    def get_success_url(self):
+        return reverse_lazy('members:update', kwargs={'pk': self.object.id})
 
 
 class CreateView(generic.CreateView):
     model = Member
     success_url = reverse_lazy('members:list')
-    fields = ['firstname', 'lastname', 'image']
+    fields = ['firstname', 'lastname', 'image', 'image_square']

@@ -33,9 +33,18 @@
                    id="{{ form.image.id_for_label }}"
                    name="{{ form.image.html_name }}"
                    onchange="document.getElementById('preview_image').src = window.URL.createObjectURL(this.files[0])">
-            <img id="preview_image"
-                 class="img-fluid img-thumbnail"
-                 src="{% if form.image.value %}{{ form.image.value.url }}{% endif %}"/>
+            <div class="row">
+                <div class="col">
+                    <img id="preview_image"
+                         class="img-fluid img-thumbnail"
+                         src="{% if form.image.value %}{{ form.image.value.url }}{% endif %}"/>
+                </div>
+                <div class="col">
+                    <img id="preview_image"
+                         class="img-fluid img-thumbnail"
+                         src="{% if form.image_square.value %}{{ form.image_square.value.url }}{% endif %}"/>
+                </div>
+            </div>
         </div>
         {% for hidden in form.hidden_fields %}{{ hidden }}{% endfor %}
         <a class="btn btn-secondary"
