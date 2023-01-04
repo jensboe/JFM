@@ -4,7 +4,9 @@ from django.db import models
 class Member(models.Model):
     firstname = models.CharField(max_length=100)
     lastname = models.CharField(max_length=100)
-    image = models.ImageField(upload_to='members', null=True, blank=True)
+    image = models.ImageField(upload_to='members/org', null=True, blank=True)
+    image_square = models.ImageField(
+        upload_to='members/square', null=True, blank=True)
 
     @property
     def fullname(self) -> str:

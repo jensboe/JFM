@@ -13,4 +13,5 @@
         <a class="btn btn-primary" href="{% url 'members:list' %}" role="button">{% translate "Back to member list" %}</a>
     </div>
     {% if member.image %}<img class="img-fluid img-thumbnail" src="{{ member.image.url }}" />{% endif %}
+    {% if member.image %}<img class="img-fluid img-thumbnail" src="{{ member.image_square.url }}" />{% endif %}
 {% endblock content %}
