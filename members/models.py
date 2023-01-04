@@ -4,6 +4,8 @@ from django.db import models
 from jfm.settings import MEDIA_ROOT
 from django.core.files.base import ContentFile
 import logging
+from PIL import Image
+import numpy
 
 
 class Member(models.Model):
@@ -25,9 +27,9 @@ class Member(models.Model):
         return super().save(*args, **kwargs)
 
     def _create_square(self) -> None:
-        store = MEDIA_ROOT / self.image.name
-        img = cv2.imread(str(store))
-
+        pil_image = Image.open(self.image).convert('RGB')
+        img = numpy.array(pil_image)
+        img = img[:, :, ::-1].copy()
         modelpath = Path(cv2.__file__).parent / 'data'
 
         frontalface = modelpath / 'haarcascade_frontalface_default.xml'
