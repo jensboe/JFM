@@ -44,16 +44,18 @@
                          class="img-fluid img-thumbnail"
                          src="{% if form.image_square.value %}{{ form.image_square.value.url }}{% endif %}"/>
                 </div>
+                <div class="col">
+                    <img id="preview_image2"
+                         class="img-fluid img-thumbnail"
+                         src="{% if form.image_passport.value %}{{ form.image_passport.value.url }}{% endif %}"/>
+                </div>
             </div>
         </div>
         {% for hidden in form.hidden_fields %}{{ hidden }}{% endfor %}
-        <a class="btn btn-secondary"
-           href="{% url 'members:list' %}"
-           role="button">{% translate "Back to member list" %}</a>
         {% if member.id %}
             <a class="btn btn-secondary"
                href="{% url 'members:detail' member.id %}"
-               role="button">{% translate "Back to member" %}</a>
+               role="button">{% translate "Cancel" %}</a>
         {% endif %}
         <button type="submit" class="btn btn-primary">{% translate "Update" %}</button>
     </form>
