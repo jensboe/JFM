@@ -1,7 +1,18 @@
-<h1>{{ member.fullname }}</h1>
-<div>{{ member.firstname }}</div>
-<div>{{ member.lastname }}</div>
-{% if member.image %}<img src="{{ member.image.url }}" />{% endif %}
-<a href="{% url 'members:update' member.id %}">Edit</a>
-</form>
-<a href="{% url 'members:list' %}">back to list</a>
+{% extends 'base.html' %}
+{% load i18n %}
+{% block title %}
+    {{ member.fullname }}
+{% endblock title %}
+{% block content %}
+    <div class="container">
+        <div class="container">{{ member.firstname }}</div>
+        <div class="container">{{ member.lastname }}</div>
+        <div class="container">
+            <a class="btn btn-primary"
+               href="{% url 'members:update' member.id %}"
+               role="button">{% translate "Edit" %}</a>
+            <a class="btn btn-primary" href="{% url 'members:list' %}" role="button">{% translate "Back to member list" %}</a>
+        </div>
+        {% if member.image %}<img class="img-fluid img-thumbnail" src="{{ member.image.url }}" />{% endif %}
+    </div>
+{% endblock content %}
