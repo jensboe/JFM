@@ -14,6 +14,8 @@ class Member(models.Model):
     image = models.ImageField(upload_to='members/org', null=True, blank=True)
     image_square = models.ImageField(
         upload_to='members/square', null=True, blank=True)
+    image_passport = models.ImageField(
+        upload_to='members/passport', null=True, blank=True)
 
     @property
     def fullname(self) -> str:
@@ -24,6 +26,7 @@ class Member(models.Model):
 
     def save(self, *args, **kwargs) -> None:
         self.image_square = self._create_headshoot_square(self.image)
+        self.image_passport = self._create_headshoot(self.image, 9, 7)
         return super().save(*args, **kwargs)
 
     def _convertImageFile2opencv(self, field) -> numpy.array:
