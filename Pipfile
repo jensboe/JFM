@@ -6,12 +6,12 @@ name = "pypi"
 [packages]
 opencv-python = "*"
 django = "*"
+pillow = "*"
+django-cleanup = "*"
 
 [dev-packages]
 autopep8 = "*"
 djlint = "*"
-pillow = "*"
-django-cleanup = "*"
 
 [requires]
 python_version = "3.11"
