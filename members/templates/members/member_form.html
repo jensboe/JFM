@@ -1,7 +1,51 @@
-<form method="post" enctype="multipart/form-data">
-    {% csrf_token %}
-    {{ form }}
-    <input type="submit" value="Submit it ">
-</form>
-{% comment %} <a href="{% url 'members:detail' member.id %}">back to member</a> {% endcomment %}
-<a href="{% url 'members:list' %}">back to list</a>
+{% extends 'base.html' %}
+{% load i18n %}
+{% block title %}
+    {{ member.fullname }}
+{% endblock title %}
+{% block content %}
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.non_field_errors }}
+        <div class="mb-3">
+            <label for="{{ form.firstname.id_for_label }}" class="form-label">{{ form.firstname.label }}</label>
+            <input class="form-control"
+                   type="text"
+                   id="{{ form.firstname.id_for_label }}"
+                   name="{{ form.firstname.html_name }}"
+                   {% if form.firstname.value %} value="{{ form.firstname.value }}" {% else %} placeholder="{{ form.firstname.label }}" {% endif %}
+                   required>
+        </div>
+        <div class="mb-3">
+            <label for="{{ form.lastname.id_for_label }}" class="form-label">{{ form.lastname.label }}</label>
+            <input class="form-control"
+                   type="text"
+                   id="{{ form.lastname.id_for_label }}"
+                   name="{{ form.lastname.html_name }}"
+                   {% if form.lastname.value %} value="{{ form.lastname.value }}" {% else %} placeholder="{{ form.lastname.label }}" {% endif %}
+                   required>
+        </div>
+        <div class="mb-3">
+            <label for="{{ form.image.id_for_label }}" class="form-label">{{ form.image.label }}</label>
+            <input accept="image/*"
+                   class="form-control"
+                   type="file"
+                   id="{{ form.image.id_for_label }}"
+                   name="{{ form.image.html_name }}"
+                   onchange="document.getElementById('preview_image').src = window.URL.createObjectURL(this.files[0])">
+            <img id="preview_image"
+                 class="img-fluid img-thumbnail"
+                 src="{% if form.image.value %}{{ form.image.value.url }}{% endif %}"/>
+        </div>
+        {% for hidden in form.hidden_fields %}{{ hidden }}{% endfor %}
+        <a class="btn btn-secondary"
+           href="{% url 'members:list' %}"
+           role="button">{% translate "Back to member list" %}</a>
+        {% if member.id %}
+            <a class="btn btn-secondary"
+               href="{% url 'members:detail' member.id %}"
+               role="button">{% translate "Back to member" %}</a>
+        {% endif %}
+        <button type="submit" class="btn btn-primary">{% translate "Update" %}</button>
+    </form>
+{% endblock content %}
