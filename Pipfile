@@ -8,6 +8,7 @@ opencv-python = "*"
 django = "*"
 pillow = "*"
 django-cleanup = "*"
+django-browser-reload = "*"
 
 [dev-packages]
 autopep8 = "*"
