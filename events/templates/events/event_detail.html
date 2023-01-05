@@ -5,5 +5,13 @@
 {% endblock title %}
 {% block content %}
     <h1>{{ event.title }}</h1>
-    {% translate "Participant List" %}
+    <div>
+        {{ event.start_date }}
+        {{ event.start_time }}
+    </div>
+    <div>
+        {{ event.end_date }}
+        {{ event.end_time }}
+    </div>
+    <div>{% translate "Participant List" %}</div>
 {% endblock content %}
