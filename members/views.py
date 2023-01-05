@@ -7,7 +7,14 @@ from .models import Member
 
 class ListView(generic.ListView):
     model = Member
-    context_object_name = 'members'
+    template_name = 'common/list.html'
+    context_object_name = 'elements'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = 'Members'
+        context['element_url'] = 'members:detail'
+        return context
 
 
 class DetailView(generic.DetailView):
