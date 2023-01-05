@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% block title %}
+    {{ event }}
+{% endblock title %}
+{% block content %}
+    <h1>{{ event.title }}</h1>
+    {% translate "Participant List" %}
+{% endblock content %}
