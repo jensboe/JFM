@@ -13,5 +13,11 @@
         {{ event.end_date }}
         {{ event.end_time }}
     </div>
-    <div>{% translate "Participant List" %}</div>
+    <div class="list-group">
+        {% for participant in event.participant_set.all %}
+            <div class="list-group-item">
+                {{ participant.member }}
+            </div >
+        {% endfor %}
+    </div >
 {% endblock content %}

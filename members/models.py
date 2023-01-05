@@ -17,6 +17,9 @@ class Member(models.Model):
         upload_to='members/passport', null=True, blank=True)
     Point = namedtuple("Point", "x y")
 
+    class Meta:
+        ordering = ['lastname']
+
     @property
     def fullname(self) -> str:
         return f'{self.firstname} {self.lastname}'

@@ -2,6 +2,8 @@ from django.db import models
 
 from django.utils import timezone
 
+from members.models import Member
+
 
 class Event(models.Model):
     title = models.CharField(max_length=200)
@@ -12,3 +14,14 @@ class Event(models.Model):
 
     def __str__(self) -> str:
         return self.title
+
+
+class Participant (models.Model):
+    event = models.ForeignKey(Event, on_delete=models.CASCADE)
+    member = models.ForeignKey(Member, on_delete=models.CASCADE)
+
+    class Meta:
+        ordering = ['member']
+
+    def __str__(self) -> str:
+        return f'{self.member} - {self.event}'
