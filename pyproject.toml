@@ -6,7 +6,7 @@ build-backend = "hatchling.build"
 name = "JFM"
 version = "0.0.1"
 
-description = "Wander the ups and downs of Reddit and capture memories."
+description = "Todo"
 readme = "README.md"
 requires-python = ">=3.11"
 classifiers = [
@@ -16,5 +16,5 @@ classifiers = [
 ]
 
 [project.urls]
-"Homepage" = "https://github.com/pypa/sampleproject"
-"Bug Tracker" = "https://github.com/pypa/sampleproject/issues"
+"Homepage" = "https://github.com/jensboe/JFM"
+"Bug Tracker" = "https://github.com/jensboe/JFM/issues"
