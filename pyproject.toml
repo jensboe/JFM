@@ -4,7 +4,12 @@ build-backend = "hatchling.build"
 
 [project]
 name = "JFM"
-version = "0.0.1"
+version = "0.0.0"
+
+[tool.semantic_release]
+version_toml = [
+    'pyproject.toml:project.version',
+]
 
 description = "Todo"
 readme = "README.md"
