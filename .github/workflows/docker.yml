@@ -1,0 +1,20 @@
+name: Docker Compose CI
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Create dummy env-prod
+      run: mv ./.env.prod.sample ./.env.prod
+    - name: Build the Docker image
+      run: docker-compose build
