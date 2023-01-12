@@ -13,6 +13,8 @@ django-browser-reload = "*"
 [dev-packages]
 autopep8 = "*"
 djlint = "*"
+build = "*"
+pytest-django = "*"
 
 [requires]
 python_version = "3.11"

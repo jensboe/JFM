@@ -14,9 +14,18 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Member',
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('firstname', models.CharField(max_length=100)),
-                ('lastname', models.CharField(max_length=100)),
+                ('id',
+                 models.BigAutoField(
+                     auto_created=True,
+                     primary_key=True,
+                     serialize=False,
+                     verbose_name='ID')),
+                ('firstname',
+                 models.CharField(
+                     max_length=100)),
+                ('lastname',
+                 models.CharField(
+                     max_length=100)),
             ],
         ),
     ]
