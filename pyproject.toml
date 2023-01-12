@@ -5,12 +5,6 @@ build-backend = "hatchling.build"
 [project]
 name = "JFM"
 version = "0.0.0"
-
-[tool.semantic_release]
-version_toml = [
-    'pyproject.toml:project.version',
-]
-
 description = "Todo"
 readme = "README.md"
 requires-python = ">=3.11"
@@ -19,6 +13,14 @@ classifiers = [
     "License :: OSI Approved :: MIT License",
     "Operating System :: OS Independent",
 ]
+
+[tool.semantic_release]
+version_toml = [
+    'pyproject.toml:project.version',
+]
+branch = "main"
+
+
 
 [project.urls]
 "Homepage" = "https://github.com/jensboe/JFM"
