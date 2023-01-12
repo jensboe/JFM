@@ -15,6 +15,7 @@ autopep8 = "*"
 djlint = "*"
 build = "*"
 pytest-django = "*"
+python-semantic-release = "*"
 
 [requires]
 python_version = "3.11"
