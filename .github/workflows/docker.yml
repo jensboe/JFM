@@ -7,14 +7,13 @@ on:
     branches: [ "main" ]
 
 jobs:
-
   build:
-
     runs-on: ubuntu-latest
-
     steps:
     - uses: actions/checkout@v3
     - name: Create dummy env-prod
       run: mv ./.env.prod.sample ./.env.prod
     - name: Build the Docker image
       run: docker-compose build
+    - name: Run django tests in docker
+      run: docker-compose run web python manage.py test

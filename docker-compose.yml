@@ -3,6 +3,7 @@ version: '3.8'
 services:
   web:
     build: .
+    image: jensb91/jfm
     command: gunicorn jfm.wsgi:application --bind 0.0.0.0:8000
     volumes:
       - ./:/usr/src/jfm/
