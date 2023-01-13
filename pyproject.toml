@@ -14,12 +14,6 @@ classifiers = [
     "Operating System :: OS Independent",
 ]
 
-[tool.semantic_release]
-version_toml = [
-    'pyproject.toml:project.version',
-]
-branch = "main"
-
 [project.urls]
 "Homepage" = "https://github.com/jensboe/JFM"
 "Bug Tracker" = "https://github.com/jensboe/JFM/issues"
