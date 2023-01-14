@@ -1,7 +1,7 @@
 from django.db import models
 
 from django.utils import timezone
-
+from django.utils.translation import gettext_lazy as _
 from members.models import Member
 
 
@@ -19,6 +19,17 @@ class Event(models.Model):
 class Participant (models.Model):
     event = models.ForeignKey(Event, on_delete=models.CASCADE)
     member = models.ForeignKey(Member, on_delete=models.CASCADE)
+
+    class Participation(models.TextChoices):
+        PRESENT = 'PRE', _('present')
+        EXCUSED = 'EXC', _('excused')
+        ABSENT = 'ABS', _('absent')
+
+    participation = models.CharField(
+        max_length=3,
+        choices=Participation.choices,
+        default=Participation.ABSENT,
+    )
 
     class Meta:
         ordering = ['member']
