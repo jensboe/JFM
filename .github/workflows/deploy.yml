@@ -15,10 +15,10 @@ jobs:
         run: echo -e "${{secrets.PASSWORD}}\n" | sudo -S docker-compose down
       - name: Pull new image
         working-directory: ${{vars.CONTAINTER_PATH}}
-        run: sudo docker-compose pull
+        run: echo -e "${{secrets.PASSWORD}}\n" | sudo -S docker-compose pull
       - name: Start server
         working-directory: ${{vars.CONTAINTER_PATH}}
-        run: sudo docker-compose up -d
+        run: echo -e "${{secrets.PASSWORD}}\n" | sudo -S docker-compose up -d
       - name: Run migration
         working-directory: ${{vars.CONTAINTER_PATH}}
-        run: sudo docker-compose exec -T jfm python manage.py migrate
+        run: echo -e "${{secrets.PASSWORD}}\n" | sudo -S docker-compose exec -T jfm python manage.py migrate
