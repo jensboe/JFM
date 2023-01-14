@@ -9,4 +9,5 @@ jobs:
     environment: ficorede
     steps:
       - name: deploy
-        run: echo "Hello World"
+        working-directory: ${{vars.CONTAINTER_PATH}}
+        run: echo $PATH
