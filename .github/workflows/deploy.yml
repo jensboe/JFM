@@ -19,4 +19,4 @@ jobs:
         run: sudo docker-compose up -d
       - name: Run migration
         working-directory: ${{vars.CONTAINTER_PATH}}
-        run: sudo docker-compose exec python manage.py migrate
+        run: sudo docker-compose exec jfm python manage.py migrate
