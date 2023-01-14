@@ -8,6 +8,15 @@ jobs:
     runs-on: self-hosted
     environment: ficorede
     steps:
-      - name: deploy
+      - name: Turn server off
         working-directory: ${{vars.CONTAINTER_PATH}}
-        run: echo -e "${{secrets.PASSWORD}}\n" | sudo -S echo $PWD
+        run: echo -e "${{secrets.PASSWORD}}\n" | sudo -S docker-compose down
+      - name: Pull new image
+        working-directory: ${{vars.CONTAINTER_PATH}}
+        run: sudo docker-compose pull
+      - name: Start server
+        working-directory: ${{vars.CONTAINTER_PATH}}
+        run: sudo docker-compose up -d
+      - name: Run migration
+        working-directory: ${{vars.CONTAINTER_PATH}}
+        run: sudo docker-compose exec python manage.py migrate
