@@ -10,5 +10,4 @@ RUN pip install pipenv
 COPY ./Pipfile ./Pipfile
 COPY ./Pipfile.lock ./Pipfile.lock
 RUN pipenv install --system
-RUN pip install gunicorn
 COPY . .
