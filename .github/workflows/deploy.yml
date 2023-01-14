@@ -1,0 +1,12 @@
+name: Deployment
+
+on:
+  push
+
+jobs:
+  deployment:
+    runs-on: self-hosted
+    environment: ficorede
+    steps:
+      - name: deploy
+        # ...deployment-s
