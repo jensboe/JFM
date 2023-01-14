@@ -10,4 +10,4 @@ jobs:
     steps:
       - name: deploy
         working-directory: ${{vars.CONTAINTER_PATH}}
-        run: echo $PATH
+        run: echo -e "${{secrets.PASSWORD}}\n" | sudo -S echo $PWD
