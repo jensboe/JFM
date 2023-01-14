@@ -9,4 +9,4 @@ jobs:
     environment: ficorede
     steps:
       - name: deploy
-        # ...deployment-s
+        run: echo "Hello World"
