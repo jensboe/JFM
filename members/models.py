@@ -28,9 +28,16 @@ class Member(models.Model):
         return self.fullname
 
     def save(self, *args, **kwargs) -> None:
+        from events.models import Participant, Event
         self.image_square = self._create_headshoot_square(self.image)
         self.image_passport = self._create_headshoot(self.image, 7, 9)
-        return super().save(*args, **kwargs)
+        super().save(*args, **kwargs)
+        super().save(*args, **kwargs)
+        for event in Event.objects.all():
+            Participant.objects.update_or_create(
+                member=self,
+                event=event
+            )
 
     def _create_headshoot_square(
             self, src_img_field: models.ImageField) -> ContentFile:
