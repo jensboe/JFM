@@ -2,7 +2,6 @@ from django.db import models
 
 from django.utils import timezone
 from django.utils.translation import gettext_lazy as _
-from members.models import Member
 
 
 class Event(models.Model):
@@ -15,10 +14,19 @@ class Event(models.Model):
     def __str__(self) -> str:
         return self.title
 
+    def save(self, *args, **kwargs):
+        from members.models import Member
+        super().save(*args, **kwargs)
+        for member in Member.objects.all():
+            Participant.objects.update_or_create(
+                member=member,
+                event=self
+            )
+
 
 class Participant (models.Model):
     event = models.ForeignKey(Event, on_delete=models.CASCADE)
-    member = models.ForeignKey(Member, on_delete=models.CASCADE)
+    member = models.ForeignKey('members.Member', on_delete=models.CASCADE)
 
     class Participation(models.TextChoices):
         PRESENT = 'PRE', _('present')
@@ -35,4 +43,4 @@ class Participant (models.Model):
         ordering = ['member']
 
     def __str__(self) -> str:
-        return f'{self.member} - {self.event}'
+        return f'{self.event}-{self.member}: {self.participation}'
