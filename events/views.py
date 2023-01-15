@@ -1,5 +1,7 @@
+
 from django.views import generic
-from .models import Event
+from django.forms import modelformset_factory
+from .models import Event, Participant
 
 
 class ListView(generic.ListView):
@@ -16,3 +18,15 @@ class ListView(generic.ListView):
 
 class DetailView(generic.DetailView):
     model = Event
+
+
+class ParticipantFormView(generic.FormView):
+    template_name = 'participations/participation_form.html'
+    form_class = modelformset_factory(
+        Participant, fields=[
+            'member', 'event', 'participation'])
+    success_url = '/'
+
+    def form_valid(self, form):
+        form.save()
+        return super().form_valid(form)
