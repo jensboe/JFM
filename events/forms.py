@@ -12,6 +12,5 @@ class BaseParticipantFormSet(BaseModelFormSet):
 ParticipantFormSet = modelformset_factory(
     Participant,
     fields=[
-        'member',
         'participation'],
     formset=BaseParticipantFormSet, extra=0)
