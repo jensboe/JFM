@@ -1,4 +1,4 @@
-from django.forms import BaseModelFormSet, modelformset_factory
+from django.forms import BaseModelFormSet, modelformset_factory, RadioSelect
 from .models import Participant
 
 
@@ -13,4 +13,6 @@ ParticipantFormSet = modelformset_factory(
     Participant,
     fields=[
         'participation'],
-    formset=BaseParticipantFormSet, extra=0)
+    formset=BaseParticipantFormSet, extra=0, widgets={
+        'participation': RadioSelect()
+    })
