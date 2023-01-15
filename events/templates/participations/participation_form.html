@@ -4,11 +4,15 @@
     {{ event }}
 {% endblock title %}
 {% block content %}
+    <h1>{{ event }}</h1>
     <form method="POST">
-        <!-- csrf token  -->
         {% csrf_token %}
-        <!-- displaying the form from the backend -->
-        {{ form.as_p }}
+        {{ form.management_form }}
+        {% for participant in form %}
+            {% for hidden in participant.hidden_fields %}{{ hidden }}{% endfor %}
+            {{ participant.instance.member }}
+            {{ participant.participation }}
+        {% endfor %}
         <input type="submit" value="Submit">
     </form>
 {% endblock content %}
