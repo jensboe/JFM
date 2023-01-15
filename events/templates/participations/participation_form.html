@@ -4,7 +4,7 @@
     {{ event }}
 {% endblock title %}
 {% block content %}
-    <h1>{{ event.start_date }}: {{ event }}</h1>
+    {% include  'events/event_detail.html' %}
     <form method="POST">
         {% csrf_token %}
         {{ form.management_form }}

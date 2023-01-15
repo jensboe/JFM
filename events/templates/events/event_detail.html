@@ -1,23 +1,9 @@
-{% extends 'base.html' %}
-{% load i18n %}
-{% block title %}
-    {{ event }}
-{% endblock title %}
-{% block content %}
-    <h1>{{ event.title }}</h1>
-    <div>
-        {{ event.start_date }}
-        {{ event.start_time }}
-    </div>
-    <div>
-        {{ event.end_date }}
-        {{ event.end_time }}
-    </div>
-    <div class="list-group">
-        {% for participant in event.participant_set.all %}
-            <div class="list-group-item">
-                {{ participant.member }}
-            </div >
-        {% endfor %}
-    </div >
-{% endblock content %}
+<h1>{{ event.title }}</h1>
+<div>
+    {{ event.start_date }}
+    {{ event.start_time }}
+</div>
+<div>
+    {{ event.end_date }}
+    {{ event.end_time }}
+</div>
