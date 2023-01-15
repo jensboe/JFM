@@ -1,6 +1,8 @@
 
 from django.views import generic
 from django.forms import modelformset_factory
+from django.contrib.auth.decorators import login_required
+from django.utils.decorators import method_decorator
 from .models import Event
 from .forms import ParticipantFormSet
 
@@ -17,6 +19,7 @@ class ListView(generic.ListView):
         return context
 
 
+@method_decorator(login_required, name='dispatch')
 class ParticipantFormView(generic.FormView):
     template_name = 'participations/participation_form.html'
     form_class = ParticipantFormSet

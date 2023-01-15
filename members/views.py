@@ -1,10 +1,13 @@
 from django.shortcuts import render
 from django.views import generic
 from django.urls import reverse_lazy
+from django.contrib.auth.decorators import login_required
+from django.utils.decorators import method_decorator
 
 from .models import Member
 
 
+@method_decorator(login_required, name='dispatch')
 class ListView(generic.ListView):
     model = Member
     template_name = 'common/list.html'
@@ -17,10 +20,12 @@ class ListView(generic.ListView):
         return context
 
 
+@method_decorator(login_required, name='dispatch')
 class DetailView(generic.DetailView):
     model = Member
 
 
+@method_decorator(login_required, name='dispatch')
 class UpdateView(generic.UpdateView):
     model = Member
     fields = [
@@ -35,6 +40,7 @@ class UpdateView(generic.UpdateView):
         return reverse_lazy('members:update', kwargs={'pk': self.object.id})
 
 
+@method_decorator(login_required, name='dispatch')
 class CreateView(generic.CreateView):
     model = Member
     success_url = reverse_lazy('members:list')
