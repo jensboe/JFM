@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% block title %}
+    {{ event }}
+{% endblock title %}
+{% block content %}
+    {% include  'events/event_detail.html' %}
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.management_form }}
+        <div class="list-group">
+            {% for participant in form %}
+                {% for hidden in participant.hidden_fields %}{{ hidden }}{% endfor %}
+                <div class="list-group-item list-group-item-action">
+                    {{ participant.instance.member }}
+                    <div class="btn-group"
+                         role="group"
+                         aria-label="Basic radio toggle button group">
+                        {% for radio in participant.participation %}
+                            <input type="radio"
+                                   name="{{ radio.data.name }}"
+                                   value="{{ radio.data.value }}"
+                                   id="{{ radio.id_for_label }}"
+                                   {% if radio.data.selected %}checked{% endif %}
+                                   class="btn-check"
+                                   autocomplete="off">
+                            <label class="btn btn-outline-primary" for="{{ radio.id_for_label }}">{{ radio.choice_label }}</label>
+                        {% endfor %}
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+        <input type="submit" value="Submit" class="btn btn-primary">
+    </form>
+{% endblock content %}
