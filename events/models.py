@@ -2,14 +2,13 @@ from django.db import models
 
 from django.utils import timezone
 from django.utils.translation import gettext_lazy as _
+from django.urls import reverse
 
 
 class Event(models.Model):
     title = models.CharField(max_length=200)
-    start_date = models.DateField(default=timezone.now)
-    start_time = models.TimeField(default=timezone.now)
-    end_date = models.DateField(default=timezone.now)
-    end_time = models.TimeField(default=timezone.now)
+    start_date = models.DateTimeField(default=timezone.now)
+    end_date = models.DateTimeField(default=timezone.now)
 
     def __str__(self) -> str:
         return self.title
@@ -22,6 +21,9 @@ class Event(models.Model):
                 member=member,
                 event=self
             )
+
+    def get_absolute_url(self):
+        return reverse('events:detail', kwargs={'pk': self.pk})
 
 
 class Participant (models.Model):

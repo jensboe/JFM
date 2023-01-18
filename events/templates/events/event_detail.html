@@ -1,9 +1,16 @@
-<h1>{{ event.title }}</h1>
-<div>
-    {{ event.start_date }}
-    {{ event.start_time }}
-</div>
-<div>
-    {{ event.end_date }}
-    {{ event.end_time }}
-</div>
+{% extends 'base.html' %}
+{% load i18n %}
+{% block title %}
+    {% translate title %}
+{% endblock title %}
+{% block content %}
+    <h1>{{ event.title }}</h1>
+    <div>
+        {{ event.start_date }}
+        {{ event.start_time }}
+    </div>
+    <div>
+        {{ event.end_date }}
+        {{ event.end_time }}
+    </div>
+{% endblock content %}
