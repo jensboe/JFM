@@ -1,5 +1,5 @@
-from django.forms import BaseModelFormSet, modelformset_factory, RadioSelect
-from .models import Participant
+from django.forms import BaseModelFormSet, modelformset_factory, RadioSelect, ModelForm, DateTimeInput, TextInput
+from .models import Participant, Event
 
 
 class BaseParticipantFormSet(BaseModelFormSet):
@@ -16,3 +16,29 @@ ParticipantFormSet = modelformset_factory(
     formset=BaseParticipantFormSet, extra=0, widgets={
         'participation': RadioSelect()
     })
+
+
+class EventForm(ModelForm):
+
+    class Meta:
+        model = Event
+        fields = ['title', 'start_date', 'end_date']
+        widgets = {
+            'title': TextInput(
+                attrs={
+                    'class': 'form-control'
+                }
+            ),
+            'start_date': DateTimeInput(
+                attrs={
+                    'type': 'datetime-local',
+                    'class': 'form-control'
+                },
+                format='%Y-%m-%d %H:%M'),
+            'end_date': DateTimeInput(
+                attrs={
+                    'type': 'datetime-local',
+                    'class': 'form-control'
+                },
+                format='%Y-%m-%d %H:%M'),
+        }

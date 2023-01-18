@@ -4,7 +4,7 @@
     {{ event }}
 {% endblock title %}
 {% block content %}
-    {% include  'events/event_detail.html' %}
+    <h1>{{ event.title }}</h1>
     <form method="POST">
         {% csrf_token %}
         {{ form.management_form }}
@@ -34,4 +34,7 @@
                value="{% translate "Submit" %}"
                class="btn btn-primary">
     </form>
+    <a class="btn btn-primary"
+       href="{% url 'events:update' event.id %}"
+       role="button">{% translate "Update event" %}</a>
 {% endblock content %}

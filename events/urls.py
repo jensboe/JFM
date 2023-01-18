@@ -9,6 +9,13 @@ urlpatterns = [
         '<int:pk>/',
         views.ParticipantFormView.as_view(),
         name='participation'),
-    # path('<int:pk>/update', views.UpdateView.as_view(), name='update'),
-    # path('create/', views.CreateView.as_view(), name='create'),
+    path(
+        '<int:pk>/detail',
+        views.EventDetailView.as_view(),
+        name='detail'),
+    path(
+        '<int:pk>/update',
+        views.EventUpdateView.as_view(),
+        name='update'),
+    path('create/', views.EventCreateView.as_view(), name='create'),
 ]
