@@ -10,8 +10,11 @@ class Event(models.Model):
     start_date = models.DateTimeField(default=timezone.now)
     end_date = models.DateTimeField(default=timezone.now)
 
+    class Meta:
+        ordering = ['start_date']
+
     def __str__(self) -> str:
-        return self.title
+        return f'{self.start_date:%d.%m.%y %H:%M} | {self.title}'
 
     def save(self, *args, **kwargs):
         from members.models import Member

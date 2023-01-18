@@ -1,6 +1,7 @@
 from django.urls import path
 
 from . import views
+from .feeds import EventFeed
 
 app_name = 'events'
 urlpatterns = [
@@ -18,4 +19,5 @@ urlpatterns = [
         views.EventUpdateView.as_view(),
         name='update'),
     path('create/', views.EventCreateView.as_view(), name='create'),
+    path('feed/', EventFeed())
 ]
