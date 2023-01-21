@@ -4,8 +4,11 @@ build-backend = "hatchling.build"
 
 [project]
 name = "JFM"
-version = "0.0.0"
-description = "Todo"
+authors = [
+    {name = "jensboe", email = "jensboe@outlook.de"},
+]
+version = "1.0.0"
+description = "JFM is an django website which can manage participation lists."
 readme = "README.md"
 requires-python = ">=3.11"
 classifiers = [
