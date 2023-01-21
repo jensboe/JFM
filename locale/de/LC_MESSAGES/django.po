@@ -3,12 +3,12 @@
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
-#, fuzzy
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-01-21 12:33+0100\n"
+"POT-Creation-Date: 2023-01-21 14:23+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,32 +18,110 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: .\events\models.py:37
+#: .\events\models.py:9
+msgid "title"
+msgstr "Titel"
+
+#: .\events\models.py:12
+msgid "start time"
+msgstr "Startzeit"
+
+#: .\events\models.py:15
+msgid "end time"
+msgstr "Endezeit"
+
+#: .\events\models.py:19 .\events\models.py:42
+msgid "event"
+msgstr "Veranstaltung"
+
+#: .\events\models.py:20 .\events\views.py:19 .\templates\menu\navbar.html:17
+msgid "events"
+msgstr "Veranstaltungen"
+
+#: .\events\models.py:46 .\members\models.py:33
+msgid "member"
+msgstr "Mitglieder"
+
+#: .\events\models.py:49
 msgid "present"
 msgstr "anwesend"
 
-#: .\events\models.py:38
+#: .\events\models.py:50
 msgid "excused"
 msgstr "entschuldigt"
 
-#: .\events\models.py:39
+#: .\events\models.py:51
 msgid "absent"
 msgstr "abwesend"
+
+#: .\events\models.py:61
+msgid "participant"
+msgstr "Teilnehmer"
+
+#: .\events\models.py:62
+msgid "participants"
+msgstr "Teilnehmer"
 
 #: .\events\templates\events\event_form.html:10
 #: .\members\templates\members\member_form.html:60
 msgid "Update"
-msgstr "Aktuallisieren"
+msgstr "Aktualisieren"
 
-#: .\events\templates\participations\participation_form.html:34
+#: .\events\templates\participations\participation_form.html:42
 msgid "Submit"
 msgstr "Eintragen"
 
-#: .\events\templates\participations\participation_form.html:39
-#, fuzzy
-#| msgid "Create event"
-msgid "Update event"
-msgstr "Neues Event"
+#: .\events\urls.py:15
+msgid "<int:pk>/detail/"
+msgstr "<int:pk>/einzelheiten/"
+
+#: .\events\urls.py:18 .\members\urls.py:9
+msgid "<int:pk>/update/"
+msgstr "<int:pk>/aktualisieren/"
+
+#: .\events\urls.py:21 .\members\urls.py:10
+msgid "create/"
+msgstr "erstellen/"
+
+#: .\events\urls.py:22
+msgid "feed/"
+msgstr "feed/"
+
+#: .\jfm\urls.py:26
+msgid "account/"
+msgstr "acocunt/"
+
+#: .\jfm\urls.py:27 .\jfm\urls.py:29
+msgid "events/"
+msgstr "veranstaltung/"
+
+#: .\jfm\urls.py:28
+msgid "members/"
+msgstr "mitglieder/"
+
+#: .\members\models.py:12
+msgid "first name"
+msgstr "Vorname"
+
+#: .\members\models.py:13
+msgid "last name"
+msgstr "Nachname"
+
+#: .\members\models.py:18
+msgid "image"
+msgstr "Bild"
+
+#: .\members\models.py:23
+msgid "square image"
+msgstr "quadratisches Bild"
+
+#: .\members\models.py:28
+msgid "passwort image"
+msgstr "Passbild"
+
+#: .\members\models.py:34 .\members\views.py:18
+msgid "members"
+msgstr "Mitglieder"
 
 #: .\members\templates\members\member_detail.html:12
 msgid "Edit"
@@ -53,21 +131,9 @@ msgstr "Ändern"
 msgid "Cancel"
 msgstr "Abbrechen"
 
-#: .\templates\common\list.html:15
-msgid "Create member"
-msgstr "Neues Mitglied"
-
-#: .\templates\common\list.html:18
-msgid "Create event"
-msgstr "Neues Event"
-
 #: .\templates\menu\navbar.html:16
 msgid "Start"
 msgstr "Start"
-
-#: .\templates\menu\navbar.html:17
-msgid "Events"
-msgstr "Veranstaltungen"
 
 #: .\templates\menu\navbar.html:25
 msgid "Participant List"
@@ -83,9 +149,15 @@ msgstr "Einstellungen"
 
 #: .\templates\menu\navbar.html:63
 msgid "Logout"
-msgstr "Ausloggen"
+msgstr "Abmelden"
 
 #: .\templates\menu\navbar.html:67 .\templates\registration\login.html:4
 #: .\templates\registration\login.html:7 .\templates\registration\login.html:22
 msgid "Login"
-msgstr "Einloggen"
+msgstr "Anmelden"
+
+#~ msgid "Create member"
+#~ msgstr "Neues Mitglied"
+
+#~ msgid "Create event"
+#~ msgstr "Neues Event"
