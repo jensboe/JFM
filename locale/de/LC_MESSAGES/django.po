@@ -83,9 +83,9 @@ msgstr "Einstellungen"
 
 #: .\templates\menu\navbar.html:63
 msgid "Logout"
-msgstr "Logout"
+msgstr "Ausloggen"
 
 #: .\templates\menu\navbar.html:67 .\templates\registration\login.html:4
 #: .\templates\registration\login.html:7 .\templates\registration\login.html:22
 msgid "Login"
-msgstr "Login"
+msgstr "Einloggen"

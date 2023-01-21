@@ -13,8 +13,8 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                {% include 'menu/link.html' with url_name='home' name='Home' icon='house' %}
-                {% include 'menu/link.html' with url_name='events:list' name='Events' icon='calendar-week' %}
+                {% include 'menu/link.html' with url_name='home' name=_('Start') icon='house' %}
+                {% include 'menu/link.html' with url_name='events:list' name=_('Events') icon='calendar-week' %}
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle"
                        href="#"
@@ -54,8 +54,8 @@
                         </li>
                     </ul>
                 </li>
-                {% include 'menu/link.html' with url_name='members:list' name='Members' icon='people' %}
-                {% include 'menu/link.html' with url_name='home' name='Settings' icon='gear' %}
+                {% include 'menu/link.html' with url_name='members:list' name=_('Members') icon='people' %}
+                {% include 'menu/link.html' with url_name='home' name=_('Settings') icon='gear' %}
             </ul>
             {% if user.is_authenticated %}
                 <a href="{% url 'logout' %}"

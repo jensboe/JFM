@@ -2,5 +2,5 @@
 <li class="nav-item">
     {% url url_name as url %}
     <a class="nav-link {% if request.path == url %}active{% endif %}"
-       href="{% url url_name %}"><i class="bi bi-{{ icon }}"></i> {% translate name %}</a>
+       href="{% url url_name %}"><i class="bi bi-{{ icon }}"></i>{{ name }}</a>
 </li>
