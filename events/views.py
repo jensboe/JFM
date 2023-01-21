@@ -21,6 +21,7 @@ class ListView(generic.ListView):
         return context
 
 
+@method_decorator(login_required, name='dispatch')
 class EventUpdateView(generic.UpdateView):
     model = Event
     template_name = 'events/event_form.html'
@@ -31,6 +32,7 @@ class EventDetailView(generic.DetailView):
     model = Event
 
 
+@method_decorator(login_required, name='dispatch')
 class EventCreateView(generic.CreateView):
     model = Event
     template_name = 'events/event_form.html'
