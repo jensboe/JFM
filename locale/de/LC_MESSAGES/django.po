@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-01-16 00:56+0100\n"
+"POT-Creation-Date: 2023-01-21 12:33+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,21 +18,32 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: .\events\models.py:32
+#: .\events\models.py:37
 msgid "present"
 msgstr "anwesend"
 
-#: .\events\models.py:33
+#: .\events\models.py:38
 msgid "excused"
 msgstr "entschuldigt"
 
-#: .\events\models.py:34
+#: .\events\models.py:39
 msgid "absent"
 msgstr "abwesend"
+
+#: .\events\templates\events\event_form.html:10
+#: .\members\templates\members\member_form.html:60
+msgid "Update"
+msgstr "Aktuallisieren"
 
 #: .\events\templates\participations\participation_form.html:34
 msgid "Submit"
 msgstr "Eintragen"
+
+#: .\events\templates\participations\participation_form.html:39
+#, fuzzy
+#| msgid "Create event"
+msgid "Update event"
+msgstr "Neues Event"
 
 #: .\members\templates\members\member_detail.html:12
 msgid "Edit"
@@ -42,10 +53,6 @@ msgstr "Ändern"
 msgid "Cancel"
 msgstr "Abbrechen"
 
-#: .\members\templates\members\member_form.html:60
-msgid "Update"
-msgstr "Aktuallisieren"
-
 #: .\templates\common\list.html:15
 msgid "Create member"
 msgstr "Neues Mitglied"
@@ -54,9 +61,25 @@ msgstr "Neues Mitglied"
 msgid "Create event"
 msgstr "Neues Event"
 
+#: .\templates\menu\navbar.html:16
+msgid "Start"
+msgstr "Start"
+
+#: .\templates\menu\navbar.html:17
+msgid "Events"
+msgstr "Veranstaltungen"
+
 #: .\templates\menu\navbar.html:25
 msgid "Participant List"
 msgstr "Anwesenheitsliste"
+
+#: .\templates\menu\navbar.html:57
+msgid "Members"
+msgstr "Mitglieder"
+
+#: .\templates\menu\navbar.html:58
+msgid "Settings"
+msgstr "Einstellungen"
 
 #: .\templates\menu\navbar.html:63
 msgid "Logout"
@@ -66,16 +89,3 @@ msgstr "Logout"
 #: .\templates\registration\login.html:7 .\templates\registration\login.html:22
 msgid "Login"
 msgstr "Login"
-
-#~ msgid "Search"
-#~ msgstr "Suche"
-
-# menu
-#~ msgid "Events"
-#~ msgstr "Termine"
-
-#~ msgid "Members"
-#~ msgstr "Mitglieder"
-
-#~ msgid "Settings"
-#~ msgstr "Einistellungen"
