@@ -6,12 +6,18 @@ from django.urls import reverse
 
 
 class Event(models.Model):
-    title = models.CharField(max_length=200)
-    start_date = models.DateTimeField(default=timezone.now)
-    end_date = models.DateTimeField(default=timezone.now)
+    title = models.CharField(max_length=200, verbose_name=_('title'))
+    start_date = models.DateTimeField(
+        default=timezone.now,
+        verbose_name=_('start time'))
+    end_date = models.DateTimeField(
+        default=timezone.now,
+        verbose_name=_('end time'))
 
     class Meta:
         ordering = ['start_date']
+        verbose_name = _('event')
+        verbose_name_plural = _('events')
 
     def __str__(self) -> str:
         return f'{self.start_date:%d.%m.%y %H:%M} | {self.title}'
@@ -30,8 +36,14 @@ class Event(models.Model):
 
 
 class Participant (models.Model):
-    event = models.ForeignKey(Event, on_delete=models.CASCADE)
-    member = models.ForeignKey('members.Member', on_delete=models.CASCADE)
+    event = models.ForeignKey(
+        Event,
+        on_delete=models.CASCADE,
+        verbose_name=_('event'))
+    member = models.ForeignKey(
+        'members.Member',
+        on_delete=models.CASCADE,
+        verbose_name=_('member'))
 
     class Participation(models.TextChoices):
         PRESENT = 'PRE', _('present')
@@ -46,6 +58,8 @@ class Participant (models.Model):
 
     class Meta:
         ordering = ['member']
+        verbose_name = _('participant')
+        verbose_name_plural = _('participants')
 
     def __str__(self) -> str:
         return f'{self.event}-{self.member}: {self.participation}'

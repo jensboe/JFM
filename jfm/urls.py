@@ -17,14 +17,15 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf.urls.static import static
 from django.views.generic.base import RedirectView
-
+from django.utils.translation import gettext_lazy as _
 from django.conf import settings
 
 urlpatterns = [
-    path('', RedirectView.as_view(url='events/'), name='home'),
-    path('members/', include('members.urls')),
-    path('events/', include('events.urls')),
     path('admin/', admin.site.urls),
     path("__reload__/", include("django_browser_reload.urls")),
-    path("accounts/", include("django.contrib.auth.urls")),
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    path(_('account/'), include("django.contrib.auth.urls")),
+    path('', RedirectView.as_view(url=_('events/')), name='home'),
+    path(_('members/'), include('members.urls')),
+    path(_('events/'), include('events.urls')),
+]
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -3,7 +3,7 @@ from django.views import generic
 from django.urls import reverse_lazy
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
-
+from django.utils.translation import gettext_lazy as _
 from .models import Member
 
 
@@ -15,7 +15,7 @@ class ListView(generic.ListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['title'] = 'Members'
+        context['title'] = _('members')
         context['element_url'] = 'members:detail'
         return context
 

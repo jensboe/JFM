@@ -5,20 +5,33 @@ import numpy
 from PIL import Image, ImageOps
 from django.db import models
 from django.core.files.base import ContentFile
+from django.utils.translation import gettext_lazy as _
 
 
 class Member(models.Model):
-    firstname = models.CharField(max_length=100)
-    lastname = models.CharField(max_length=100)
-    image = models.ImageField(upload_to='members/org', null=True, blank=True)
+    firstname = models.CharField(max_length=100, verbose_name=_('first name'))
+    lastname = models.CharField(max_length=100, verbose_name=_('last name'))
+    image = models.ImageField(
+        upload_to='members/org',
+        null=True,
+        blank=True,
+        verbose_name=_('image'))
     image_square = models.ImageField(
-        upload_to='members/square', null=True, blank=True)
+        upload_to='members/square',
+        null=True,
+        blank=True,
+        verbose_name=_('square image'))
     image_passport = models.ImageField(
-        upload_to='members/passport', null=True, blank=True)
+        upload_to='members/passport',
+        null=True,
+        blank=True,
+        verbose_name=_('passwort image'))
     Point = namedtuple("Point", "x y")
 
     class Meta:
         ordering = ['lastname']
+        verbose_name = _('member')
+        verbose_name_plural = _('members')
 
     @property
     def fullname(self) -> str:
