@@ -6,9 +6,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: jfm\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-01-21 14:23+0100\n"
+"POT-Creation-Date: 2023-01-22 14:44+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -91,13 +91,17 @@ msgstr "feed/"
 msgid "account/"
 msgstr "acocunt/"
 
-#: .\jfm\urls.py:27 .\jfm\urls.py:29
-msgid "events/"
-msgstr "veranstaltung/"
+#: .\jfm\urls.py:27 .\jfm\urls.py:30
+msgid "start/"
+msgstr "start"
 
 #: .\jfm\urls.py:28
 msgid "members/"
 msgstr "mitglieder/"
+
+#: .\jfm\urls.py:29
+msgid "events/"
+msgstr "veranstaltungen/"
 
 #: .\members\models.py:12
 msgid "first name"
@@ -131,6 +135,14 @@ msgstr "Ändern"
 msgid "Cancel"
 msgstr "Abbrechen"
 
+#: .\start\templates\start\start.html:9
+msgid "create member"
+msgstr "Mitglied anlegen"
+
+#: .\start\templates\start\start.html:12
+msgid "create event"
+msgstr "Veranstaltung anlegen"
+
 #: .\templates\menu\navbar.html:16
 msgid "Start"
 msgstr "Start"
@@ -155,9 +167,3 @@ msgstr "Abmelden"
 #: .\templates\registration\login.html:7 .\templates\registration\login.html:22
 msgid "Login"
 msgstr "Anmelden"
-
-#~ msgid "Create member"
-#~ msgstr "Neues Mitglied"
-
-#~ msgid "Create event"
-#~ msgstr "Neues Event"

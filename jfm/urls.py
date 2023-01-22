@@ -24,8 +24,9 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path("__reload__/", include("django_browser_reload.urls")),
     path(_('account/'), include("django.contrib.auth.urls")),
-    path('', RedirectView.as_view(url=_('events/')), name='home'),
+    path('', RedirectView.as_view(url=_('start/')), name='home'),
     path(_('members/'), include('members.urls')),
     path(_('events/'), include('events.urls')),
+    path(_('start/'), include('start.urls')),
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

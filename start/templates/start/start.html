@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% block title %}
+    {{ title }}
+{% endblock title %}
+{% block content %}
+    <a class="btn btn-primary"
+       href="{% url 'members:create' %}"
+       role="button">{% translate "create member" %}</a>
+    <a class="btn btn-primary"
+       href="{% url 'events:create' %}"
+       role="button">{% translate "create event" %}</a>
+{% endblock content %}
