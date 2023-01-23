@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-01-21 14:23+0100\n"
+"POT-Creation-Date: 2023-01-23 22:25+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,6 +17,11 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: .\events\apps.py:8 .\events\models.py:20 .\events\views.py:19
+#: .\templates\menu\navbar.html:17
+msgid "events"
+msgstr "Veranstaltungen"
 
 #: .\events\models.py:9
 msgid "title"
@@ -34,11 +39,7 @@ msgstr "Endezeit"
 msgid "event"
 msgstr "Veranstaltung"
 
-#: .\events\models.py:20 .\events\views.py:19 .\templates\menu\navbar.html:17
-msgid "events"
-msgstr "Veranstaltungen"
-
-#: .\events\models.py:46 .\members\models.py:33
+#: .\events\models.py:46 .\members\models.py:35
 msgid "member"
 msgstr "Mitglieder"
 
@@ -99,6 +100,10 @@ msgstr "veranstaltung/"
 msgid "members/"
 msgstr "mitglieder/"
 
+#: .\members\apps.py:8 .\members\models.py:36 .\members\views.py:18
+msgid "members"
+msgstr "Mitglieder"
+
 #: .\members\models.py:12
 msgid "first name"
 msgstr "Vorname"
@@ -107,21 +112,21 @@ msgstr "Vorname"
 msgid "last name"
 msgstr "Nachname"
 
-#: .\members\models.py:18
+#: .\members\models.py:15
+msgid "instructor"
+msgstr "Ausbilder"
+
+#: .\members\models.py:20
 msgid "image"
 msgstr "Bild"
 
-#: .\members\models.py:23
+#: .\members\models.py:25
 msgid "square image"
 msgstr "quadratisches Bild"
 
-#: .\members\models.py:28
+#: .\members\models.py:30
 msgid "passwort image"
 msgstr "Passbild"
-
-#: .\members\models.py:34 .\members\views.py:18
-msgid "members"
-msgstr "Mitglieder"
 
 #: .\members\templates\members\member_detail.html:12
 msgid "Edit"
