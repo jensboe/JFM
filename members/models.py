@@ -11,6 +11,8 @@ from django.utils.translation import gettext_lazy as _
 class Member(models.Model):
     firstname = models.CharField(max_length=100, verbose_name=_('first name'))
     lastname = models.CharField(max_length=100, verbose_name=_('last name'))
+    is_instructor = models.BooleanField(
+        verbose_name=_('instructor'), default=False)
     image = models.ImageField(
         upload_to='members/org',
         null=True,
@@ -29,7 +31,7 @@ class Member(models.Model):
     Point = namedtuple("Point", "x y")
 
     class Meta:
-        ordering = ['lastname']
+        ordering = ['is_instructor', 'lastname']
         verbose_name = _('member')
         verbose_name_plural = _('members')
 
