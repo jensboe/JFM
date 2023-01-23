@@ -6,6 +6,7 @@ from django.utils import timezone
 class Announcement(models.Model):
 
     title = models.CharField(_("title"), max_length=200)
+    text = models.TextField(_("text"), default="")
     start_date = models.DateField(
         default=timezone.now,
         verbose_name=_('start time'))
