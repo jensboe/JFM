@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-01-23 22:25+0100\n"
+"POT-Creation-Date: 2023-01-23 23:39+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,18 +18,26 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
+#: .\announcements\models.py:7 .\events\models.py:9
+msgid "title"
+msgstr "Titel"
+
+#: .\announcements\models.py:10 .\events\models.py:12
+msgid "start time"
+msgstr "Startzeit"
+
+#: .\announcements\models.py:13
+msgid "announcement"
+msgstr "Ankündigung"
+
+#: .\announcements\models.py:14
+msgid "announcements"
+msgstr "Ankündigungen"
+
 #: .\events\apps.py:8 .\events\models.py:20 .\events\views.py:19
 #: .\templates\menu\navbar.html:17
 msgid "events"
 msgstr "Veranstaltungen"
-
-#: .\events\models.py:9
-msgid "title"
-msgstr "Titel"
-
-#: .\events\models.py:12
-msgid "start time"
-msgstr "Startzeit"
 
 #: .\events\models.py:15
 msgid "end time"
