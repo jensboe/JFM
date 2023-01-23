@@ -11,9 +11,11 @@
            href="{% url 'members:update' member.id %}"
            role="button">{% translate "Edit" %}</a>
     </div>
-    <img class="img-fluid img-thumbnail w-25" src="{{ member.image.url }}" />
-    <img class="img-fluid img-thumbnail w-25"
-         src="{{ member.image_square.url }}"/>
-    <img class="img-fluid img-thumbnail w-25"
-         src="{{ member.image_passport.url }}"/>
+    {% if member.image %}<img class="img-fluid img-thumbnail w-25" src="{{ member.image.url }}" />{% endif %}
+    {% if member.image_square %}<img class="img-fluid img-thumbnail w-25"
+     src="{{ member.image_square.url }}"/>{% endif %}
+    {% if member.image_passport %}
+        <img class="img-fluid img-thumbnail w-25"
+             src="{{ member.image_passport.url }}"/>
+    {% endif %}
 {% endblock content %}
