@@ -13,6 +13,7 @@ class Event(models.Model):
     end_date = models.DateTimeField(
         default=timezone.now,
         verbose_name=_('end time'))
+    note = models.TextField(verbose_name=_('note'), default='')
 
     class Meta:
         ordering = ['start_date']
