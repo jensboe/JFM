@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-01-23 23:39+0100\n"
+"POT-Creation-Date: 2023-01-26 21:46+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,56 +18,64 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: .\announcements\models.py:7 .\events\models.py:9
-msgid "title"
-msgstr "Titel"
-
-#: .\announcements\models.py:10 .\events\models.py:12
-msgid "start time"
-msgstr "Startzeit"
-
-#: .\announcements\models.py:13
-msgid "announcement"
-msgstr "Ankündigung"
-
-#: .\announcements\models.py:14
+#: .\announcements\apps.py:8 .\announcements\models.py:23
 msgid "announcements"
 msgstr "Ankündigungen"
 
-#: .\events\apps.py:8 .\events\models.py:20 .\events\views.py:19
+#: .\announcements\models.py:8 .\events\models.py:9
+msgid "title"
+msgstr "Titel"
+
+#: .\announcements\models.py:9
+msgid "text"
+msgstr "Text"
+
+#: .\announcements\models.py:12 .\events\models.py:12
+msgid "start time"
+msgstr "Startzeit"
+
+#: .\announcements\models.py:19 .\events\models.py:15
+msgid "end time"
+msgstr "Endezeit"
+
+#: .\announcements\models.py:22
+msgid "announcement"
+msgstr "Ankündigung"
+
+#: .\events\apps.py:8 .\events\models.py:21 .\events\views.py:19
 #: .\templates\menu\navbar.html:17
 msgid "events"
 msgstr "Veranstaltungen"
 
-#: .\events\models.py:15
-msgid "end time"
-msgstr "Endezeit"
+#: .\events\models.py:16
+msgid "note"
+msgstr "Notiz"
 
-#: .\events\models.py:19 .\events\models.py:42
+#: .\events\models.py:20 .\events\models.py:43
 msgid "event"
 msgstr "Veranstaltung"
 
-#: .\events\models.py:46 .\members\models.py:35
+#: .\events\models.py:47 .\members\models.py:35
 msgid "member"
 msgstr "Mitglieder"
 
-#: .\events\models.py:49
+#: .\events\models.py:50
 msgid "present"
 msgstr "anwesend"
 
-#: .\events\models.py:50
+#: .\events\models.py:51
 msgid "excused"
 msgstr "entschuldigt"
 
-#: .\events\models.py:51
+#: .\events\models.py:52
 msgid "absent"
 msgstr "abwesend"
 
-#: .\events\models.py:61
+#: .\events\models.py:62
 msgid "participant"
 msgstr "Teilnehmer"
 
-#: .\events\models.py:62
+#: .\events\models.py:63
 msgid "participants"
 msgstr "Teilnehmer"
 
