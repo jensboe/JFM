@@ -10,12 +10,12 @@ jobs:
     runs-on: self-hosted
     environment: production
     steps:
-      - name: Turn server off
-        working-directory: ${{secrets.CONTAINTER_PATH}}
-        run: echo -e "${{secrets.PASSWORD}}\n" | sudo -S docker-compose down
       - name: Pull new image
         working-directory: ${{secrets.CONTAINTER_PATH}}
         run: echo -e "${{secrets.PASSWORD}}\n" | sudo -S docker-compose pull
+      - name: Turn server off
+        working-directory: ${{secrets.CONTAINTER_PATH}}
+        run: echo -e "${{secrets.PASSWORD}}\n" | sudo -S docker-compose down
       - name: Start server
         working-directory: ${{secrets.CONTAINTER_PATH}}
         run: echo -e "${{secrets.PASSWORD}}\n" | sudo -S docker-compose up -d
