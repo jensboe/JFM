@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-01-26 21:46+0100\n"
+"POT-Creation-Date: 2023-04-06 19:37+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -104,10 +104,6 @@ msgstr "erstellen/"
 msgid "feed/"
 msgstr "feed/"
 
-#: .\jfm\urls.py:26
-msgid "account/"
-msgstr "acocunt/"
-
 #: .\jfm\urls.py:27 .\jfm\urls.py:29
 msgid "events/"
 msgstr "veranstaltung/"
@@ -176,9 +172,3 @@ msgstr "Abmelden"
 #: .\templates\registration\login.html:7 .\templates\registration\login.html:22
 msgid "Login"
 msgstr "Anmelden"
-
-#~ msgid "Create member"
-#~ msgstr "Neues Mitglied"
-
-#~ msgid "Create event"
-#~ msgstr "Neues Event"
