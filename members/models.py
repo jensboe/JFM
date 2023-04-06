@@ -61,6 +61,15 @@ class Member(models.Model):
                 event=event
             )
 
+    def is_active(self, date: models.DateTimeField) -> bool:
+        if self.entry_date:
+            if self.entry_date > date.date():
+                return False
+        if self.exit_date:
+            if self.exit_date < date.date():
+                return False
+        return True
+
     def _create_headshoot_square(
             self, src_img_field: models.ImageField) -> ContentFile:
         return self._create_headshoot(src_img_field)
