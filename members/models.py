@@ -56,10 +56,13 @@ class Member(models.Model):
         super().save(*args, **kwargs)
 
         for event in Event.objects.all():
-            Participant.objects.update_or_create(
-                member=self,
-                event=event
-            )
+            if self.is_active(event.start_date):
+                Participant.objects.update_or_create(
+                    member=self,
+                    event=event
+                )
+            else:
+                Participant.objects.filter(member=self, event=event).delete()
 
     def is_active(self, date: models.DateTimeField) -> bool:
         if self.entry_date:
