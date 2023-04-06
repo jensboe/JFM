@@ -6,6 +6,7 @@ from PIL import Image, ImageOps
 from django.db import models
 from django.core.files.base import ContentFile
 from django.utils.translation import gettext_lazy as _
+from django.utils import timezone
 
 
 class Member(models.Model):
@@ -13,6 +14,11 @@ class Member(models.Model):
     lastname = models.CharField(max_length=100, verbose_name=_('last name'))
     is_instructor = models.BooleanField(
         verbose_name=_('instructor'), default=False)
+
+    entry_date = models.DateField(verbose_name=_(
+        'entry date'), blank=True, default=timezone.now)
+    exit_date = models.DateField(verbose_name=_(
+        'exit date'), blank=True, null=True)
     image = models.ImageField(
         upload_to='members/org',
         null=True,
