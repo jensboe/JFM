@@ -27,10 +27,13 @@ class Event(models.Model):
         from members.models import Member
         super().save(*args, **kwargs)
         for member in Member.objects.all():
-            Participant.objects.update_or_create(
-                member=member,
-                event=self
-            )
+            if member.is_active(self.start_date):
+                Participant.objects.update_or_create(
+                    member=member,
+                    event=self
+                )
+            else:
+                Participant.objects.filter(member=member, event=self).delete()
 
     def get_absolute_url(self):
         return reverse('events:detail', kwargs={'pk': self.pk})
