@@ -24,8 +24,11 @@ class Event(models.Model):
         return f'{self.start_date:%d.%m.%y %H:%M} | {self.title}'
 
     def save(self, *args, **kwargs):
-        from members.models import Member
         super().save(*args, **kwargs)
+        self._add_participants()
+
+    def _add_participants(self):
+        from members.models import Member
         for member in Member.objects.all():
             if member.is_active(self.start_date):
                 Participant.objects.update_or_create(
@@ -39,7 +42,7 @@ class Event(models.Model):
         return reverse('events:detail', kwargs={'pk': self.pk})
 
 
-class Participant (models.Model):
+class Participant(models.Model):
     event = models.ForeignKey(
         Event,
         on_delete=models.CASCADE,

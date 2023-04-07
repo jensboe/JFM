@@ -19,6 +19,7 @@ djlint = "*"
 build = "*"
 pytest-django = "*"
 python-semantic-release = "*"
+pytest-cov = "*"
 
 [requires]
 python_version = "3.11"

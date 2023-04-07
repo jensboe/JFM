@@ -1,3 +1,4 @@
+import datetime
 from pathlib import Path
 from collections import namedtuple
 import cv2
@@ -49,12 +50,14 @@ class Member(models.Model):
         return self.fullname
 
     def save(self, *args, **kwargs) -> None:
-        from events.models import Participant, Event
         if self.image:
             self.image_square = self._create_headshoot_square(self.image)
             self.image_passport = self._create_headshoot(self.image, 7, 9)
         super().save(*args, **kwargs)
+        self._add_participants()
 
+    def _add_participants(self):
+        from events.models import Participant, Event
         for event in Event.objects.all():
             if self.is_active(event.start_date):
                 Participant.objects.update_or_create(
@@ -64,12 +67,26 @@ class Member(models.Model):
             else:
                 Participant.objects.filter(member=self, event=event).delete()
 
-    def is_active(self, date: models.DateTimeField) -> bool:
-        if self.entry_date:
-            if self.entry_date > date.date():
+    def is_active(self, date: timezone.datetime = None) -> bool:
+        if not date:
+            date = timezone.now()
+        if date and type(date) is not datetime.date:
+            date = date.date()
+        if self.entry_date and type(self.entry_date) is not datetime.date:
+            entry_date = self.entry_date.date()
+        else:
+            entry_date = self.entry_date
+
+        if self.exit_date and type(self.exit_date) is not datetime.date:
+            exit_date = self.exit_date.date()
+        else:
+            exit_date = self.exit_date
+
+        if entry_date:
+            if date < entry_date:
                 return False
-        if self.exit_date:
-            if self.exit_date < date.date():
+        if exit_date:
+            if date > exit_date:
                 return False
         return True
 
