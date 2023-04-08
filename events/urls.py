@@ -19,5 +19,5 @@ urlpatterns = [
          views.EventUpdateView.as_view(),
          name='update'),
     path(_('create/'), views.EventCreateView.as_view(), name='create'),
-    path(_('feed/'), EventFeed())
+    path(_('feed/calender.ics'), EventFeed())
 ]
