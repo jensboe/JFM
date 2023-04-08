@@ -12,12 +12,12 @@ urlpatterns = [
         '<int:pk>/',
         views.ParticipantFormView.as_view(),
         name='participation'),
-    path(_('<int:pk>/detail/'),
+    path('<int:pk>/detail/',
          views.EventDetailView.as_view(),
          name='detail'),
-    path(_('<int:pk>/update/'),
+    path('<int:pk>/update/',
          views.EventUpdateView.as_view(),
          name='update'),
-    path(_('create/'), views.EventCreateView.as_view(), name='create'),
-    path(_('feed/calender.ics'), EventFeed())
+    path('create/', views.EventCreateView.as_view(), name='create'),
+    path('feed/calender.ics', EventFeed())
 ]
