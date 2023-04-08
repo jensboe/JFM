@@ -2,15 +2,16 @@ from django_ical.views import ICalFeed
 from .models import Event
 from icalendar import Alarm
 from datetime import timedelta
+from jfm.settings import ALLOWED_HOSTS
 
 
 class EventFeed(ICalFeed):
     """
     A simple event calender
     """
-    product_id = 'jfm'
+    product_id = '-' + ALLOWED_HOSTS[0] + '/events'
     timezone = 'UTC'
-    file_name = "event.ics"
+    # file_name = "calender.ics"
 
     def items(self):
         return Event.objects.all().order_by('-start_date')
