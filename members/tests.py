@@ -94,11 +94,11 @@ class MemberModelTest(TestCase):
 
     def test_add_participant(self):
         event_date = timezone.datetime(
-            year=2, month=1, day=1, tzinfo=timezone.utc)
+            year=2, month=1, day=1)
         entry_date = timezone.datetime(
-            year=1, month=1, day=1, tzinfo=timezone.utc)
+            year=1, month=1, day=1)
         exit_date = timezone.datetime(
-            year=3, month=1, day=1, tzinfo=timezone.utc)
+            year=3, month=1, day=1)
 
         # Event must be created first to test the add function of the member
         Event.objects.create(start_date=event_date, end_date=event_date)
@@ -108,11 +108,11 @@ class MemberModelTest(TestCase):
 
     def test_add_participant_inactivmember(self):
         event_date = timezone.datetime(
-            year=3, month=1, day=1, tzinfo=timezone.utc)
+            year=3, month=1, day=1)
         entry_date = timezone.datetime(
-            year=1, month=1, day=1, tzinfo=timezone.utc)
+            year=1, month=1, day=1)
         exit_date = timezone.datetime(
-            year=2, month=1, day=1, tzinfo=timezone.utc)
+            year=2, month=1, day=1)
 
         # Event must be created first to test the add function of the member
         Event.objects.create(start_date=event_date, end_date=event_date)
@@ -122,11 +122,11 @@ class MemberModelTest(TestCase):
 
     def test_add_participants(self):
         event_date = timezone.datetime(
-            year=2, month=1, day=1, tzinfo=timezone.utc)
+            year=2, month=1, day=1)
         entry_date = timezone.datetime(
-            year=1, month=1, day=1, tzinfo=timezone.utc)
+            year=1, month=1, day=1)
         exit_date = timezone.datetime(
-            year=3, month=1, day=1, tzinfo=timezone.utc)
+            year=3, month=1, day=1)
 
         # Event must be created first to test the add function of the member
         Event.objects.create(start_date=event_date, end_date=event_date)
@@ -138,11 +138,11 @@ class MemberModelTest(TestCase):
 
     def test_add_participant_change_entry(self):
         event_date = timezone.datetime(
-            year=2, month=1, day=1, tzinfo=timezone.utc)
+            year=2, month=1, day=1)
         entry_date = timezone.datetime(
-            year=1, month=1, day=1, tzinfo=timezone.utc)
+            year=1, month=1, day=1)
         exit_date = timezone.datetime(
-            year=3, month=1, day=1, tzinfo=timezone.utc)
+            year=3, month=1, day=1)
 
         Event.objects.create(start_date=event_date, end_date=event_date)
         member = Member.objects.create(
@@ -157,11 +157,11 @@ class MemberModelTest(TestCase):
 
     def test_add_participant_change_exit(self):
         event_date = timezone.datetime(
-            year=2, month=1, day=1, tzinfo=timezone.utc)
+            year=2, month=1, day=1)
         entry_date = timezone.datetime(
-            year=1, month=1, day=1, tzinfo=timezone.utc)
+            year=1, month=1, day=1)
         exit_date = timezone.datetime(
-            year=3, month=1, day=1, tzinfo=timezone.utc)
+            year=3, month=1, day=1)
 
         Event.objects.create(start_date=event_date, end_date=event_date)
         member = Member.objects.create(
