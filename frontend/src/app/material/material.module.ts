@@ -7,7 +7,6 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
   imports: [
     CommonModule,
     MatSlideToggleModule,
-    MatLuxonDateModule
   ],
   exports: [
     MatSlideToggleModule,
