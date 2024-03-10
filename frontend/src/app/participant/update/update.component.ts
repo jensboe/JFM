@@ -30,5 +30,8 @@ export class UpdateComponent implements OnInit {
       .subscribe(participant => this.participant = participant);
   }
   update() {
+    if(this.participant) {
+      this.participantService.updateParticipant(this.participant).subscribe()
+    }
   }
 }
