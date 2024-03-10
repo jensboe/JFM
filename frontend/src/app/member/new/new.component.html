@@ -1,1 +1,21 @@
-<p>new works!</p>
+<h1>Add new member</h1>
+<mat-form-field>
+    <mat-label>First Name</mat-label>
+    <input matInput id="firstname" [(ngModel)]="member.firstname" placeholder="Hero name">
+</mat-form-field>
+<mat-form-field>
+    <mat-label>Last Name</mat-label>
+    <input matInput id="lastname" [(ngModel)]="member.lastname" placeholder="Hero name">
+</mat-form-field>
+<mat-slide-toggle>Instructor</mat-slide-toggle>
+
+<mat-form-field>
+    <mat-label>Choose entry date</mat-label>
+    <input matInput [matDatepicker]="picker">
+    <mat-hint>MM/DD/YYYY</mat-hint>
+    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+
+<button mat-raised-button color="primary" (click)="save()">Save</button>
+<button mat-raised-button (click)="cancel()">Cancel</button>

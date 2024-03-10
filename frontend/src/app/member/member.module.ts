@@ -3,6 +3,7 @@ import { CommonModule, NgFor } from '@angular/common';
 import { NewComponent } from './new/new.component';
 import { ListComponent } from './list/list.component';
 import { MaterialModule } from '../material/material.module';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -15,6 +16,7 @@ import { MaterialModule } from '../material/material.module';
     CommonModule,
     MaterialModule,
     NgFor,
+    FormsModule
   ]
 })
 export class MemberModule { }

@@ -24,9 +24,13 @@ export class MemberService {
   {
     return this.http.get<Member[]>(this.memberUrl, this.httpOptions);
   }
-  getMember(pk: number): Observable<Member>
+  getMember(pk: Number): Observable<Member>
   {
     const url = this.memberUrl + pk + '/'
     return this.http.get<Member>(url, this.httpOptions);
+  }
+
+  addMember(member: Member): Observable<Member> {
+    return this.http.post<Member>(this.memberUrl, member, this.httpOptions);
   }
 }
