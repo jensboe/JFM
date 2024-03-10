@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Participant } from './participant';
-import { Observable, catchError, of, tap } from 'rxjs';
+import { Observable, catchError, mergeMap, of, timer } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -20,12 +20,13 @@ export class ParticipantService {
   }
   getParticipant(pk: Number): Observable<Participant> {
     const url = this.participantUrl + pk + '/'
-    return this.http.get<Participant>(url, this.httpOptions);
+
+    return timer(0, 5000).pipe(
+      mergeMap(() => this.http.get<Participant>(url, this.httpOptions))
+    )
   }
   updateParticipant(participant: Participant) {
-    console.log('ka')
     return this.http.put(this.participantUrl + participant.pk + '/', participant, this.httpOptions).pipe(
-      tap(_ => console.log(`updated participant id=${participant.pk}`)),
       catchError(this.handleError<any>('updateparticipant'))
     );
   }
