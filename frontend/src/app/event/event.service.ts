@@ -20,8 +20,13 @@ export class EventService {
   };
 
 
-  getEvents(): Observable<Event[]> {
-
-    return this.http.get<Event[]>(this.eventUrl, this.httpOptions)
+  getEvents(): Observable<Event[]>
+  {
+    return this.http.get<Event[]>(this.eventUrl, this.httpOptions);
+  }
+  getEvent(pk: number): Observable<Event>
+  {
+    const url = this.eventUrl + pk + '/'
+    return this.http.get<Event>(url, this.httpOptions);
   }
 }
