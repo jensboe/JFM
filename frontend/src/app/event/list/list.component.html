@@ -1,0 +1,3 @@
+<mat-action-list>
+    <div *ngFor="let event of events"><button mat-list-item routerLink="../{{event.pk}}" >{{event.title}}: {{event.start_date | date}}</button></div>
+</mat-action-list>

@@ -1,0 +1,5 @@
+<mat-button-toggle-group [(ngModel)]="participant.participation" (change)="update()">
+    <mat-button-toggle value="PRE" i18n>present</mat-button-toggle>
+    <mat-button-toggle value="EXC" i18n>excused</mat-button-toggle>
+    <mat-button-toggle value="ABS" i18n>absent</mat-button-toggle>
+</mat-button-toggle-group>  
