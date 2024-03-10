@@ -7,6 +7,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { DetailComponent } from './detail/detail.component';
 import { EventRoutingModule } from './event-routing.module';
 import { FormsModule } from '@angular/forms';
+import { ParticipantModule } from '../participant/participant.module';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { FormsModule } from '@angular/forms';
     MaterialModule,
     HttpClientModule,
     EventRoutingModule,
-    FormsModule
+    FormsModule,
+    ParticipantModule
   ],
 })
 export class EventModule { }

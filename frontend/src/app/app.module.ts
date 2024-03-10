@@ -7,6 +7,7 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import { MaterialModule } from './material/material.module';
 import { EventModule } from './event/event.module';
 import { MemberModule } from './member/member.module';
+import { ParticipantModule } from './participant/participant.module';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { MemberModule } from './member/member.module';
     AppRoutingModule,
     MaterialModule,
     EventModule,
-    MemberModule
+    MemberModule,
+    ParticipantModule
   ],
   providers: [
     provideAnimationsAsync()

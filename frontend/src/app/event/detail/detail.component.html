@@ -2,4 +2,6 @@
     <label for="name">Event name: </label>
     <input id="name" [(ngModel)]="event.title" placeholder="name">
 </div>
-<div *ngFor="let participant of event.participants">Participant: {{participant}}</div>
+<div *ngFor="let participant of event.participants">
+    <app-participant-update [pk]="participant"></app-participant-update>
+</div>
