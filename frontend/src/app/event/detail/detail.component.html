@@ -1,1 +1,5 @@
-<p>detail works!</p>
+<div>
+    <label for="name">Event name: </label>
+    <input id="name" [(ngModel)]="event.title" placeholder="name">
+</div>
+<div *ngFor="let participant of event.participants">Participant: {{participant}}</div>

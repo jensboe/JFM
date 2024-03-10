@@ -6,6 +6,7 @@ import { MaterialModule } from '../material/material.module';
 import { HttpClientModule } from '@angular/common/http';
 import { DetailComponent } from './detail/detail.component';
 import { EventRoutingModule } from './event-routing.module';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { EventRoutingModule } from './event-routing.module';
     NgFor,
     MaterialModule,
     HttpClientModule,
-    EventRoutingModule
+    EventRoutingModule,
+    FormsModule
   ],
 })
 export class EventModule { }
