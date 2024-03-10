@@ -12,6 +12,7 @@ django-browser-reload = "*"
 whitenoise = "*"
 gunicorn = "*"
 django-ical = "*"
+djangorestframework = "*"
 
 [dev-packages]
 autopep8 = "*"
