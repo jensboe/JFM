@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { MaterialModule } from './material/material.module';
 import { EventModule } from './event/event.module';
+import { MemberModule } from './member/member.module';
 
 
 @NgModule({
@@ -17,6 +18,7 @@ import { EventModule } from './event/event.module';
     AppRoutingModule,
     MaterialModule,
     EventModule,
+    MemberModule
   ],
   providers: [
     provideAnimationsAsync()
