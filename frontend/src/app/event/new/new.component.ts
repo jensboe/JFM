@@ -7,7 +7,7 @@ import  {Event} from '../event'
 })
 export class NewComponent {
   event: Event = {
-    id: 1,
+    pk: 1,
     title: 'Test',
     start_date: new Date(),
     end_date: new Date(Date.now()+2*60*60*1000),

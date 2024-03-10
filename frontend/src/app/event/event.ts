@@ -1,5 +1,5 @@
 export interface Event {
-    id: number;
+    pk: number;
     title: string;
     start_date: Date
     end_date: Date
