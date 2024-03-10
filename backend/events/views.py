@@ -47,11 +47,12 @@ class ParticipantFormView(generic.FormView):
         context['event'] = Event.objects.get(id=self.kwargs['pk'])
         return context
 
-class EventSerializer(serializers.HyperlinkedModelSerializer):
+class EventSerializer(serializers.ModelSerializer):
+    participants = serializers.PrimaryKeyRelatedField(many=True, read_only=True)
     class Meta:
         model = Event
-        fields = ['title', 'start_date', 'end_date', 'note']
-
+        fields = ['title', 'start_date', 'end_date', 'note', 'participants']
+    
 class EventViewSet(viewsets.ModelViewSet):
     queryset = Event.objects.all()
     serializer_class = EventSerializer

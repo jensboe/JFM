@@ -3,7 +3,7 @@ from django.db import models
 from django.utils import timezone
 from django.utils.translation import gettext_lazy as _
 from django.urls import reverse
-
+from members.models import Member
 
 class Event(models.Model):
     title = models.CharField(max_length=200, verbose_name=_('title'))
@@ -45,10 +45,12 @@ class Event(models.Model):
 class Participant(models.Model):
     event = models.ForeignKey(
         Event,
+        related_name='participants',
         on_delete=models.CASCADE,
         verbose_name=_('event'))
     member = models.ForeignKey(
-        'members.Member',
+        Member,
+        related_name='members',
         on_delete=models.CASCADE,
         verbose_name=_('member'))
 
