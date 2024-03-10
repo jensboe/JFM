@@ -6,11 +6,14 @@ from . import views
 from .feeds import EventFeed
 
 
-router = routers.DefaultRouter()
-router.register(r'', views.EventViewSet)
+eventrouter = routers.DefaultRouter()
+eventrouter.register(r'', views.EventViewSet)
+partyrouter = routers.DefaultRouter()
+partyrouter.register(r'', views.ParticipantViewSet)
 
 app_name = 'events'
 urlpatterns = [
-    path ('', include(router.urls)),
+    path ('events/', include(eventrouter.urls)),
+    path ('participations/', include(partyrouter.urls)),
     path('feed/calender.ics', EventFeed()),
 ]

@@ -26,6 +26,6 @@ urlpatterns = [
     path('accounts/', include("django.contrib.auth.urls")),
     path('', RedirectView.as_view(url='events/'), name='home'),
     path('members/', include('members.urls')),
-    path('events/', include('events.urls')),
+    path('', include('events.urls')),
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

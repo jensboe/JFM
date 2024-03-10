@@ -2,7 +2,8 @@
 from django.views import generic
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
-from .models import Event
+
+from .models import Event, Participant
 from .forms import ParticipantFormSet, EventForm
 from django.utils.translation import gettext_lazy as _
 from rest_framework import serializers, viewsets
@@ -56,3 +57,12 @@ class EventSerializer(serializers.ModelSerializer):
 class EventViewSet(viewsets.ModelViewSet):
     queryset = Event.objects.all()
     serializer_class = EventSerializer
+
+class ParticipantSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Participant
+        fields = ['pk', 'member', 'event', 'participation']
+    
+class ParticipantViewSet(viewsets.ModelViewSet):
+    queryset = Participant.objects.all()
+    serializer_class = ParticipantSerializer
