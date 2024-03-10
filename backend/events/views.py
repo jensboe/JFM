@@ -51,7 +51,7 @@ class EventSerializer(serializers.ModelSerializer):
     participants = serializers.PrimaryKeyRelatedField(many=True, read_only=True)
     class Meta:
         model = Event
-        fields = ['title', 'start_date', 'end_date', 'note', 'participants']
+        fields = ['pk', 'title', 'start_date', 'end_date', 'note', 'participants']
     
 class EventViewSet(viewsets.ModelViewSet):
     queryset = Event.objects.all()
