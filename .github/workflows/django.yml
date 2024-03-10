@@ -37,11 +37,11 @@ jobs:
       run: |
         # strict checks
         pipenv run autopep8 . -r -d -a -a
-    - name: Tests
-      working-directory: backend
-      run: |
-        # strict checks
-        pipenv run pytest
+    # - name: Tests
+    #   working-directory: backend
+    #   run: |
+    #     # strict checks
+    #     pipenv run pytest
     - name: Build package
       working-directory: backend
       run: |

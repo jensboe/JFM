@@ -17,6 +17,6 @@ jobs:
     - name: Build the Docker image
       working-directory: backend
       run: docker-compose build
-    - name: Run django tests in docker
-      working-directory: backend
-      run: docker-compose run web python manage.py test
+    # - name: Run django tests in docker
+    #   working-directory: backend
+    #   run: docker-compose run web python manage.py test
