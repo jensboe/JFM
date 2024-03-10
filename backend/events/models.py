@@ -50,7 +50,7 @@ class Participant(models.Model):
         verbose_name=_('event'))
     member = models.ForeignKey(
         Member,
-        related_name='members',
+        related_name='participations',
         on_delete=models.CASCADE,
         verbose_name=_('member'))
 
