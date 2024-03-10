@@ -12,8 +12,11 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     - name: Create dummy env-prod
+      working-directory: backend
       run: mv ./.env.prod.sample ./.env.prod
     - name: Build the Docker image
+      working-directory: backend
       run: docker-compose build
     - name: Run django tests in docker
+      working-directory: backend
       run: docker-compose run web python manage.py test
