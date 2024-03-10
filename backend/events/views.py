@@ -1,25 +1,11 @@
 
-from django.forms.models import modelform_factory
-from django.urls import reverse
 from django.views import generic
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 from .models import Event
 from .forms import ParticipantFormSet, EventForm
 from django.utils.translation import gettext_lazy as _
-
-
-class ListView(generic.ListView):
-    model = Event
-    template_name = 'common/list.html'
-    context_object_name = 'elements'
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['title'] = _('events')
-        context['element_url'] = 'events:participation'
-        return context
-
+from rest_framework import serializers, viewsets
 
 @method_decorator(login_required, name='dispatch')
 class EventUpdateView(generic.UpdateView):
@@ -60,3 +46,12 @@ class ParticipantFormView(generic.FormView):
         context = super().get_context_data(**kwargs)
         context['event'] = Event.objects.get(id=self.kwargs['pk'])
         return context
+
+class EventSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = Event
+        fields = ['title', 'start_date', 'end_date', 'note']
+
+class EventViewSet(viewsets.ModelViewSet):
+    queryset = Event.objects.all()
+    serializer_class = EventSerializer

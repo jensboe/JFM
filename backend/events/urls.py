@@ -7,7 +7,6 @@ from .feeds import EventFeed
 
 app_name = 'events'
 urlpatterns = [
-    path('', views.ListView.as_view(), name='list'),
     path(
         '<int:pk>/',
         views.ParticipantFormView.as_view(),
@@ -19,5 +18,6 @@ urlpatterns = [
          views.EventUpdateView.as_view(),
          name='update'),
     path('create/', views.EventCreateView.as_view(), name='create'),
-    path('feed/calender.ics', EventFeed())
+    path('feed/calender.ics', EventFeed()),
+    path('', views.EventViewSet.as_view({'get': 'list'}))
 ]
