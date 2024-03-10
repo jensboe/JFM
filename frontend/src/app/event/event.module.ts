@@ -3,7 +3,7 @@ import { CommonModule, NgFor } from '@angular/common';
 import { NewComponent } from './new/new.component';
 import { ListComponent } from './list/list.component';
 import { MaterialModule } from '../material/material.module';
-
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -14,7 +14,8 @@ import { MaterialModule } from '../material/material.module';
   imports: [
     CommonModule,
     NgFor,
-    MaterialModule
+    MaterialModule,
+    HttpClientModule
   ],
 })
 export class EventModule { }

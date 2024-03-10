@@ -19,6 +19,11 @@ export class ListComponent implements OnInit{
 
   getEvents(): void {
     this.eventService.getEvents()
-    .subscribe(events => this.events = events);
+    .subscribe(
+      
+      events => {
+        this.events = events;
+      }
+    );
   }
 }
