@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { UpdateComponent } from './update/update.component';
+import { MaterialModule } from '../material/material.module';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -9,7 +11,9 @@ import { UpdateComponent } from './update/update.component';
     UpdateComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    MaterialModule,
+    FormsModule
   ],
   exports: [
     UpdateComponent
