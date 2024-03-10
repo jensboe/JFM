@@ -3,6 +3,8 @@ from django.views import generic
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 
+from members.views import MemberSerializer
+
 from .models import Event, Participant
 from .forms import ParticipantFormSet, EventForm
 from django.utils.translation import gettext_lazy as _
@@ -47,18 +49,9 @@ class ParticipantFormView(generic.FormView):
         context = super().get_context_data(**kwargs)
         context['event'] = Event.objects.get(id=self.kwargs['pk'])
         return context
-
-class EventSerializer(serializers.ModelSerializer):
-    participants = serializers.PrimaryKeyRelatedField(many=True, read_only=True)
-    class Meta:
-        model = Event
-        fields = ['pk', 'title', 'start_date', 'end_date', 'note', 'participants']
     
-class EventViewSet(viewsets.ModelViewSet):
-    queryset = Event.objects.all()
-    serializer_class = EventSerializer
-
 class ParticipantSerializer(serializers.ModelSerializer):
+    member = MemberSerializer(many=False, read_only=True)
     class Meta:
         model = Participant
         fields = ['pk', 'member', 'event', 'participation']
@@ -66,3 +59,13 @@ class ParticipantSerializer(serializers.ModelSerializer):
 class ParticipantViewSet(viewsets.ModelViewSet):
     queryset = Participant.objects.all()
     serializer_class = ParticipantSerializer
+
+class EventSerializer(serializers.ModelSerializer):
+    participants = ParticipantSerializer(many=True, read_only=True)
+    class Meta:
+        model = Event
+        fields = ['pk', 'title', 'start_date', 'end_date', 'note', 'participants']
+    
+class EventViewSet(viewsets.ModelViewSet):
+    queryset = Event.objects.all()
+    serializer_class = EventSerializer
