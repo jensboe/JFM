@@ -16,9 +16,5 @@ import { MaterialModule } from '../material/material.module';
     NgFor,
     MaterialModule
   ],
-  exports: [
-    NewComponent,
-    ListComponent
-  ]
 })
 export class EventModule { }
