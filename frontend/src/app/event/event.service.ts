@@ -16,16 +16,14 @@ export class EventService {
   private eventUrl = 'http://localhost:8000/events/';
   httpOptions = {
     headers: new HttpHeaders()
-    .append('Content-Type', 'application/json')
+      .append('Content-Type', 'application/json')
   };
 
 
-  getEvents(): Observable<Event[]>
-  {
+  getEvents(): Observable<Event[]> {
     return this.http.get<Event[]>(this.eventUrl, this.httpOptions);
   }
-  getEvent(pk: number): Observable<Event>
-  {
+  getEvent(pk: number): Observable<Event> {
     const url = this.eventUrl + pk + '/'
     return this.http.get<Event>(url, this.httpOptions);
   }
