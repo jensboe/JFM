@@ -4,6 +4,7 @@ import { NewComponent } from './new/new.component';
 import { ListComponent } from './list/list.component';
 import { MaterialModule } from '../material/material.module';
 import { HttpClientModule } from '@angular/common/http';
+import { DetailComponent } from './detail/detail.component';
 import { EventRoutingModule } from './event-routing.module';
 
 
