@@ -13,7 +13,11 @@ export class UpdateComponent implements OnInit {
   participant: Participant= {
     pk:0,
     event:0,
-    member:0,
+    member: {
+      pk: 0,
+      firstname: '',
+      lastname:''
+    },
     participation:'',
   };
   

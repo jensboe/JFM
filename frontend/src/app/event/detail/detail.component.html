@@ -3,5 +3,5 @@
     <input id="name" [(ngModel)]="event.title" placeholder="name">
 </div>
 <div *ngFor="let participant of event.participants">
-    <app-participant-update [pk]="participant"></app-participant-update>
+    {{participant.member.firstname}} {{participant.member.lastname}}  <app-participant-update [pk]="participant.pk"></app-participant-update>
 </div>
