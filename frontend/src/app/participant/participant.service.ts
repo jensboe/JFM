@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Participant } from './participant';
 import { Observable, catchError, mergeMap, of, timer } from 'rxjs';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,7 @@ export class ParticipantService {
 
   constructor(private http: HttpClient) { }
 
-  private participantUrl = 'http://localhost:8000/participations/';
+  private participantUrl = environment.apiUrl + 'participations/';
   httpOptions = {
     headers: new HttpHeaders()
       .append('Content-Type', 'application/json')

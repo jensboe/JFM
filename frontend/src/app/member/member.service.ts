@@ -3,7 +3,7 @@ import { Observable, of } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { Member } from './member'
-import { MEMBERS } from './mock-members';
+import { environment } from '../../environments/environment';
 
 
 @Injectable({
@@ -13,7 +13,7 @@ export class MemberService {
 
   constructor(private http: HttpClient) { }
 
-  private memberUrl = 'http://localhost:8000/members/';
+  private memberUrl = environment.apiUrl + 'members/';
   httpOptions = {
     headers: new HttpHeaders()
     .append('Content-Type', 'application/json')
