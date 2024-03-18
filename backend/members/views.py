@@ -10,12 +10,17 @@ from .models import Member
 
 
 # @method_decorator(login_required, name='dispatch')
+class MemberEventSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Member
+        fields = ['pk', 'firstname', 'lastname']
+
 class MemberSerializer(serializers.ModelSerializer):
     participations = serializers.PrimaryKeyRelatedField(many=True, read_only=True)
     class Meta:
         model = Member
         fields = ['pk', 'firstname', 'lastname', 'participations']
-    
+
 class MemberViewSet(viewsets.ModelViewSet):
     queryset = Member.objects.all()
     serializer_class = MemberSerializer
