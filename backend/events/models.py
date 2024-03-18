@@ -16,7 +16,7 @@ class Event(models.Model):
     note = models.TextField(verbose_name=_('note'), default='', blank=True)
 
     class Meta:
-        ordering = ['start_date']
+        ordering = ['-start_date']
         verbose_name = _('event')
         verbose_name_plural = _('events')
 
