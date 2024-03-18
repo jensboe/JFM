@@ -3,7 +3,7 @@ from django.views import generic
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 
-from members.views import MemberSerializer
+from members.views import MemberEventSerializer
 
 from .models import Event, Participant
 from .forms import ParticipantFormSet, EventForm
@@ -51,7 +51,7 @@ class ParticipantFormView(generic.FormView):
         return context
     
 class ParticipantSerializer(serializers.ModelSerializer):
-    member = MemberSerializer(many=False, read_only=True)
+    member = MemberEventSerializer(many=False, read_only=True, )
     class Meta:
         model = Participant
         fields = ['pk', 'member', 'event', 'participation']

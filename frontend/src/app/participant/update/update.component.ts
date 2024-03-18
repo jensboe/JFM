@@ -1,14 +1,17 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { ParticipantService } from '../participant.service';
 import { Participant } from '../participant';
+import { takeWhile } from 'rxjs';
 
 @Component({
   selector: 'app-participant-update',
   templateUrl: './update.component.html',
   styleUrl: './update.component.css'
 })
-export class UpdateComponent implements OnInit {
+export class UpdateComponent implements OnInit, OnDestroy {
   @Input() pk: Number = 0;
+
+  alive: boolean = true
 
   participant: Participant= {
     pk:0,
@@ -20,15 +23,25 @@ export class UpdateComponent implements OnInit {
     },
     participation:'',
   };
+
   
   constructor(private participantService: ParticipantService) {}
+  
   ngOnInit(): void {
-    this.getParticipant();
-  }
-  getParticipant(): void {
-    this.participantService.getParticipant(this.pk)
+    this.alive = true
+      this.participantService.getParticipant(this.pk).
+      pipe(takeWhile(() => this.alive))
       .subscribe(participant => this.participant = participant);
   }
+
+  ngOnDestroy(): void {
+    this.alive = false
+  }
+
+  getParticipant(): void {
+
+  }
+
   update() {
     if(this.participant) {
       this.participantService.updateParticipant(this.participant).subscribe()

@@ -26,6 +26,7 @@ export class ParticipantService {
       mergeMap(() => this.http.get<Participant>(url, this.httpOptions))
     )
   }
+
   updateParticipant(participant: Participant) {
     return this.http.put(this.participantUrl + participant.pk + '/', participant, this.httpOptions).pipe(
       catchError(this.handleError<any>('updateparticipant'))
@@ -36,9 +37,7 @@ export class ParticipantService {
   
       // TODO: send the error to remote logging infrastructure
       console.error(error); // log to console instead
-  
 
-  
       // Let the app keep running by returning an empty result.
       return of(result as T);
     };
