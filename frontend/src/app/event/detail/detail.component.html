@@ -2,6 +2,11 @@
     <label for="name">Event name: </label>
     <input id="name" [(ngModel)]="event.title" placeholder="name">
 </div>
-<div *ngFor="let participant of event.participants">
-    {{participant.member.firstname}} {{participant.member.lastname}}  <app-participant-update [pk]="participant.pk"></app-participant-update>
-</div>
+<mat-card *ngFor="let participant of event.participants">
+    <mat-card-title>
+        {{participant.member.firstname}} {{participant.member.lastname}}
+    </mat-card-title>
+    <mat-card-actions align="start">
+        <app-participant-update [pk]="participant.pk"></app-participant-update>
+    </mat-card-actions>
+</mat-card>
