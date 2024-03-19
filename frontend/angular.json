@@ -23,7 +23,8 @@
         "sourceLocale":"en",
         "locales": {
           "de": {
-            "translation": "src/locale/messages.de.xlf"
+            "translation": "src/locale/messages.de.xlf",
+            "baseHref": "/"
           }
         }
       },
@@ -34,8 +35,8 @@
             "outputPath": "dist/frontend",
             "index": "src/index.html",
             "browser": "src/main.ts",
+            "localize":true,
             "aot": true,
-            "localize":["de"],
             "polyfills": [
               "zone.js"
             ],
