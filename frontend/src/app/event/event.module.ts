@@ -4,7 +4,7 @@ import { NewComponent } from './new/new.component';
 import { ListComponent } from './list/list.component';
 import { MaterialModule } from '../material/material.module';
 import { HttpClientModule } from '@angular/common/http';
-import { DetailComponent } from './detail/detail.component';
+import { ParticipationComponent } from './participation/participation.component';
 import { EventRoutingModule } from './event-routing.module';
 import { FormsModule } from '@angular/forms';
 import { ParticipantModule } from '../participant/participant.module';
@@ -14,7 +14,7 @@ import { ParticipantModule } from '../participant/participant.module';
   declarations: [
     NewComponent,
     ListComponent,
-    DetailComponent,
+    ParticipationComponent,
   ],
   imports: [
     CommonModule,
