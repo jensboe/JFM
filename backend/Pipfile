@@ -4,16 +4,13 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-opencv-python = "*"
 django = "*"
-pillow = "*"
 django-cleanup = "*"
 django-browser-reload = "*"
-whitenoise = "*"
-gunicorn = "*"
 django-ical = "*"
 djangorestframework = "*"
 django-cors-headers = "*"
+pillow = "*"
 
 [dev-packages]
 autopep8 = "*"
