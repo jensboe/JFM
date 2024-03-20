@@ -1,7 +1,0 @@
-<div>
-    <label for="name">Event name: </label>
-    <input id="name" [(ngModel)]="event.title" placeholder="name">
-</div>
-<div *ngFor="let participant of event.participants">
-    {{participant.member.firstname}} {{participant.member.lastname}}  <app-participant-update [pk]="participant.pk"></app-participant-update>
-</div>

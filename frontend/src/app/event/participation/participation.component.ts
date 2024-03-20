@@ -4,11 +4,11 @@ import { EventService } from '../event.service';
 import { Event } from '../event'
 
 @Component({
-  selector: 'app-detail',
-  templateUrl: './detail.component.html',
-  styleUrl: './detail.component.css'
+  selector: 'app-participation',
+  templateUrl: './participation.component.html',
+  styleUrl: './participation.component.css'
 })
-export class DetailComponent implements OnInit{
+export class ParticipationComponent implements OnInit{
   event: Event  = {pk:0,start_date: new Date(), end_date: new Date(), title: 'Loading'};
 
   constructor(private route: ActivatedRoute, private eventService: EventService) {}

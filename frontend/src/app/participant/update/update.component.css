@@ -1,0 +1,9 @@
+.mat-button-toggle-checked.absent {
+    background-color: lightsalmon;
+}
+.mat-button-toggle-checked.excused {
+    background-color: lightyellow;
+}
+.mat-button-toggle-checked.present {
+    background-color: lightgreen;
+}

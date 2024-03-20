@@ -1,10 +1,162 @@
-<?xml version="1.0" encoding="UTF-8" ?>
+<?xml version="1.0" encoding="UTF-8"?>
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
-  <file source-language="de-DE" datatype="plaintext" original="ng2.template">
+  <file source-language="en" datatype="plaintext" original="ng2.template">
     <body>
+      <trans-unit id="2102825898069375693" datatype="html">
+        <source>Menu</source>
+        <target state="">Menü</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app.component.html</context>
+          <context context-type="linenumber">4</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="8635300045493711770" datatype="html">
+        <source>Upcomming events</source>
+        <target state="">Bevorstehende Veranstaltungen</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app.component.html</context>
+          <context context-type="linenumber">6,7</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="3548474573282491854" datatype="html">
+        <source>Last events</source>
+        <target state="">Vergangene Veranstaltungen</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app.component.html</context>
+          <context context-type="linenumber">7,8</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="4035875890078182320" datatype="html">
+        <source>Member list</source>
+        <target state="">Mitgliederliste</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app.component.html</context>
+          <context context-type="linenumber">8,9</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="8072901638392334802" datatype="html">
+        <source>Event list</source>
+        <target state="">Veranstaltungsliste</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app.component.html</context>
+          <context context-type="linenumber">9,10</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="1040754989546421230" datatype="html">
+        <source>Add event</source>
+        <target state="">Veranstaltung hinzufügen</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app.component.html</context>
+          <context context-type="linenumber">10,11</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="718742434092230008" datatype="html">
+        <source>Add member</source>
+        <target state="">Mitglied hinzufügen</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app.component.html</context>
+          <context context-type="linenumber">11,12</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="5162686434580248853" datatype="html">
+        <source>Start</source>
+        <target state="">Beginn</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/event/list/list.component.html</context>
+          <context context-type="linenumber">6</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="1241348629231510663" datatype="html">
+        <source>End</source>
+        <target state="">Ende</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/event/list/list.component.html</context>
+          <context context-type="linenumber">6</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="7854965140974776241" datatype="html">
+        <source>Add new event</source>
+        <target state="">Neue Veranstaltung</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/event/new/new.component.html</context>
+          <context context-type="linenumber">1,2</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="5701618810648052610" datatype="html">
+        <source>Title</source>
+        <target state="">Titel</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/event/new/new.component.html</context>
+          <context context-type="linenumber">3</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="125111376198337295" datatype="html">
+        <source>title</source>
+        <target state="">Titel</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/event/new/new.component.html</context>
+          <context context-type="linenumber">4</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="193735854885505934" datatype="html">
+        <source>Enter a date range</source>
+        <target state="">Gebe einen Datumsbereich an</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/event/new/new.component.html</context>
+          <context context-type="linenumber">8</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="888341446683346521" datatype="html">
+        <source>Start date</source>
+        <target state="">Startdatum</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/event/new/new.component.html</context>
+          <context context-type="linenumber">10</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="126074860850048964" datatype="html">
+        <source>End date</source>
+        <target state="">Enddatum</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/event/new/new.component.html</context>
+          <context context-type="linenumber">11</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="3770761673682962465" datatype="html">
+        <source>Start time</source>
+        <target state="">Startzeit</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/event/new/new.component.html</context>
+          <context context-type="linenumber">18</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="3029887440722063094" datatype="html">
+        <source>End time</source>
+        <target state="">Endzeit</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/event/new/new.component.html</context>
+          <context context-type="linenumber">22</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="3768927257183755959" datatype="html">
+        <source>Save</source>
+        <target state="">Speichern</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/event/new/new.component.html</context>
+          <context context-type="linenumber">26,27</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="2159130950882492111" datatype="html">
+        <source>Cancel</source>
+        <target state="">Abbrechen</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/event/new/new.component.html</context>
+          <context context-type="linenumber">27,28</context>
+        </context-group>
+      </trans-unit>
       <trans-unit id="955347580366498573" datatype="html">
         <source>present</source>
-        <target>anwesend</target>
+        <target state="">anwesend</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/participant/update/update.component.html</context>
           <context context-type="linenumber">2</context>
@@ -12,7 +164,7 @@
       </trans-unit>
       <trans-unit id="6068453100718321147" datatype="html">
         <source>excused</source>
-        <target>entschuldigt</target>
+        <target state="">entschuldigt</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/participant/update/update.component.html</context>
           <context context-type="linenumber">3</context>
@@ -20,7 +172,7 @@
       </trans-unit>
       <trans-unit id="9014505645678586424" datatype="html">
         <source>absent</source>
-        <target>abwesend</target>
+        <target state="">abwesend</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/participant/update/update.component.html</context>
           <context context-type="linenumber">4</context>
