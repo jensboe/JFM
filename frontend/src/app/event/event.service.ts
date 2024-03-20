@@ -26,4 +26,7 @@ export class EventService {
     const url = this.eventUrl + pk + '/'
     return this.http.get<Event>(url, this.httpOptions);
   }
+  addEvent(event: Event): Observable<Event> {
+    return this.http.post<Event>(this.eventUrl, event, this.httpOptions);
+  }
 }
