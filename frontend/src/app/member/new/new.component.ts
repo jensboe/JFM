@@ -8,7 +8,7 @@ import { MemberService } from '../member.service';
   selector: 'app-new',
   templateUrl: './new.component.html',
   styleUrl: './new.component.css',
-  providers: [provideNativeDateAdapter()],
+  providers: [provideNativeDateAdapter()]
 })
 export class NewComponent implements OnInit{
   member: Member = {
