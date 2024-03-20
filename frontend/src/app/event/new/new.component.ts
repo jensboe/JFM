@@ -50,7 +50,7 @@ export class NewComponent {
       let splitendtime = this.endtime.split(':');
       this.event.end_date.setHours(Number(splitendtime[0]),Number(splitendtime[1]),0,0);
       console.log(this.event);
-      //this.eventService.addEvent(this.event).subscribe()
+      this.eventService.addEvent(this.event).subscribe()
     }
   }
   cancel() {
