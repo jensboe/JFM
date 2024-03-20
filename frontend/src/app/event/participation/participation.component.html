@@ -1,7 +1,5 @@
-<div>
-    <label for="name">Event name: </label>
-    <input id="name" [(ngModel)]="event.title" placeholder="name">
-</div>
+<span>{{event.start_date | date: 'short' }}</span>
+<h1>{{event.title}}</h1>
 <mat-card *ngFor="let participant of event.participants">
     <mat-card-title>
         {{participant.member.firstname}} {{participant.member.lastname}}
