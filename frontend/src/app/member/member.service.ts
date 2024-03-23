@@ -4,6 +4,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { Member } from './member'
 import { environment } from '../../environments/environment';
+import { AuthService } from '../auth.service';
 
 
 @Injectable({
@@ -11,12 +12,13 @@ import { environment } from '../../environments/environment';
 })
 export class MemberService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private auth: AuthService) { }
 
   private memberUrl = environment.apiUrl + 'members/';
   httpOptions = {
     headers: new HttpHeaders()
-    .append('Content-Type', 'application/json')
+      .append('Content-Type', 'application/json')
+      .append('Authorization', 'token ' + this.auth.getToken())
   };
 
 

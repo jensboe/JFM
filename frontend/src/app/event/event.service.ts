@@ -5,18 +5,20 @@ import { Event } from './event'
 
 import {environment } from  '../../environments/environment'
 import { formatDate } from '@angular/common';
+import { AuthService } from '../auth.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class EventService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private auth: AuthService) { }
 
   private eventUrl = environment.apiUrl + 'events/';
   httpOptions = {
     headers: new HttpHeaders()
       .append('Content-Type', 'application/json')
+      .append('Authorization', 'token ' + this.auth.getToken())
   };
 
 
