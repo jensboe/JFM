@@ -9,7 +9,6 @@ from .models import Member
 
 
 
-# @method_decorator(login_required, name='dispatch')
 class MemberEventSerializer(serializers.ModelSerializer):
     class Meta:
         model = Member

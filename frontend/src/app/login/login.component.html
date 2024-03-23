@@ -1,0 +1,9 @@
+<mat-form-field>
+    <mat-label i18n>Username</mat-label>
+    <input matInput id="username" placeholder="Username" [(ngModel)]="username"i18n-placeholder>
+</mat-form-field>
+<mat-form-field>
+    <mat-label i18n>Password</mat-label>
+    <input matInput id="password" placeholder="Password" [(ngModel)]="password" type="password" i18n-placeholder>
+</mat-form-field>
+<button mat-raised-button color="primary" (click)="login()" i18n>Login</button>

@@ -19,6 +19,7 @@ from django.conf.urls.static import static
 from django.views.generic.base import RedirectView
 from django.utils.translation import gettext_lazy as _
 from django.conf import settings
+from rest_framework.authtoken import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -26,5 +27,7 @@ urlpatterns = [
     path('accounts/', include("django.contrib.auth.urls")),
     path('members/', include('members.urls')),
     path('', include('events.urls')),
+    path('api-auth/', include('rest_framework.urls')),
+    path('api-token-auth/', views.obtain_auth_token)
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
