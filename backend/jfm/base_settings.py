@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'django_browser_reload',
     'django_cleanup.apps.CleanupConfig',
     'rest_framework',
+    'django_filters',
     'corsheaders'
 ]
 
@@ -152,7 +153,8 @@ REST_FRAMEWORK = {
     # or allow read-only access for unauthenticated users.
     'DEFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.AllowAny'
-    ]
+    ],
+    'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend']
 }
 
 CORS_ALLOWED_ORIGINS = [
