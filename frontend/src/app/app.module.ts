@@ -8,11 +8,14 @@ import { MaterialModule } from './material/material.module';
 import { EventModule } from './event/event.module';
 import { MemberModule } from './member/member.module';
 import { ParticipantModule } from './participant/participant.module';
+import { LoginComponent } from './login/login.component';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
   declarations: [
     AppComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
@@ -20,7 +23,8 @@ import { ParticipantModule } from './participant/participant.module';
     MaterialModule,
     EventModule,
     MemberModule,
-    ParticipantModule
+    ParticipantModule,
+    FormsModule
   ],
   providers: [
     provideAnimationsAsync()
