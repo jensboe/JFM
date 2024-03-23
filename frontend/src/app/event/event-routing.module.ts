@@ -5,7 +5,7 @@ import { NewComponent } from './new/new.component';
 import { ParticipationComponent } from './participation/participation.component';
 
 const routes: Routes = [
-  {path: 'event/list', component: ListComponent},
+  {path: 'event/:mode', component: ListComponent},
   {path: 'event/new', component: NewComponent},
   {path: 'event/participation/:id', component: ParticipationComponent},
 ];

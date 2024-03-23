@@ -11,7 +11,7 @@ export class ParticipantService {
 
   constructor(private http: HttpClient) { }
 
-  private participantUrl = environment.apiUrl + 'participations/';
+  private participantUrl = environment.apiUrl + 'participants/';
   httpOptions = {
     headers: new HttpHeaders()
       .append('Content-Type', 'application/json')
