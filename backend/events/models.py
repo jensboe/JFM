@@ -39,7 +39,8 @@ class Event(models.Model):
                 Participant.objects.filter(member=member, event=self).delete()
 
     def get_absolute_url(self):
-        return reverse('events:detail', kwargs={'pk': self.pk})
+        return "/"
+
 
 class Participant(models.Model):
     event = models.ForeignKey(
