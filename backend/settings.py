@@ -10,16 +10,18 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 
-from pathlib import Path
 from jfm.base_settings import *
 
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'asdf'
+SECRET_KEY = 'localhost secret'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 ALLOWED_HOSTS = [
     'localhost',
     '127.0.0.1'
+]
+CORS_ALLOWED_ORIGINS = [
+    'http://localhost:4200',
 ]
