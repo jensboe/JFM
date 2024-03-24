@@ -1,22 +1,25 @@
-[build-system]
-requires = ["hatchling"]
-build-backend = "hatchling.build"
-
-[project]
-name = "JFM"
-authors = [
-    {name = "jensboe", email = "jensboe@outlook.de"},
-]
-version = "1.0.0"
-description = "JFM is an django website which can manage participation lists."
-readme = "README.md"
-requires-python = ">=3.7"
-classifiers = [
-    "Programming Language :: Python :: 3",
-    "License :: OSI Approved :: MIT License",
-    "Operating System :: OS Independent",
-]
-
 [project.urls]
 "Homepage" = "https://github.com/jensboe/JFM"
 "Bug Tracker" = "https://github.com/jensboe/JFM/issues"
+
+[tool.poetry]
+name = "jfm-backend"
+version = "1.1.0"
+description = ""
+authors = ["Jens Böckmann <jensboe@outlook.de>"]
+readme = "README.md"
+packages = [{include = "jfm_backend"}]
+
+[tool.poetry.dependencies]
+python = "^3.7"
+Django = "*"
+djangorestframework = "*"
+django-ical = "*"
+django-cors-headers = "*"
+django-cleanup = "*"
+django-browser-reload = "*"
+django-filter = "*"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

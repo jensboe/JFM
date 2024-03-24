@@ -30,9 +30,8 @@ jobs:
     - name: Install dependencies
       working-directory: backend
       run: |
-        python -m pip install --upgrade pip
-        python -m pip install pipenv
-        pipenv install --dev
+        python -m pip install poetry
+        poetry install
     - name: Lint with autopep8
       working-directory: backend
       run: |
