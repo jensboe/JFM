@@ -23,10 +23,13 @@ class EventFeed(ICalFeed):
 
     def item_start_datetime(self, item):
         return item.start_date
+    
+    def item_end_datetime(self, item):
+        return item.end_date
 
     def item_valarm(self, item):
         valarm = Alarm()
         valarm.add('action', 'display')
-        valarm.add('description', f'JF: {item.title}')
+        valarm.add('description', item.title)
         valarm.add('trigger', timedelta(days=-1))
         return [valarm]
