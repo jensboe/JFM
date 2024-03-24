@@ -6,20 +6,14 @@ name = "pypi"
 [packages]
 django = "*"
 django-cleanup = "*"
-django-browser-reload = "*"
 django-ical = "*"
 djangorestframework = "*"
 django-cors-headers = "*"
-pillow = "*"
 django-filter = "*"
+django-browser-reload = "*"
 
 [dev-packages]
 autopep8 = "*"
-djlint = "*"
-build = "*"
-pytest-django = "*"
-python-semantic-release = "*"
-pytest-cov = "*"
 
 [requires]
 python_version = "3"
