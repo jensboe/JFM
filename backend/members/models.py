@@ -1,11 +1,6 @@
 import datetime
-from pathlib import Path
 from collections import namedtuple
-# import cv2
-import numpy
-from PIL import Image, ImageOps
 from django.db import models
-from django.core.files.base import ContentFile
 from django.utils.translation import gettext_lazy as _
 from django.utils import timezone
 
