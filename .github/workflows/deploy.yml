@@ -25,7 +25,7 @@ jobs:
           pipenv install --deploy --dev
       - name: Create static files
         working-directory: backend
-        run: python manage.py collectstatic
+        run: pipenv run python manage.py collectstatic
       - name: Move static files into httpdocs
         run: |
           mkdir -p httpdocs
