@@ -1,0 +1,47 @@
+name: FTP Deployment
+
+on:
+  push:
+    branches:
+      - main
+      - ci/*
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment: test
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Set up Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: 3.12
+      - name: Install python requirements
+        working-directory: backend
+        run: python -m pip install -r requirements.txt
+      - name: Create static files
+        working-directory: backend
+        run: python manage.py collectstatic
+      - name: Move static files into httpdocs
+        run: |
+          mkdir -p httpdocs
+          mv -v backend/static httpdocs
+      - name: Create / touch restart.txt for passenger restart
+        run: |
+          mkdir backend/tmp
+          touch backend/tmp/restart.txt
+      - name: Deploy over FTP
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USER }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          server-dir: ${{ secrets.FTP_PATH }}
+          local-dir: ./
+          dry-run: false
+          exclude: |
+            **/.git*
+            **/.git*/**
+            **/node_modules/**
+            **/__pycache__/**
