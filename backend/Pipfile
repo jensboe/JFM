@@ -12,6 +12,7 @@ djangorestframework = "*"
 django-cors-headers = "*"
 pillow = "*"
 django-filter = "*"
+tzdata = "*"
 
 [dev-packages]
 autopep8 = "*"

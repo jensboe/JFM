@@ -1,1 +1,3 @@
-frontend/src/environments/environment.production.ts
+# frontend/src/environments/environment.production.ts
+backend/static
+backend/jfm/deploysettings.py

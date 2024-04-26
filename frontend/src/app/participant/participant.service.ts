@@ -3,18 +3,20 @@ import { Injectable } from '@angular/core';
 import { Participant } from './participant';
 import { Observable, catchError, mergeMap, of, timer } from 'rxjs';
 import { environment } from '../../environments/environment';
+import { AuthService } from '../auth.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ParticipantService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private auth: AuthService) { }
 
   private participantUrl = environment.apiUrl + 'participants/';
   httpOptions = {
     headers: new HttpHeaders()
       .append('Content-Type', 'application/json')
+      .append('Authorization', 'token ' + this.auth.getToken())
   };
   getParticipations(): Observable<Participant[]> {
     return this.http.get<Participant[]>(this.participantUrl, this.httpOptions);
