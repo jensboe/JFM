@@ -46,7 +46,7 @@ jobs:
         working-directory: frontend
       - name: Move frontend files into httpdocs
         run: |
-          mv -v frontend/dist/frontend/browser/de httpdocs
+          mv -v frontend/dist/frontend/browser/de/* httpdocs
       - name: Deploy over FTP
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
