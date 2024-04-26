@@ -1,10 +1,9 @@
 name: FTP Deployment
 
 on:
-  push:
+  pull_request:
     branches:
       - main
-      - ci/*
 
 jobs:
   deploy:
