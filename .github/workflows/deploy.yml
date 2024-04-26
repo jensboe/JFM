@@ -43,6 +43,7 @@ jobs:
           touch backend/tmp/restart.txt
       - name: Build Angular App
         run: npm run build
+        working-directory: frontend
       - name: Move frontend files into httpdocs
         run: |
           mv -v frontend/dist/frontend/browser/de httpdocs
