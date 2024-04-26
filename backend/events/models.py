@@ -39,7 +39,7 @@ class Event(models.Model):
                 Participant.objects.filter(member=member, event=self).delete()
 
     def get_absolute_url(self):
-        return "/events/" + self.pk
+        return f"/event/{self.pk}"
 
 
 class Participant(models.Model):
