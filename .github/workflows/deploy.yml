@@ -1,4 +1,4 @@
-name: FTP Deployment
+name: FTP Deployment to test env
 
 on:
   pull_request:
