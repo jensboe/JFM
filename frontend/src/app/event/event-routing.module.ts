@@ -5,13 +5,25 @@ import { NewComponent } from './new/new.component';
 import { ParticipationComponent } from './participation/participation.component';
 
 const routes: Routes = [
-  {path: 'event/:mode', component: ListComponent},
-  {path: 'newevent', component: NewComponent},
-  {path: 'event/participation/:id', component: ParticipationComponent},
+  {
+    path: 'event/:mode',
+    component: ListComponent,
+    title: 'Events'
+  },
+  {
+    path: 'newevent',
+    component: NewComponent,
+    title: 'New event'
+  },
+  {
+    path: 'event/participation/:id',
+    component: ParticipationComponent,
+    title: 'Check participation'
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class EventRoutingModule { }
+export class EventRoutingModule {}

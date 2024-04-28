@@ -10,7 +10,7 @@ import { AuthService } from './auth.service';
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  title = 'JFM';
+  title = 'Jugendfeuerwehr Anwesenheit';
   private breakpointObserver = inject(BreakpointObserver);
   constructor(private auth: AuthService) { }
 
