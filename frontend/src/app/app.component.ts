@@ -20,6 +20,11 @@ export class AppComponent {
       shareReplay()
     );
 
+  logout()
+  {
+    this.auth.logout()
+  }
+
   isloggedin(): boolean
   {
     return this.auth.isloggedin()
