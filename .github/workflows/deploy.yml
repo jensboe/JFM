@@ -40,7 +40,7 @@ jobs:
         run: |
           mkdir backend/tmp
           touch backend/tmp/restart.txt
-          current_date=$(date +"%m-%d-%Y")
+          current_date=$(date +"%d.%m.%Y %T")
           echo "$current_date" > backend/tmp/restart.txt
       - name: Build Angular App
         run: npm run build
