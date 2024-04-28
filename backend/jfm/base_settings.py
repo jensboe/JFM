@@ -16,7 +16,7 @@ from pathlib import Path
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 # Base url to serve media files
-MEDIA_URL = 'media/'
+MEDIA_URL = 'api/media/'
 
 # Path where media is stored
 MEDIA_ROOT = BASE_DIR / 'media'
@@ -138,10 +138,7 @@ STATIC_URL = 'static/'
 
 STATIC_ROOT = BASE_DIR / 'static'
 
-STATICFILES_DIRS = [
-    BASE_DIR / 'ext' / 'bootstrap-5.3.0-alpha1-dist',
-    BASE_DIR / 'ext' / 'bootstrap-icons-1.10.3',
-]
+STATICFILES_DIRS = []
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
