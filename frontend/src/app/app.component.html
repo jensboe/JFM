@@ -9,6 +9,7 @@
       <a *ngIf="isloggedin()" mat-list-item routerLink="/newevent" routerLinkActive="active" ariaCurrentWhenActive="page" i18n>Add event</a>
       <a *ngIf="isloggedin()" mat-list-item routerLink="/member/new" routerLinkActive="active" ariaCurrentWhenActive="page" i18n>Add member</a>
       <a *ngIf="!isloggedin()" mat-list-item routerLink="/login" routerLinkActive="active" ariaCurrentWhenActive="page" i18n>Login</a>
+      <a *ngIf="isloggedin()" mat-list-item (click)="logout()" ariaCurrentWhenActive="page" i18n>Logout</a>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
