@@ -16,7 +16,7 @@ from pathlib import Path
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 # Base url to serve media files
-MEDIA_URL = 'media/'
+MEDIA_URL = 'api/media/'
 
 # Path where media is stored
 MEDIA_ROOT = BASE_DIR / 'media'
