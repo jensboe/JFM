@@ -26,7 +26,7 @@ urlpatterns = [
     path("__reload__/", include("django_browser_reload.urls")),
     path('api/accounts/', include("django.contrib.auth.urls")),
     path('api/members/', include('members.urls')),
-    path('api/', include('events.urls')),
+    path('', include('events.urls')),
     path('api/api-auth/', include('rest_framework.urls')),
     path('api/api-token-auth/', views.obtain_auth_token)
 ]

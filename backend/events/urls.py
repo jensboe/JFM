@@ -12,6 +12,6 @@ router.register(r'participants', views.ParticipantViewSet)
 
 app_name = 'events'
 urlpatterns = [
-    path ('', include(router.urls)),
+    path ('api/', include(router.urls)),
     path('feed/calender.ics', EventFeed()),
 ]
