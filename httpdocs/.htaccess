@@ -10,6 +10,7 @@
   
   # Excluded directories:
   RewriteRule ^api?(.*) - [L]
+  RewriteRule ^feed?(.*) - [L]
   
   # Redirection of requests to index.html
   RewriteCond %{DOCUMENT_ROOT}%{REQUEST_URI} -f [OR]
