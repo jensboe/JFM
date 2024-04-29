@@ -43,6 +43,10 @@
           <context context-type="sourcefile">src/app/app.component.html</context>
           <context context-type="linenumber">10,11</context>
         </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/member/new/new.component.html</context>
+          <context context-type="linenumber">1,2</context>
+        </context-group>
       </trans-unit>
       <trans-unit id="2454050363478003966" datatype="html">
         <source>Login</source>
@@ -197,22 +201,12 @@
           <context context-type="linenumber">7</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="8835074085114565960" datatype="html">
-        <source>Add new member</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/member/new/new.component.html</context>
-          <context context-type="linenumber">1,2</context>
-        </context-group>
-      </trans-unit>
       <trans-unit id="6028371114637047813" datatype="html">
         <source>First Name</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/member/new/new.component.html</context>
           <context context-type="linenumber">3</context>
         </context-group>
-      </trans-unit>
-      <trans-unit id="5342432350421167093" datatype="html">
-        <source>First name</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/member/new/new.component.html</context>
           <context context-type="linenumber">4</context>
@@ -224,9 +218,6 @@
           <context context-type="sourcefile">src/app/member/new/new.component.html</context>
           <context context-type="linenumber">7</context>
         </context-group>
-      </trans-unit>
-      <trans-unit id="3586674587150281199" datatype="html">
-        <source>Last name</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/member/new/new.component.html</context>
           <context context-type="linenumber">8</context>
