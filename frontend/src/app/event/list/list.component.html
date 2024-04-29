@@ -5,8 +5,8 @@
     </mat-card-title>
     <mat-card-subtitle><span i18n>Start</span>: {{event.start_date | date: 'short' }} | <span i18n>End</span>: {{event.end_date | date: 'short' }}</mat-card-subtitle>
     <mat-card-actions align="start">
-        <button mat-button routerLink="../participation/{{event.pk}}" ><mat-icon aria-hidden="false" aria-label="participation check list" fontIcon="checklist"></mat-icon>Participation</button>
-        <button mat-button routerLink="../edit/{{event.pk}}" ><mat-icon aria-hidden="false" aria-label="edit event" fontIcon="edit"></mat-icon>Edit</button>
-        <button mat-button routerLink="../analye/{{event.pk}}" ><mat-icon aria-hidden="false" aria-label="analyse" fontIcon="bar_chart"></mat-icon>Analyse</button>
+        <button mat-button routerLink="../participation/{{event.pk}}" i18n><mat-icon aria-hidden="false" aria-label="participation check list" fontIcon="checklist"></mat-icon>Participation</button>
+        <button mat-button routerLink="../edit/{{event.pk}}" i18n><mat-icon aria-hidden="false" aria-label="edit event" fontIcon="edit"></mat-icon>Edit</button>
+        <button mat-button routerLink="../analye/{{event.pk}}" i18n><mat-icon aria-hidden="false" aria-label="analyse" fontIcon="bar_chart"></mat-icon>Analyse</button>
     </mat-card-actions>
-</mat-card>
+</mat-card>  
