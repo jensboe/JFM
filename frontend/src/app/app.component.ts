@@ -12,7 +12,7 @@ import {
 } from '@angular/material/sidenav';
 import { MatToolbar } from '@angular/material/toolbar';
 import { MatIcon } from '@angular/material/icon';
-import { MatNavList } from '@angular/material/list';
+import { MatNavList, MatListItem } from '@angular/material/list';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -30,6 +30,7 @@ import { MatNavList } from '@angular/material/list';
     MatToolbar,
     MatIcon,
     MatNavList,
+    MatListItem
   ],
 })
 export class AppComponent {
