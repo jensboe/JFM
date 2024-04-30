@@ -6,37 +6,39 @@ import { environment } from '../../environments/environment';
 import { AuthService } from '../auth.service';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ParticipantService {
-
-  constructor(private http: HttpClient, private auth: AuthService) { }
+  constructor(private http: HttpClient, private auth: AuthService) {}
 
   private participantUrl = environment.apiUrl + 'participants/';
   httpOptions = {
     headers: new HttpHeaders()
       .append('Content-Type', 'application/json')
-      .append('Authorization', 'token ' + this.auth.getToken())
+      .append('Authorization', 'token ' + this.auth.getToken()),
   };
   getParticipations(): Observable<Participant[]> {
     return this.http.get<Participant[]>(this.participantUrl, this.httpOptions);
   }
   getParticipant(pk: Number): Observable<Participant> {
-    const url = this.participantUrl + pk + '/'
+    const url = this.participantUrl + pk + '/';
 
     return timer(0, 5000).pipe(
       mergeMap(() => this.http.get<Participant>(url, this.httpOptions))
-    )
+    );
   }
 
   updateParticipant(participant: Participant) {
-    return this.http.put(this.participantUrl + participant.pk + '/', participant, this.httpOptions).pipe(
-      catchError(this.handleError<any>('updateparticipant'))
-    );
+    return this.http
+      .put(
+        this.participantUrl + participant.pk + '/',
+        participant,
+        this.httpOptions
+      )
+      .pipe(catchError(this.handleError<any>('updateparticipant')));
   }
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
-  
       // TODO: send the error to remote logging infrastructure
       console.error(error); // log to console instead
 

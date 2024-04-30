@@ -6,13 +6,12 @@ import { NgFor } from '@angular/common';
 import { MatActionList, MatListItem } from '@angular/material/list';
 
 @Component({
-    selector: 'app-list',
-    templateUrl: './list.component.html',
-    styleUrl: './list.component.css',
-    standalone: true,
-    imports: [MatActionList, NgFor, MatListItem]
+  selector: 'app-list',
+  templateUrl: './list.component.html',
+  styleUrl: './list.component.css',
+  standalone: true,
+  imports: [MatActionList, NgFor, MatListItem],
 })
-
 export class ListComponent implements OnInit {
   members: Member[] = [];
 
@@ -23,12 +22,8 @@ export class ListComponent implements OnInit {
   }
 
   getEvents(): void {
-    this.memberService.getMembers()
-    .subscribe(
-      
-      members => {
-        this.members = members;
-      }
-    );
+    this.memberService.getMembers().subscribe((members) => {
+      this.members = members;
+    });
   }
 }

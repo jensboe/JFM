@@ -23,18 +23,18 @@ export class AuthService {
   };
 
   async login(username: string, password: string) {
-     await firstValueFrom(this.http
-      .post<Token>(
+    await firstValueFrom(
+      this.http.post<Token>(
         this.loginUrl,
         { username: username, password: password },
         this.httpOptions
-      ))
-      .then((result) => {
-        if (result.token) {
-          localStorage.setItem('token', result.token);
-          this.router.navigate(['event/upcomming'])
-        }
-      });
+      )
+    ).then((result) => {
+      if (result.token) {
+        localStorage.setItem('token', result.token);
+        this.router.navigate(['event/upcomming']);
+      }
+    });
   }
 
   logout() {

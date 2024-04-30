@@ -8,10 +8,8 @@ import { ParticipationComponent } from './participation/participation.component'
 import { EventRoutingModule } from './event-routing.module';
 import { FormsModule } from '@angular/forms';
 
-
-
 @NgModule({
-    imports: [
+  imports: [
     CommonModule,
     NgFor,
     HttpClientModule,
@@ -19,7 +17,7 @@ import { FormsModule } from '@angular/forms';
     FormsModule,
     NewComponent,
     ListComponent,
-    ParticipationComponent
-],
+    ParticipationComponent,
+  ],
 })
-export class EventModule { }
+export class EventModule {}
