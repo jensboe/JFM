@@ -1,18 +1,44 @@
 import { Component, OnInit } from '@angular/core';
-import  {Event} from '../event'
+import { Event } from '../event';
 import { EventService } from '../event.service';
 import { ActivatedRoute } from '@angular/router';
-import {provideNativeDateAdapter} from '@angular/material/core';
+import { provideNativeDateAdapter } from '@angular/material/core';
 import { Time } from '@angular/common';
-
+import { MatButton } from '@angular/material/button';
+import {
+  MatDateRangeInput,
+  MatStartDate,
+  MatEndDate,
+  MatDatepickerToggle,
+  MatDateRangePicker,
+} from '@angular/material/datepicker';
+import { FormsModule } from '@angular/forms';
+import { MatInput } from '@angular/material/input';
+import {
+  MatFormField,
+  MatLabel,
+  MatSuffix,
+} from '@angular/material/form-field';
 
 @Component({
   selector: 'event-new',
   templateUrl: './new.component.html',
   styleUrl: './new.component.css',
-  providers: [
-    provideNativeDateAdapter()
-  ]
+  providers: [provideNativeDateAdapter()],
+  standalone: true,
+  imports: [
+    MatFormField,
+    MatLabel,
+    MatInput,
+    FormsModule,
+    MatDateRangeInput,
+    MatStartDate,
+    MatEndDate,
+    MatDatepickerToggle,
+    MatSuffix,
+    MatDateRangePicker,
+    MatButton,
+  ],
 })
 export class NewComponent {
   event: Event = {
@@ -21,39 +47,43 @@ export class NewComponent {
     start_date: new Date(),
     end_date: new Date(),
   };
-  starttime: string = "18:00";
-  endtime: string = "20:00";
+  starttime: string = '18:00';
+  endtime: string = '20:00';
 
   constructor(
     private route: ActivatedRoute,
-    private eventService: EventService,
-  ) {
-  }
+    private eventService: EventService
+  ) {}
   ngOnInit(): void {
     this.getEvent();
   }
   getEvent(): void {
     const id = parseInt(this.route.snapshot.paramMap.get('id')!, 10);
-    if (id)
-    {
-      this.eventService.getEvent(id)
-        .subscribe( event =>
-          this.event = event
-        );
+    if (id) {
+      this.eventService.getEvent(id).subscribe((event) => (this.event = event));
     }
   }
-  save(){
-    if(this.event)
-    {
+  save() {
+    if (this.event) {
       let splitstarttime = this.starttime.split(':');
-      this.event.start_date.setHours(Number(splitstarttime[0]),Number(splitstarttime[1]),0,0);
+      this.event.start_date.setHours(
+        Number(splitstarttime[0]),
+        Number(splitstarttime[1]),
+        0,
+        0
+      );
       let splitendtime = this.endtime.split(':');
-      this.event.end_date.setHours(Number(splitendtime[0]),Number(splitendtime[1]),0,0);
+      this.event.end_date.setHours(
+        Number(splitendtime[0]),
+        Number(splitendtime[1]),
+        0,
+        0
+      );
       console.log(this.event);
-      this.eventService.addEvent(this.event).subscribe()
+      this.eventService.addEvent(this.event).subscribe();
     }
   }
   cancel() {
-    console.log('cancel')
+    console.log('cancel');
   }
 }

@@ -10,19 +10,19 @@ const routes: Routes = [
     path: 'event/:mode',
     component: ListComponent,
     title: 'Events',
-    canActivate: [loggedinGuard]
+    canActivate: [loggedinGuard],
   },
   {
     path: 'newevent',
     component: NewComponent,
     title: 'New event',
-    canActivate: [loggedinGuard]
+    canActivate: [loggedinGuard],
   },
   {
     path: 'event/participation/:id',
     component: ParticipationComponent,
     title: 'Check participation',
-    canActivate: [loggedinGuard]
+    canActivate: [loggedinGuard],
   },
 ];
 

@@ -4,16 +4,14 @@ import { EventRoutingModule } from './event/event-routing.module';
 import { MemberRoutingModule } from './member/member-routing.module';
 import { LoginComponent } from './login/login.component';
 
-const routes: Routes = [
-  {path: 'login', component: LoginComponent},
-];
+const routes: Routes = [{ path: 'login', component: LoginComponent }];
 
 @NgModule({
   imports: [
     RouterModule.forRoot(routes),
     EventRoutingModule,
-    MemberRoutingModule
+    MemberRoutingModule,
   ],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
