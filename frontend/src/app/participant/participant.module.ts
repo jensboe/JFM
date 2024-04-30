@@ -7,16 +7,14 @@ import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
-  declarations: [
-    UpdateComponent
-  ],
-  imports: [
-    CommonModule,
-    MaterialModule,
-    FormsModule
-  ],
-  exports: [
-    UpdateComponent
-  ]
+    imports: [
+        CommonModule,
+        MaterialModule,
+        FormsModule,
+        UpdateComponent
+    ],
+    exports: [
+        UpdateComponent
+    ]
 })
 export class ParticipantModule { }

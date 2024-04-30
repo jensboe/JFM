@@ -8,15 +8,13 @@ import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
-  declarations: [
-    NewComponent,
-    ListComponent,
-  ],
-  imports: [
-    CommonModule,
-    MaterialModule,
-    NgFor,
-    FormsModule
-  ]
+    imports: [
+        CommonModule,
+        MaterialModule,
+        NgFor,
+        FormsModule,
+        NewComponent,
+        ListComponent
+    ]
 })
 export class MemberModule { }

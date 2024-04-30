@@ -2,13 +2,29 @@ import { Component, OnInit } from '@angular/core';
 import { EventService } from '../event.service';
 import { Event } from '../event'
 import { Participant } from '../../participant/participant';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterLink } from '@angular/router';
+import { MatIcon } from '@angular/material/icon';
+import { MatButton } from '@angular/material/button';
+import { MatCard, MatCardTitle, MatCardSubtitle, MatCardActions } from '@angular/material/card';
+import { NgFor, DatePipe } from '@angular/common';
 
 
 @Component({
-  selector: 'event-list',
-  templateUrl: './list.component.html',
-  styleUrl: './list.component.css',
+    selector: 'event-list',
+    templateUrl: './list.component.html',
+    styleUrl: './list.component.css',
+    standalone: true,
+    imports: [
+        NgFor,
+        MatCard,
+        MatCardTitle,
+        MatCardSubtitle,
+        MatCardActions,
+        MatButton,
+        RouterLink,
+        MatIcon,
+        DatePipe,
+    ],
 })
 export class ListComponent implements OnInit{
   events: Event[] = [];

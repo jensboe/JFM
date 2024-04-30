@@ -4,15 +4,22 @@ import { EventService } from '../event.service';
 import { ActivatedRoute } from '@angular/router';
 import {provideNativeDateAdapter} from '@angular/material/core';
 import { Time } from '@angular/common';
+import { MatButton } from '@angular/material/button';
+import { MatDateRangeInput, MatStartDate, MatEndDate, MatDatepickerToggle, MatDateRangePicker } from '@angular/material/datepicker';
+import { FormsModule } from '@angular/forms';
+import { MatInput } from '@angular/material/input';
+import { MatFormField, MatLabel, MatSuffix } from '@angular/material/form-field';
 
 
 @Component({
-  selector: 'event-new',
-  templateUrl: './new.component.html',
-  styleUrl: './new.component.css',
-  providers: [
-    provideNativeDateAdapter()
-  ]
+    selector: 'event-new',
+    templateUrl: './new.component.html',
+    styleUrl: './new.component.css',
+    providers: [
+        provideNativeDateAdapter()
+    ],
+    standalone: true,
+    imports: [MatFormField, MatLabel, MatInput, FormsModule, MatDateRangeInput, MatStartDate, MatEndDate, MatDatepickerToggle, MatSuffix, MatDateRangePicker, MatButton]
 })
 export class NewComponent {
   event: Event = {

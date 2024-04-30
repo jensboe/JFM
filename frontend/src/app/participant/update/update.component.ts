@@ -2,11 +2,15 @@ import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { ParticipantService } from '../participant.service';
 import { Participant } from '../participant';
 import { takeWhile } from 'rxjs';
+import { FormsModule } from '@angular/forms';
+import { MatButtonToggleGroup, MatButtonToggle } from '@angular/material/button-toggle';
 
 @Component({
-  selector: 'app-participant-update',
-  templateUrl: './update.component.html',
-  styleUrl: './update.component.css'
+    selector: 'app-participant-update',
+    templateUrl: './update.component.html',
+    styleUrl: './update.component.css',
+    standalone: true,
+    imports: [MatButtonToggleGroup, FormsModule, MatButtonToggle]
 })
 export class UpdateComponent implements OnInit, OnDestroy {
   @Input() pk: Number = 0;

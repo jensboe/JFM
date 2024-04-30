@@ -11,19 +11,17 @@ import { ParticipantModule } from '../participant/participant.module';
 
 
 @NgModule({
-  declarations: [
-    NewComponent,
-    ListComponent,
-    ParticipationComponent,
-  ],
-  imports: [
-    CommonModule,
-    NgFor,
-    MaterialModule,
-    HttpClientModule,
-    EventRoutingModule,
-    FormsModule,
-    ParticipantModule
-  ],
+    imports: [
+        CommonModule,
+        NgFor,
+        MaterialModule,
+        HttpClientModule,
+        EventRoutingModule,
+        FormsModule,
+        ParticipantModule,
+        NewComponent,
+        ListComponent,
+        ParticipationComponent
+    ],
 })
 export class EventModule { }
