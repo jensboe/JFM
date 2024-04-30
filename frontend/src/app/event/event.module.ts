@@ -5,7 +5,6 @@ import { ListComponent } from './list/list.component';
 
 import { HttpClientModule } from '@angular/common/http';
 import { ParticipationComponent } from './participation/participation.component';
-import { EventRoutingModule } from './event-routing.module';
 import { FormsModule } from '@angular/forms';
 
 @NgModule({
@@ -13,7 +12,6 @@ import { FormsModule } from '@angular/forms';
     CommonModule,
     NgFor,
     HttpClientModule,
-    EventRoutingModule,
     FormsModule,
     NewComponent,
     ListComponent,

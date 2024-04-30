@@ -3,10 +3,10 @@
     [mode]="(isHandset$ | async) ? 'over' : 'side'" [opened]="(isHandset$ | async) === false">
     <mat-toolbar i18n>Menu</mat-toolbar>
     <mat-nav-list>
-      <a *ngIf="isloggedin()" mat-list-item routerLink="/event/upcomming" routerLinkActive="active" ariaCurrentWhenActive="page" i18n>Upcomming events</a>
-      <a *ngIf="isloggedin()" mat-list-item routerLink="/event/last" routerLinkActive="active" ariaCurrentWhenActive="page" i18n>Last events</a>
-      <a *ngIf="isloggedin()" mat-list-item routerLink="/members" routerLinkActive="active" ariaCurrentWhenActive="page" i18n>Member list</a>
-      <a *ngIf="isloggedin()" mat-list-item routerLink="/newevent" routerLinkActive="active" ariaCurrentWhenActive="page" i18n>Add event</a>
+      <a *ngIf="isloggedin()" mat-list-item routerLink="/event/list/upcomming" routerLinkActive="active" ariaCurrentWhenActive="page" i18n>Upcomming events</a>
+      <a *ngIf="isloggedin()" mat-list-item routerLink="/event/list/last" routerLinkActive="active" ariaCurrentWhenActive="page" i18n>Last events</a>
+      <a *ngIf="isloggedin()" mat-list-item routerLink="/member/list" routerLinkActive="active" ariaCurrentWhenActive="page" i18n>Member list</a>
+      <a *ngIf="isloggedin()" mat-list-item routerLink="/event/new" routerLinkActive="active" ariaCurrentWhenActive="page" i18n>Add event</a>
       <a *ngIf="isloggedin()" mat-list-item routerLink="/member/new" routerLinkActive="active" ariaCurrentWhenActive="page" i18n>Add member</a>
       <a *ngIf="!isloggedin()" mat-list-item routerLink="/login" routerLinkActive="active" ariaCurrentWhenActive="page" i18n>Login</a>
       <a *ngIf="isloggedin()" mat-list-item (click)="logout()" ariaCurrentWhenActive="page" i18n>Logout</a>

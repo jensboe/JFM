@@ -5,29 +5,23 @@ import { NewComponent } from './new/new.component';
 import { ParticipationComponent } from './participation/participation.component';
 import { loggedinGuard } from '../auth.guard';
 
-const routes: Routes = [
+export const eventRoutes: Routes = [
   {
-    path: 'event/:mode',
+    path: 'list/:mode',
     component: ListComponent,
     title: 'Events',
     canActivate: [loggedinGuard],
   },
   {
-    path: 'newevent',
+    path: 'new',
     component: NewComponent,
     title: 'New event',
     canActivate: [loggedinGuard],
   },
   {
-    path: 'event/participation/:id',
+    path: ':id/participation',
     component: ParticipationComponent,
     title: 'Check participation',
     canActivate: [loggedinGuard],
   },
 ];
-
-@NgModule({
-  imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule],
-})
-export class EventRoutingModule {}
