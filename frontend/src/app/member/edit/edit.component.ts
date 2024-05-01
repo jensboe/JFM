@@ -20,9 +20,9 @@ import {
 } from '@angular/material/form-field';
 
 @Component({
-  selector: 'app-new',
-  templateUrl: './new.component.html',
-  styleUrl: './new.component.css',
+  selector: 'app-member-edit',
+  templateUrl: './edit.component.html',
+  styleUrl: './edit.component.css',
   providers: [provideNativeDateAdapter()],
   standalone: true,
   imports: [
