@@ -1,7 +1,7 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MatButton } from '@angular/material/button';
-import { provideNativeDateAdapter } from '@angular/material/core';
+import { DateAdapter, provideNativeDateAdapter } from '@angular/material/core';
 import {
   MatDateRangeInput,
   MatDateRangePicker,
@@ -19,9 +19,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Event } from '../event';
 import { EventService } from '../event.service';
 
-import {
-  MatSnackBar
-} from '@angular/material/snack-bar';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-event-new',
@@ -55,9 +53,13 @@ export class NewComponent implements OnInit {
 
   private eventService = inject(EventService);
   private route = inject(ActivatedRoute);
-  constructor(private snackBar: MatSnackBar) {}
+  constructor(
+    private snackBar: MatSnackBar,
+    private dateAdapter: DateAdapter<Date>
+  ) {}
 
   ngOnInit(): void {
+    this.dateAdapter.getFirstDayOfWeek = () => 1;
     this.getEvent();
   }
 
