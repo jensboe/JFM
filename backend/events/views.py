@@ -6,7 +6,6 @@ from rest_framework import filters, serializers, viewsets
 
 from .models import Event, Participant
 
-
 class ParticipantSerializer(serializers.ModelSerializer):
     member = MemberEventSerializer(many=False, read_only=True, )
     class Meta:
@@ -21,7 +20,7 @@ class EventSerializer(serializers.ModelSerializer):
     participants = ParticipantSerializer(many=True, read_only=True)
     class Meta:
         model = Event
-        fields = ['pk', 'title', 'start_date', 'end_date', 'participants']
+        fields = ['pk', 'title', 'start_date', 'end_date', 'participants', 'note']
 
 class EventFilter(django_filters.rest_framework.FilterSet):
     end_after = django_filters.rest_framework.IsoDateTimeFilter(field_name="end_date", lookup_expr='gte')
