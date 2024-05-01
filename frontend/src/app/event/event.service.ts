@@ -40,4 +40,9 @@ export class EventService extends RestService {
   addEvent(event: Event): Observable<Event> {
     return this.post<Event>(this.eventUrl, event);
   }
+
+  updateEvent(event: Event): Observable<Event> {
+    const url = this.eventUrl + event.pk + '/';
+    return this.put<Event>(url, event);
+  }
 }
