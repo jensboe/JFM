@@ -179,6 +179,27 @@
           <context context-type="linenumber">21,22</context>
         </context-group>
       </trans-unit>
+      <trans-unit id="661614591693010528" datatype="html">
+        <source>Event <x id="PH" equiv-text="result.title"/> saved.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/event/new/new.component.ts</context>
+          <context context-type="linenumber">89</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="3387518307539129355" datatype="html">
+        <source>Event validation error</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/event/new/new.component.ts</context>
+          <context context-type="linenumber">96</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="3513729181574102772" datatype="html">
+        <source>ok</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/event/new/new.component.ts</context>
+          <context context-type="linenumber">97</context>
+        </context-group>
+      </trans-unit>
       <trans-unit id="5248717555542428023" datatype="html">
         <source>Username</source>
         <context-group purpose="location">

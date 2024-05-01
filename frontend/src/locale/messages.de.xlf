@@ -36,7 +36,7 @@
       </trans-unit>
       <trans-unit id="1040754989546421230" datatype="html">
         <source>Add event</source>
-        <target state="">Veranstaltung hinzufügen</target>
+        <target state="">Neue Veranstaltung</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/app.component.html</context>
           <context context-type="linenumber">9,10</context>
@@ -44,7 +44,7 @@
       </trans-unit>
       <trans-unit id="718742434092230008" datatype="html">
         <source>Add member</source>
-        <target state="">Mitglied hinzufügen</target>
+        <target state="">Neues Mitglied</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/app.component.html</context>
           <context context-type="linenumber">10,11</context>
@@ -56,6 +56,7 @@
       </trans-unit>
       <trans-unit id="2454050363478003966" datatype="html">
         <source>Login</source>
+        <target>Anmelden</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/app.component.html</context>
           <context context-type="linenumber">11,12</context>
@@ -199,6 +200,30 @@
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/member/new/new.component.html</context>
           <context context-type="linenumber">21,22</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="661614591693010528" datatype="html">
+        <source>Event <x id="PH" equiv-text="result.title"/> saved.</source>
+        <target>Veranstaltung <x id="PH" equiv-text="result.title"/> gespeichert.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/event/new/new.component.ts</context>
+          <context context-type="linenumber">89</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="3387518307539129355" datatype="html">
+        <source>Event validation error</source>
+        <target state="">Validation error</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/event/new/new.component.ts</context>
+          <context context-type="linenumber">96</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="3513729181574102772" datatype="html">
+        <source>ok</source>
+        <target state="">Verstanden</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/event/new/new.component.ts</context>
+          <context context-type="linenumber">97</context>
         </context-group>
       </trans-unit>
       <trans-unit id="5248717555542428023" datatype="html">
