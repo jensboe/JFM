@@ -22,9 +22,9 @@ import { EventService } from '../event.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
-  selector: 'app-event-new',
-  templateUrl: './new.component.html',
-  styleUrl: './new.component.css',
+  selector: 'app-event-edit',
+  templateUrl: './edit.component.html',
+  styleUrl: './edit.component.css',
   providers: [provideNativeDateAdapter()],
   standalone: true,
   imports: [
@@ -50,6 +50,7 @@ export class NewComponent implements OnInit {
   };
   starttime: string = '18:00';
   endtime: string = '20:00';
+  title = $localize`Add event`
 
   private eventService = inject(EventService);
   private route = inject(ActivatedRoute);
@@ -62,14 +63,15 @@ export class NewComponent implements OnInit {
 
   ngOnInit(): void {
     this.dateAdapter.getFirstDayOfWeek = () => 1;
-    this.getEvent();
-  }
-
-  getEvent(): void {
     const id = parseInt(this.route.snapshot.paramMap.get('id')!, 10);
     if (id) {
-      this.eventService.getEvent(id).subscribe((event) => (this.event = event));
+      this.getEvent(id);
+      this.title = $localize`Edit event`
     }
+  }
+
+  getEvent(id: number): void {
+      this.eventService.getEvent(id).subscribe((event) => (this.event = event));
   }
   save() {
     if (this.event) {

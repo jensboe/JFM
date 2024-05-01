@@ -1,6 +1,6 @@
 import { Routes } from '@angular/router';
 import { ListComponent } from './list/list.component';
-import { NewComponent } from './new/new.component';
+import { NewComponent as EditComponent } from './edit/edit.component';
 import { ParticipationComponent } from './participation/participation.component';
 import { loggedinGuard } from '../auth.guard';
 
@@ -13,8 +13,14 @@ export const eventRoutes: Routes = [
   },
   {
     path: 'new',
-    component: NewComponent,
+    component: EditComponent,
     title: 'New event',
+    canActivate: [loggedinGuard],
+  },
+  {
+    path: ':id/edit',
+    component: EditComponent,
+    title: 'Edit event',
     canActivate: [loggedinGuard],
   },
   {
