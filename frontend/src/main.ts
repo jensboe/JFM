@@ -1,21 +1,15 @@
-/// <reference types="@angular/localize" />
-
-import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
-
-
-import { importProvidersFrom } from '@angular/core';
-import { AppComponent } from './app/app.component';
-import { FormsModule } from '@angular/forms';
-import { EventModule } from './app/event/event.module';
-import { AppRoutingModule } from './app/app-routing.module';
-import { BrowserModule, bootstrapApplication } from '@angular/platform-browser';
+import { bootstrapApplication } from '@angular/platform-browser';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
-
+import { provideRouter } from '@angular/router';
+import { AppComponent } from './app/app.component';
+import routeConfig from './app/routes';
+import { provideHttpClient } from '@angular/common/http';
 
 bootstrapApplication(AppComponent, {
     providers: [
-        importProvidersFrom(BrowserModule, AppRoutingModule, EventModule, FormsModule),
-        provideAnimationsAsync()
+        provideAnimationsAsync(),
+        provideRouter(routeConfig),
+        provideHttpClient()
     ]
 })
   .catch(err => console.error(err));

@@ -12,9 +12,8 @@ export interface Token {
   providedIn: 'root',
 })
 export class AuthService {
-  constructor(private http: HttpClient) {}
-
   private router: Router = inject(Router);
+  private http: HttpClient = inject(HttpClient);
 
   private loginUrl = environment.apiUrl + 'api-token-auth/';
   private token: string = '';
@@ -32,7 +31,7 @@ export class AuthService {
     ).then((result) => {
       if (result.token) {
         localStorage.setItem('token', result.token);
-        this.router.navigate(['event/upcomming']);
+        this.router.navigate(['event/list/upcomming']);
       }
     });
   }

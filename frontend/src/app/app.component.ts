@@ -30,13 +30,13 @@ import { MatNavList, MatListItem } from '@angular/material/list';
     MatToolbar,
     MatIcon,
     MatNavList,
-    MatListItem
+    MatListItem,
   ],
 })
 export class AppComponent {
   title = 'Jugendfeuerwehr Anwesenheit';
   private breakpointObserver = inject(BreakpointObserver);
-  constructor(private auth: AuthService) {}
+  private auth = inject(AuthService)
 
   isHandset$: Observable<boolean> = this.breakpointObserver
     .observe(Breakpoints.Handset)

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { DateAdapter, provideNativeDateAdapter } from '@angular/material/core';
 import { Member } from '../member';
 import { ActivatedRoute } from '@angular/router';
@@ -45,17 +45,15 @@ export class NewComponent implements OnInit {
     firstname: '',
     lastname: '',
   };
+  private dateAdapter = inject(DateAdapter<Date>);
+  private route = inject(ActivatedRoute);
+  private memberService = inject(MemberService);
 
-  constructor(
-    private dateAdapter: DateAdapter<Date>,
-    private route: ActivatedRoute,
-    private memberService: MemberService
-  ) {
-    this.dateAdapter.getFirstDayOfWeek = () => 1;
-  }
   ngOnInit(): void {
+    this.dateAdapter.getFirstDayOfWeek = () => 1;
     this.getMember();
   }
+
   getMember(): void {
     const id = parseInt(this.route.snapshot.paramMap.get('id')!, 10);
     if (id) {
@@ -64,6 +62,7 @@ export class NewComponent implements OnInit {
         .subscribe((member) => (this.member = member));
     }
   }
+  
   save() {
     if (this.member) {
       this.memberService.addMember(this.member).subscribe();

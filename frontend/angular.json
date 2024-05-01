@@ -7,20 +7,20 @@
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
-          "standalone": false
+          "standalone": true
         },
         "@schematics/angular:directive": {
-          "standalone": false
+          "standalone": true
         },
         "@schematics/angular:pipe": {
-          "standalone": false
+          "standalone": true
         }
       },
       "root": "",
       "sourceRoot": "src",
       "prefix": "app",
       "i18n": {
-        "sourceLocale":"en",
+        "sourceLocale": "en",
         "locales": {
           "de": {
             "translation": "src/locale/messages.de.xlf",
@@ -35,7 +35,7 @@
             "outputPath": "dist/frontend",
             "index": "src/index.html",
             "browser": "src/main.ts",
-            "localize":true,
+            "localize": true,
             "aot": true,
             "polyfills": [
               "zone.js"
@@ -123,8 +123,22 @@
             ],
             "scripts": []
           }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "src/**/*.ts",
+              "src/**/*.html"
+            ]
+          }
         }
       }
     }
+  },
+  "cli": {
+    "schematicCollections": [
+      "@angular-eslint/schematics"
+    ]
   }
 }

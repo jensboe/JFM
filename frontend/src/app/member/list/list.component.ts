@@ -1,5 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { MEMBERS } from '../mock-members';
+import { Component, OnInit, inject } from '@angular/core';
 import { Member } from '../member';
 import { MemberService } from '../member.service';
 import { NgFor } from '@angular/common';
@@ -14,8 +13,8 @@ import { MatActionList, MatListItem } from '@angular/material/list';
 })
 export class ListComponent implements OnInit {
   members: Member[] = [];
+  private memberService = inject(MemberService);
 
-  constructor(private memberService: MemberService) {}
 
   ngOnInit(): void {
     this.getEvents();

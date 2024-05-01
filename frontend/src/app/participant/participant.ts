@@ -1,8 +1,8 @@
 import { Member } from '../member/member';
 
 export interface Participant {
-  pk: Number;
+  pk: number;
   member: Member;
-  event: Number;
-  participation: String;
+  event: number;
+  participation: string;
 }

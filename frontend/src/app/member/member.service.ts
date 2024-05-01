@@ -1,5 +1,5 @@
-import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { Injectable, inject } from '@angular/core';
+import { Observable } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { Member } from './member';
@@ -10,7 +10,8 @@ import { AuthService } from '../auth.service';
   providedIn: 'root',
 })
 export class MemberService {
-  constructor(private http: HttpClient, private auth: AuthService) {}
+  private auth = inject(AuthService);
+  private http = inject(HttpClient);
 
   private memberUrl = environment.apiUrl + 'members/';
   httpOptions = {
@@ -22,7 +23,7 @@ export class MemberService {
   getMembers(): Observable<Member[]> {
     return this.http.get<Member[]>(this.memberUrl, this.httpOptions);
   }
-  getMember(pk: Number): Observable<Member> {
+  getMember(pk: number): Observable<Member> {
     const url = this.memberUrl + pk + '/';
     return this.http.get<Member>(url, this.httpOptions);
   }

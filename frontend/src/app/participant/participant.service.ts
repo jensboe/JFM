@@ -1,5 +1,5 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { Participant } from './participant';
 import { Observable, catchError, mergeMap, of, timer } from 'rxjs';
 import { environment } from '../../environments/environment';
@@ -9,7 +9,8 @@ import { AuthService } from '../auth.service';
   providedIn: 'root',
 })
 export class ParticipantService {
-  constructor(private http: HttpClient, private auth: AuthService) {}
+  private auth = inject(AuthService);
+  private http = inject(HttpClient);
 
   private participantUrl = environment.apiUrl + 'participants/';
   httpOptions = {
@@ -20,7 +21,7 @@ export class ParticipantService {
   getParticipations(): Observable<Participant[]> {
     return this.http.get<Participant[]>(this.participantUrl, this.httpOptions);
   }
-  getParticipant(pk: Number): Observable<Participant> {
+  getParticipant(pk: number): Observable<Participant> {
     const url = this.participantUrl + pk + '/';
 
     return timer(0, 5000).pipe(
