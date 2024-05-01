@@ -1,6 +1,6 @@
 import { bootstrapApplication } from '@angular/platform-browser';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
-import { provideRouter } from '@angular/router';
+import { PreloadAllModules, provideRouter, withPreloading } from '@angular/router';
 import { AppComponent } from './app/app.component';
 import routeConfig from './app/routes';
 import { provideHttpClient } from '@angular/common/http';
@@ -8,7 +8,7 @@ import { provideHttpClient } from '@angular/common/http';
 bootstrapApplication(AppComponent, {
     providers: [
         provideAnimationsAsync(),
-        provideRouter(routeConfig),
+        provideRouter(routeConfig , withPreloading(PreloadAllModules)),
         provideHttpClient()
     ]
 })
