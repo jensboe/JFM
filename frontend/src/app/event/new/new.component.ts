@@ -1,9 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { Event } from '../event';
 import { EventService } from '../event.service';
 import { ActivatedRoute } from '@angular/router';
 import { provideNativeDateAdapter } from '@angular/material/core';
-import { Time } from '@angular/common';
 import { MatButton } from '@angular/material/button';
 import {
   MatDateRangeInput,
@@ -50,10 +49,9 @@ export class NewComponent {
   starttime: string = '18:00';
   endtime: string = '20:00';
 
-  constructor(
-    private route: ActivatedRoute,
-    private eventService: EventService
-  ) {}
+  private eventService = inject(EventService);
+  private route = inject(ActivatedRoute);
+
   ngOnInit(): void {
     this.getEvent();
   }

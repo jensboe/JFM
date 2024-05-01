@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
@@ -10,7 +10,8 @@ import { AuthService } from '../auth.service';
   providedIn: 'root',
 })
 export class MemberService {
-  constructor(private http: HttpClient, private auth: AuthService) {}
+  private auth = inject(AuthService);
+  private http = inject(HttpClient);
 
   private memberUrl = environment.apiUrl + 'members/';
   httpOptions = {

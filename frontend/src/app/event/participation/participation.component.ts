@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { EventService } from '../event.service';
 import { Event } from '../event';
@@ -27,11 +27,9 @@ export class ParticipationComponent implements OnInit {
     end_date: new Date(),
     title: 'Loading',
   };
-
-  constructor(
-    private route: ActivatedRoute,
-    private eventService: EventService
-  ) {}
+  
+  private eventService = inject(EventService);
+  private route = inject(ActivatedRoute);
 
   ngOnInit(): void {
     this.getEvent();

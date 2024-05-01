@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Event } from './event';
@@ -11,7 +11,8 @@ import { AuthService } from '../auth.service';
   providedIn: 'root',
 })
 export class EventService {
-  constructor(private http: HttpClient, private auth: AuthService) {}
+  private auth = inject(AuthService);
+  private http = inject(HttpClient);
 
   private eventUrl = environment.apiUrl + 'events/';
   httpOptions = {

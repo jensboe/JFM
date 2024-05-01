@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { EventService } from '../event.service';
 import { Event } from '../event';
 import { Participant } from '../../participant/participant';
@@ -33,17 +33,15 @@ import { NgFor, DatePipe } from '@angular/common';
 export class ListComponent implements OnInit {
   events: Event[] = [];
 
-  constructor(
-    private eventService: EventService,
-    private route: ActivatedRoute
-  ) {
+  private eventService = inject(EventService);
+  private route = inject(ActivatedRoute);
+
+  ngOnInit(): void {
     this.route.params.subscribe((params) => {
       this.events = [];
       this.getEvents(params['mode']);
     });
   }
-
-  ngOnInit(): void {}
 
   getEvents(mode: string = 'last'): void {
     if (mode != 'last' && mode != 'upcomming') {
