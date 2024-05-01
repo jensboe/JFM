@@ -22,9 +22,9 @@ import { EventService } from '../event.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
-  selector: 'app-event-new',
-  templateUrl: './new.component.html',
-  styleUrl: './new.component.css',
+  selector: 'app-event-edit',
+  templateUrl: './edit.component.html',
+  styleUrl: './edit.component.css',
   providers: [provideNativeDateAdapter()],
   standalone: true,
   imports: [
@@ -50,6 +50,7 @@ export class NewComponent implements OnInit {
   };
   starttime: string = '18:00';
   endtime: string = '20:00';
+  title = $localize`Add event`;
 
   private eventService = inject(EventService);
   private route = inject(ActivatedRoute);
@@ -62,49 +63,70 @@ export class NewComponent implements OnInit {
 
   ngOnInit(): void {
     this.dateAdapter.getFirstDayOfWeek = () => 1;
-    this.getEvent();
-  }
-
-  getEvent(): void {
     const id = parseInt(this.route.snapshot.paramMap.get('id')!, 10);
     if (id) {
-      this.eventService.getEvent(id).subscribe((event) => (this.event = event));
+      this.getEvent(id);
+      this.title = $localize`Edit event`;
     }
+  }
+
+  getEvent(id: number): void {
+    this.eventService.getEvent(id).subscribe((event) => (this.event = event));
   }
   save() {
     if (this.event) {
       const splitstarttime = this.starttime.split(':');
+      const splitendtime = this.endtime.split(':');
+      this.event.start_date = new Date(this.event.start_date);
+      this.event.end_date = new Date(this.event.end_date);
       this.event.start_date.setHours(
         Number(splitstarttime[0]),
         Number(splitstarttime[1]),
         0,
         0
       );
-      const splitendtime = this.endtime.split(':');
       this.event.end_date.setHours(
         Number(splitendtime[0]),
         Number(splitendtime[1]),
         0,
         0
       );
-      this.eventService.addEvent(this.event).subscribe((result: Event) => {
-        if (result) {
-          let snackBarRef = this.snackBar.open(
-            $localize`Event ${result.title} saved.`,
-            '',
-            { duration: 2000 }
-          );
-          this.event.title = '';
-        } else {
-          let snackBarRef = this.snackBar.open(
-            $localize`Event validation error`,
-            $localize`ok`
-          );
-        }
-      });
+      if (this.event.pk) {
+        this.eventService.updateEvent(this.event).subscribe((result: Event) => {
+          if (result) {
+            this.snackBar.open(
+              $localize`Event ${result.title} updated.`,
+              '',
+              { duration: 2000 }
+            );
+            this.event.title = '';
+          } else {
+            this.snackBar.open(
+              $localize`Event validation error`,
+              $localize`ok`
+            );
+          }
+        });
+      } else {
+        this.eventService.addEvent(this.event).subscribe((result: Event) => {
+          if (result) {
+            this.snackBar.open(
+              $localize`Event ${result.title} saved.`,
+              '',
+              { duration: 2000 }
+            );
+            this.event.title = '';
+          } else {
+            this.snackBar.open(
+              $localize`Event validation error`,
+              $localize`ok`
+            );
+          }
+        });
+      }
     }
   }
   backToEventList() {
-    this.router.navigate(['event/list/upcomming'])
+    this.router.navigate(['event/list/upcomming']);
   }
 }

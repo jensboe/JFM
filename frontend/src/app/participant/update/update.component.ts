@@ -17,6 +17,7 @@ import {
 })
 export class UpdateComponent implements OnInit, OnDestroy {
   @Input() pk: number = 0;
+  private participantService = inject(ParticipantService);
 
   alive: boolean = true;
 
@@ -27,11 +28,11 @@ export class UpdateComponent implements OnInit, OnDestroy {
       pk: 0,
       firstname: '',
       lastname: '',
+      is_instructor: false
     },
     participation: '',
   };
 
-  private participantService = inject(ParticipantService);
 
   ngOnInit(): void {
     this.alive = true;

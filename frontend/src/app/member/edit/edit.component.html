@@ -1,4 +1,4 @@
-<h1 i18n>Add member</h1>
+<h1>{{title}}</h1>
 <mat-form-field>
   <mat-label i18n>First Name</mat-label>
   <input
@@ -22,13 +22,20 @@
 <p>
   <mat-form-field>
     <mat-label i18n>Choose entry date</mat-label>
-    <input matInput [matDatepicker]="picker" />
+    <input matInput [matDatepicker]="entrypicker" [(ngModel)]="member.entry_date" />
     <mat-hint i18n>MM/DD/YYYY</mat-hint>
-    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-    <mat-datepicker #picker></mat-datepicker>
+    <mat-datepicker-toggle matIconSuffix [for]="entrypicker"></mat-datepicker-toggle>
+    <mat-datepicker #entrypicker></mat-datepicker>
   </mat-form-field>
-  <mat-slide-toggle i18n>is Instructor</mat-slide-toggle>
+  <mat-form-field *ngIf="member.pk">
+    <mat-label i18n>Choose exit date</mat-label>
+    <input matInput [matDatepicker]="exitpicker" [(ngModel)]="member.exit_date" />
+    <mat-hint i18n>MM/DD/YYYY</mat-hint>
+    <mat-datepicker-toggle matIconSuffix [for]="exitpicker"></mat-datepicker-toggle>
+    <mat-datepicker #exitpicker></mat-datepicker>
+  </mat-form-field>
 </p>
+  <mat-slide-toggle [(ngModel)]="member.is_instructor" i18n>is Instructor</mat-slide-toggle>
 <p>
   <button mat-raised-button color="primary" (click)="save()" i18n>Save</button>
   <button mat-raised-button (click)="backToMemberList()" i18n>Back to member list</button>

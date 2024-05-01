@@ -18,11 +18,12 @@ import {
   MatHint,
   MatSuffix,
 } from '@angular/material/form-field';
+import { NgIf } from '@angular/common';
 
 @Component({
-  selector: 'app-new',
-  templateUrl: './new.component.html',
-  styleUrl: './new.component.css',
+  selector: 'app-member-edit',
+  templateUrl: './edit.component.html',
+  styleUrl: './edit.component.css',
   providers: [provideNativeDateAdapter()],
   standalone: true,
   imports: [
@@ -37,6 +38,7 @@ import {
     MatSuffix,
     MatDatepicker,
     MatButton,
+    NgIf
   ],
 })
 export class NewComponent implements OnInit {
@@ -44,7 +46,10 @@ export class NewComponent implements OnInit {
     pk: 0,
     firstname: '',
     lastname: '',
+    is_instructor: false
   };
+  title = $localize`Add member`
+
   private dateAdapter = inject(DateAdapter<Date>);
   private route = inject(ActivatedRoute);
   private memberService = inject(MemberService);
@@ -52,21 +57,30 @@ export class NewComponent implements OnInit {
   
   ngOnInit(): void {
     this.dateAdapter.getFirstDayOfWeek = () => 1;
-    this.getMember();
-  }
-
-  getMember(): void {
     const id = parseInt(this.route.snapshot.paramMap.get('id')!, 10);
     if (id) {
+      this.getMember(id);
+      this.title = $localize`Edit member`
+    }
+  }
+
+  getMember(id:number): void {
       this.memberService
         .getMember(id)
-        .subscribe((member) => (this.member = member));
-    }
+        .subscribe((member) => {
+          this.member = member
+        });
   }
   
   save() {
     if (this.member) {
-      this.memberService.addMember(this.member).subscribe();
+      if (this.member.pk)
+        {
+          this.memberService.updateMember(this.member).subscribe();
+        }
+        else {
+          this.memberService.addMember(this.member).subscribe();
+        }
     }
   }
   cancel() {

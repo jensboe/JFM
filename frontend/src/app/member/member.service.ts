@@ -23,4 +23,9 @@ export class MemberService extends RestService {
   addMember(member: Member): Observable<Member> {
     return this.post<Member>(this.memberUrl, member);
   }
+
+  updateMember(member: Member): Observable<Member> {
+    const url = this.memberUrl + member.pk + '/';
+    return this.put<Member>(url, member);
+  }
 }
