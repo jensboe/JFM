@@ -20,7 +20,7 @@ import {
 } from '@angular/material/form-field';
 
 @Component({
-  selector: 'event-new',
+  selector: 'app-event-new',
   templateUrl: './new.component.html',
   styleUrl: './new.component.css',
   providers: [provideNativeDateAdapter()],
@@ -39,7 +39,7 @@ import {
     MatButton,
   ],
 })
-export class NewComponent {
+export class NewComponent implements OnInit{
   event: Event = {
     pk: 1,
     title: '',
@@ -55,6 +55,7 @@ export class NewComponent {
   ngOnInit(): void {
     this.getEvent();
   }
+  
   getEvent(): void {
     const id = parseInt(this.route.snapshot.paramMap.get('id')!, 10);
     if (id) {
@@ -63,14 +64,14 @@ export class NewComponent {
   }
   save() {
     if (this.event) {
-      let splitstarttime = this.starttime.split(':');
+      const splitstarttime = this.starttime.split(':');
       this.event.start_date.setHours(
         Number(splitstarttime[0]),
         Number(splitstarttime[1]),
         0,
         0
       );
-      let splitendtime = this.endtime.split(':');
+      const splitendtime = this.endtime.split(':');
       this.event.end_date.setHours(
         Number(splitendtime[0]),
         Number(splitendtime[1]),

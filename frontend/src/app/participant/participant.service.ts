@@ -21,7 +21,7 @@ export class ParticipantService {
   getParticipations(): Observable<Participant[]> {
     return this.http.get<Participant[]>(this.participantUrl, this.httpOptions);
   }
-  getParticipant(pk: Number): Observable<Participant> {
+  getParticipant(pk: number): Observable<Participant> {
     const url = this.participantUrl + pk + '/';
 
     return timer(0, 5000).pipe(

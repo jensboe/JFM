@@ -14,7 +14,7 @@ import {
 import { NgFor, DatePipe } from '@angular/common';
 
 @Component({
-  selector: 'event-list',
+  selector: 'app-event-list',
   templateUrl: './list.component.html',
   styleUrl: './list.component.css',
   standalone: true,

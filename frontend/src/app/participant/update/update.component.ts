@@ -16,7 +16,7 @@ import {
   imports: [MatButtonToggleGroup, FormsModule, MatButtonToggle],
 })
 export class UpdateComponent implements OnInit, OnDestroy {
-  @Input() pk: Number = 0;
+  @Input() pk: number = 0;
 
   alive: boolean = true;
 
