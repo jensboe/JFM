@@ -1,7 +1,7 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { DateAdapter, provideNativeDateAdapter } from '@angular/material/core';
 import { Member } from '../member';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { MemberService } from '../member.service';
 import { MatButton } from '@angular/material/button';
 import {
@@ -48,7 +48,8 @@ export class NewComponent implements OnInit {
   private dateAdapter = inject(DateAdapter<Date>);
   private route = inject(ActivatedRoute);
   private memberService = inject(MemberService);
-
+  private router: Router = inject(Router);
+  
   ngOnInit(): void {
     this.dateAdapter.getFirstDayOfWeek = () => 1;
     this.getMember();
@@ -70,5 +71,9 @@ export class NewComponent implements OnInit {
   }
   cancel() {
     console.log('cancel');
+  }
+
+  backToMemberList() {
+    this.router.navigate(['member/list'])
   }
 }

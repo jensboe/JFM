@@ -1,0 +1,10 @@
+.title {
+    width: 100%;
+}
+
+mat-form-field {
+    margin: 10px;
+}
+button {
+    margin: 10px;
+}

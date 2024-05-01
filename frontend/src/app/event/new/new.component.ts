@@ -15,7 +15,7 @@ import {
   MatSuffix,
 } from '@angular/material/form-field';
 import { MatInput } from '@angular/material/input';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Event } from '../event';
 import { EventService } from '../event.service';
 
@@ -53,6 +53,8 @@ export class NewComponent implements OnInit {
 
   private eventService = inject(EventService);
   private route = inject(ActivatedRoute);
+  private router: Router = inject(Router);
+
   constructor(
     private snackBar: MatSnackBar,
     private dateAdapter: DateAdapter<Date>
@@ -102,5 +104,7 @@ export class NewComponent implements OnInit {
       });
     }
   }
-  cancel() {}
+  backToEventList() {
+    this.router.navigate(['event/list/upcomming'])
+  }
 }
