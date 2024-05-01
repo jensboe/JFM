@@ -14,4 +14,9 @@ export const memberRoutes: Routes = [
     component: NewComponent,
     canActivate: [loggedinGuard],
   },
+  {
+    path: ':id/edit',
+    component: NewComponent,
+    canActivate: [loggedinGuard],
+  },
 ];
