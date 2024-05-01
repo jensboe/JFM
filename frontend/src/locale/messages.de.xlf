@@ -54,10 +54,6 @@
         <source><x id="START_TAG_MAT_ICON" ctype="x-mat_icon" equiv-text="&lt;mat-icon aria-hidden=&quot;false&quot; aria-label=&quot;analyse&quot; fontIcon=&quot;bar_chart&quot;&gt;"/><x id="CLOSE_TAG_MAT_ICON" ctype="x-mat_icon" equiv-text="&lt;/mat-icon&gt;"/>Analyse</source>
         <target><x id="START_TAG_MAT_ICON" ctype="x-mat_icon" equiv-text="&lt;mat-icon aria-hidden=&quot;false&quot; aria-label=&quot;analyse&quot; fontIcon=&quot;bar_chart&quot;&gt;"/><x id="CLOSE_TAG_MAT_ICON" ctype="x-mat_icon" equiv-text="&lt;/mat-icon&gt;"/>Auswertung</target>
       </trans-unit>
-      <trans-unit id="7854965140974776241" datatype="html">
-        <source>Add new event</source>
-        <target state="">Neue Veranstaltung</target>
-      </trans-unit>
       <trans-unit id="5701618810648052610" datatype="html">
         <source>Title</source>
         <target state="">Titel</target>
@@ -157,6 +153,22 @@
       <trans-unit id="3797401407528428236" datatype="html">
         <source>Back to member list</source>
         <target state="new">Zurück zur Mitgliederliste</target>
+      </trans-unit>
+      <trans-unit id="2772374745622574688" datatype="html">
+        <source>Edit event</source>
+        <target state="new">Veranstaltung editieren</target>
+      </trans-unit>
+      <trans-unit id="2366586274765458234" datatype="html">
+        <source>Event <x id="PH" equiv-text="result.title"/> updated.</source>
+        <target state="new">Veranstaltung <x id="PH" equiv-text="result.title"/> aktualisiert.</target>
+      </trans-unit>
+      <trans-unit id="4636235126815391565" datatype="html">
+        <source>Choose exit date</source>
+        <target state="new">Austrittsdatum eingeben</target>
+      </trans-unit>
+      <trans-unit id="5083628523244142865" datatype="html">
+        <source>Edit member</source>
+        <target state="new">Mitglied editieren</target>
       </trans-unit>
     </body>
   </file>
