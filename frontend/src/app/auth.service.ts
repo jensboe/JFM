@@ -1,9 +1,9 @@
 import { Injectable, inject } from '@angular/core';
 
-import { environment } from '../environments/environment';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { firstValueFrom } from 'rxjs';
 import { Router } from '@angular/router';
+import { firstValueFrom } from 'rxjs';
+import { environment } from '../environments/environment';
 export interface Token {
   token: string;
 }
@@ -16,7 +16,7 @@ export class AuthService {
   private http: HttpClient = inject(HttpClient);
 
   private loginUrl = environment.apiUrl + 'api-token-auth/';
-  private token: string = '';
+  
   httpOptions = {
     headers: new HttpHeaders().append('Content-Type', 'application/json'),
   };

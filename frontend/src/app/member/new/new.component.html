@@ -1,21 +1,35 @@
 <h1 i18n>Add member</h1>
 <mat-form-field>
-    <mat-label i18n>First Name</mat-label>
-    <input matInput id="firstname" [(ngModel)]="member.firstname" placeholder="First Name" i18n-placeholder>
+  <mat-label i18n>First Name</mat-label>
+  <input
+    matInput
+    id="firstname"
+    [(ngModel)]="member.firstname"
+    placeholder="First Name"
+    i18n-placeholder
+  />
 </mat-form-field>
 <mat-form-field>
-    <mat-label i18n>Last Name</mat-label>
-    <input matInput id="lastname" [(ngModel)]="member.lastname" placeholder="Last Name" i18n-placeholder>
+  <mat-label i18n>Last Name</mat-label>
+  <input
+    matInput
+    id="lastname"
+    [(ngModel)]="member.lastname"
+    placeholder="Last Name"
+    i18n-placeholder
+  />
 </mat-form-field>
-<mat-slide-toggle i18n>is Instructor</mat-slide-toggle>
-
-<mat-form-field>
+<p>
+  <mat-form-field>
     <mat-label i18n>Choose entry date</mat-label>
-    <input matInput [matDatepicker]="picker">
+    <input matInput [matDatepicker]="picker" />
     <mat-hint i18n>MM/DD/YYYY</mat-hint>
     <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
     <mat-datepicker #picker></mat-datepicker>
-</mat-form-field>
-
-<button mat-raised-button color="primary" (click)="save()" i18n>Save</button>
-<button mat-raised-button (click)="cancel()" i18n>Cancel</button>
+  </mat-form-field>
+  <mat-slide-toggle i18n>is Instructor</mat-slide-toggle>
+</p>
+<p>
+  <button mat-raised-button color="primary" (click)="save()" i18n>Save</button>
+  <button mat-raised-button (click)="backToMemberList()" i18n>Back to member list</button>
+</p>

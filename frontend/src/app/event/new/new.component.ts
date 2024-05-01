@@ -1,23 +1,25 @@
 import { Component, OnInit, inject } from '@angular/core';
-import { Event } from '../event';
-import { EventService } from '../event.service';
-import { ActivatedRoute } from '@angular/router';
-import { provideNativeDateAdapter } from '@angular/material/core';
+import { FormsModule } from '@angular/forms';
 import { MatButton } from '@angular/material/button';
+import { DateAdapter, provideNativeDateAdapter } from '@angular/material/core';
 import {
   MatDateRangeInput,
-  MatStartDate,
-  MatEndDate,
-  MatDatepickerToggle,
   MatDateRangePicker,
+  MatDatepickerToggle,
+  MatEndDate,
+  MatStartDate,
 } from '@angular/material/datepicker';
-import { FormsModule } from '@angular/forms';
-import { MatInput } from '@angular/material/input';
 import {
   MatFormField,
   MatLabel,
   MatSuffix,
 } from '@angular/material/form-field';
+import { MatInput } from '@angular/material/input';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Event } from '../event';
+import { EventService } from '../event.service';
+
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-event-new',
@@ -39,7 +41,7 @@ import {
     MatButton,
   ],
 })
-export class NewComponent implements OnInit{
+export class NewComponent implements OnInit {
   event: Event = {
     pk: 1,
     title: '',
@@ -51,11 +53,18 @@ export class NewComponent implements OnInit{
 
   private eventService = inject(EventService);
   private route = inject(ActivatedRoute);
+  private router: Router = inject(Router);
+
+  constructor(
+    private snackBar: MatSnackBar,
+    private dateAdapter: DateAdapter<Date>
+  ) {}
 
   ngOnInit(): void {
+    this.dateAdapter.getFirstDayOfWeek = () => 1;
     this.getEvent();
   }
-  
+
   getEvent(): void {
     const id = parseInt(this.route.snapshot.paramMap.get('id')!, 10);
     if (id) {
@@ -78,11 +87,24 @@ export class NewComponent implements OnInit{
         0,
         0
       );
-      console.log(this.event);
-      this.eventService.addEvent(this.event).subscribe();
+      this.eventService.addEvent(this.event).subscribe((result: Event) => {
+        if (result) {
+          let snackBarRef = this.snackBar.open(
+            $localize`Event ${result.title} saved.`,
+            '',
+            { duration: 2000 }
+          );
+          this.event.title = '';
+        } else {
+          let snackBarRef = this.snackBar.open(
+            $localize`Event validation error`,
+            $localize`ok`
+          );
+        }
+      });
     }
   }
-  cancel() {
-    console.log('cancel');
+  backToEventList() {
+    this.router.navigate(['event/list/upcomming'])
   }
 }

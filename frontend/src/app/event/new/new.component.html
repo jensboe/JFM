@@ -1,14 +1,32 @@
 <h1 i18n>Add new event</h1>
-<mat-form-field>
-    <mat-label i18n>Title</mat-label>
-    <input matInput id="title" [(ngModel)]="event.title" placeholder="title" i18n-placeholder>
+<mat-form-field class="title">
+  <mat-label i18n>Title</mat-label>
+  <input
+    matInput
+    id="title"
+    [(ngModel)]="event.title"
+    placeholder="title"
+    i18n-placeholder
+  />
 </mat-form-field>
-
+<p>
 <mat-form-field>
   <mat-label i18n>Enter a date range</mat-label>
   <mat-date-range-input [rangePicker]="picker" [required]="true">
-    <input matStartDate [(ngModel)]="event.start_date" name="start"  placeholder="Start date" i18n-placeholder>
-    <input matEndDate [(ngModel)]="event.end_date" name="end"  placeholder="End date" i18n-placeholder>
+    <input
+      matStartDate
+      [(ngModel)]="event.start_date"
+      name="start"
+      placeholder="Start date"
+      i18n-placeholder
+    />
+    <input
+      matEndDate
+      [(ngModel)]="event.end_date"
+      name="end"
+      placeholder="End date"
+      i18n-placeholder
+    />
   </mat-date-range-input>
   <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
   <mat-date-range-picker #picker></mat-date-range-picker>
@@ -16,12 +34,14 @@
 
 <mat-form-field>
   <mat-label i18n>Start time</mat-label>
-  <input matInput [(ngModel)]="starttime" name="starttime"  type="time">
+  <input matInput [(ngModel)]="starttime" name="starttime" type="time" />
 </mat-form-field>
 <mat-form-field>
   <mat-label i18n>End time</mat-label>
-  <input matInput [(ngModel)]="endtime" name="endtime"  type="time">
+  <input matInput [(ngModel)]="endtime" name="endtime" type="time" />
 </mat-form-field>
-
-<button mat-raised-button color="primary" (click)="save()" i18n>Save</button>
-<button mat-raised-button (click)="cancel()" i18n>Cancel</button>
+</p>
+<p>
+  <button mat-raised-button color="primary" (click)="save()" i18n>Save</button>
+  <button mat-raised-button (click)="backToEventList()" i18n>Back to event list</button>
+</p>
