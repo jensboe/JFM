@@ -1,16 +1,11 @@
 
-from django.views import generic
-from django.contrib.auth.decorators import login_required
-from django.utils.decorators import method_decorator
-
-from members.views import MemberEventSerializer
-from rest_framework import filters
-from .models import Event, Participant
-from .forms import ParticipantFormSet, EventForm
-from django.utils.translation import gettext_lazy as _
-from rest_framework import serializers, viewsets, generics
-from rest_framework.response import Response
 import django_filters.rest_framework
+from django.utils.translation import gettext_lazy as _
+from members.views import MemberEventSerializer
+from rest_framework import filters, serializers, viewsets
+
+from .models import Event, Participant
+
 
 class ParticipantSerializer(serializers.ModelSerializer):
     member = MemberEventSerializer(many=False, read_only=True, )
