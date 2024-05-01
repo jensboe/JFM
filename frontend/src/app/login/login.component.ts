@@ -1,24 +1,34 @@
 import { Component, inject } from '@angular/core';
 import { AuthService } from '../auth.service';
 import { MatButton } from '@angular/material/button';
-import { FormsModule } from '@angular/forms';
+import {
+  FormControl,
+  FormGroup,
+  FormsModule,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
 import { MatInput } from '@angular/material/input';
-import { MatFormField, MatLabel } from '@angular/material/form-field';
+import { MatError, MatFormField, MatLabel } from '@angular/material/form-field';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrl: './login.component.css',
   standalone: true,
-  imports: [MatFormField, MatLabel, MatInput, FormsModule, MatButton],
+  imports: [MatFormField, MatLabel, MatInput, FormsModule,ReactiveFormsModule , MatButton, MatError],
 })
 export class LoginComponent {
-  username: string = '';
-  password: string = '';
-
+  loginForm = new FormGroup({
+    username: new FormControl('', [Validators.required, Validators.minLength(4)]),
+    password: new FormControl('', [Validators.required, Validators.minLength(4)]),
+  })
   private auth = inject(AuthService);
 
   login() {
-    this.auth.login(this.username, this.password);
+    if (this.loginForm.valid && this.loginForm.value.username && this.loginForm.value.password)
+    {
+      this.auth.login(this.loginForm.value.username, this.loginForm.value.password);
+    }
   }
 }

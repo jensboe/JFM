@@ -1,9 +1,26 @@
+<form [formGroup]="loginForm" (ngSubmit)="login()">
 <mat-form-field>
-    <mat-label i18n>Username</mat-label>
-    <input matInput id="username" placeholder="Username" [(ngModel)]="username" i18n-placeholder>
+  <mat-label i18n>Username</mat-label>
+  <input
+    matInput
+    formControlName="username"
+    i18n-placeholder
+  />
+  @if (loginForm.controls.username.invalid) {
+    <mat-error i18n>Username must be set.</mat-error>
+  }
 </mat-form-field>
 <mat-form-field>
-    <mat-label i18n>Password</mat-label>
-    <input matInput id="password" placeholder="Password" [(ngModel)]="password" type="password" i18n-placeholder>
+  <mat-label i18n>Password</mat-label>
+  <input
+    matInput
+    formControlName="password"
+    type="password"
+    i18n-placeholder
+  />
+  @if (loginForm.controls.password.invalid) {
+    <mat-error i18n>Password must be set.</mat-error>
+  }
 </mat-form-field>
-<button mat-raised-button color="primary" (click)="login()" i18n>Login</button>
+<button mat-raised-button color="primary" type="submit" [disabled]="!loginForm.valid" i18n>Login</button>
+</form>
