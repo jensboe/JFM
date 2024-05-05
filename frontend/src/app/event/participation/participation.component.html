@@ -1,5 +1,8 @@
-<span>{{event.start_date | date: 'short' }}</span>
 <h1>{{event.title}}</h1>
+<span>{{event.start_date | date: 'short' }}</span>
+<h2 l18n>Notes</h2>
+<p>{{event.note}}</p>
+<h2 l18n>Participants</h2>
 <mat-card *ngFor="let participant of event.participants">
     <mat-card-title>
         {{participant.member.firstname}} {{participant.member.lastname}}

@@ -20,6 +20,7 @@ import { Event } from '../event';
 import { EventService } from '../event.service';
 
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { TextFieldModule } from '@angular/cdk/text-field';
 
 @Component({
   selector: 'app-event-edit',
@@ -39,6 +40,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
     MatSuffix,
     MatDateRangePicker,
     MatButton,
+    TextFieldModule
   ],
 })
 export class NewComponent implements OnInit {
@@ -47,6 +49,7 @@ export class NewComponent implements OnInit {
     title: '',
     start_date: new Date(),
     end_date: new Date(),
+    note: ''
   };
   starttime: string = '18:00';
   endtime: string = '20:00';
@@ -99,7 +102,6 @@ export class NewComponent implements OnInit {
               '',
               { duration: 2000 }
             );
-            this.event.title = '';
           } else {
             this.snackBar.open(
               $localize`Event validation error`,
