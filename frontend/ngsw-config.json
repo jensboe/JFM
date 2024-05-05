@@ -30,7 +30,7 @@
   "dataGroups": [
     {
     "name": "events",
-    "urls": [ "/api/events"],
+    "urls": [ "/api/events/**"],
     "cacheConfig": {
       "maxAge": "24h",
       "maxSize": 5,
