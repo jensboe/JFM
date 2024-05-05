@@ -1,9 +1,13 @@
 import datetime
 from collections import namedtuple
+from pathlib import Path
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 from django.utils import timezone
-
+from django.core.files.base import ContentFile
+import numpy
+from PIL import Image, ImageOps
+import cv2
 
 class Member(models.Model):
     firstname = models.CharField(max_length=100, verbose_name=_('first name'))
@@ -45,9 +49,9 @@ class Member(models.Model):
         return self.fullname
 
     def save(self, *args, **kwargs) -> None:
-        # if self.image:
-            # self.image_square = self._create_headshoot_square(self.image)
-            # self.image_passport = self._create_headshoot(self.image, 7, 9)
+        if self.image:
+            self.image_square = self._create_headshoot_square(self.image)
+            self.image_passport = self._create_headshoot(self.image, 7, 9)
         super().save(*args, **kwargs)
         self._add_participants()
 
@@ -85,47 +89,50 @@ class Member(models.Model):
                 return False
         return True
 
-    # def _create_headshoot_square(
-    #         self, src_img_field: models.ImageField) -> ContentFile:
-    #     return self._create_headshoot(src_img_field)
+    def _create_headshoot_square(
+            self, src_img_field: models.ImageField) -> ContentFile:
+        return self._create_headshoot(src_img_field)
 
-    # def _create_headshoot(
-    #         self,
-    #         src_img_field: models.ImageField,
-    #         x_ratio: int = 1,
-    #         y_ratio: int = 1) -> ContentFile:
-    #     img = self._convertImageFile2opencv(src_img_field)
-    #     faces = self._detectFaces(img)
-    #     (x, y, w, h) = faces[0]
+    def _create_headshoot(
+            self,
+            src_img_field: models.ImageField,
+            x_ratio: int = 1,
+            y_ratio: int = 1) -> ContentFile:
+        img = self._convertImageFile2opencv(src_img_field)
+        faces = self._detectFaces(img)
+        w = 0
+        for face in faces:
+            if w < face[3]:
+                (x, y, w, h) = face
 
-    #     # calculate the face center
-    #     face_center = self.Point(x + (w / 2), y + (h / 2))
-    #     # Debug circle in center
-    #     # cv2.circle(img, (int(xc), int(yc)), 200, (0, 0, 255), 100)
+        # calculate the face center
+        face_center = self.Point(x + (w / 2), y + (h / 2))
+        # Debug circle in center
+        # cv2.circle(img, (int(xc), int(yc)), 200, (0, 0, 255), 100)
 
-    #     # Calculate distance between face_center and image boarder)
-    #     # Thats the maximum size an Image can have.
-    #     # The real max. width and hight is 2*x_max_size and 2*y_max_size
-    #     # We always use the center as reference  so lets save the multiply by 2
-    #     # and divide by 2
-    #     x_max_size = min(face_center.x, (img.shape[1] - face_center.x))
-    #     y_max_size = min(face_center.y, (img.shape[0] - face_center.y))
+        # Calculate distance between face_center and image boarder)
+        # Thats the maximum size an Image can have.
+        # The real max. width and hight is 2*x_max_size and 2*y_max_size
+        # We always use the center as reference  so lets save the multiply by 2
+        # and divide by 2
+        x_max_size = min(face_center.x, (img.shape[1] - face_center.x))
+        y_max_size = min(face_center.y, (img.shape[0] - face_center.y))
 
-    #     # With the ratio in mind, calculate which size is the size is the
-    #     # limmiting factor for cropping
-    #     if x_max_size * x_ratio > y_max_size * y_ratio:
-    #         x_size = y_max_size * x_ratio / y_ratio
-    #         y_size = y_max_size
-    #     else:
-    #         x_size = x_max_size
-    #         y_size = x_max_size * y_ratio / x_ratio
+        # With the ratio in mind, calculate which size is the size is the
+        # limmiting factor for cropping
+        if x_max_size * x_ratio > y_max_size * y_ratio:
+            x_size = y_max_size * x_ratio / y_ratio
+            y_size = y_max_size
+        else:
+            x_size = x_max_size
+            y_size = x_max_size * y_ratio / x_ratio
 
-    #     # Only integer can be used to slice an array
-    #     x_size = int(x_size)
-    #     y_size = int(y_size)
+        # Only integer can be used to slice an array
+        x_size = int(x_size)
+        y_size = int(y_size)
 
-    #     img = img[int(face_center.y - y_size):int(face_center.y + y_size),
-    #               int(face_center.x - x_size):int(face_center.x + x_size)]
+        img = img[int(face_center.y - y_size):int(face_center.y + y_size),
+                  int(face_center.x - x_size):int(face_center.x + x_size)]
 
         # Debug crop draw rectangle
         # cv2.rectangle(img,
@@ -136,22 +143,22 @@ class Member(models.Model):
         #               )
 
         # Save as jpg
-        # ret, buf = cv2.imencode('.jpg', img)
-        # return ContentFile(buf.tobytes(), name=f'{self.fullname}.jpg')
+        ret, buf = cv2.imencode('.jpg', img)
+        return ContentFile(buf.tobytes(), name=f'{self.fullname}.jpg')
 
-    # def _convertImageFile2opencv(self, field) -> numpy.array:
-    #     before = Image.open(field).convert('RGB')
-    #     after = ImageOps.exif_transpose(before)
-    #     img = numpy.array(after)
-    #     return img[:, :, ::-1].copy()  # convert RGB to BGR
+    def _convertImageFile2opencv(self, field) -> numpy.array:
+        before = Image.open(field).convert('RGB')
+        after = ImageOps.exif_transpose(before)
+        img = numpy.array(after)
+        return img[:, :, ::-1].copy()  # convert RGB to BGR
 
-    # def _detectFaces(self, img: numpy.array) -> numpy.array:
-    #     gray_image: numpy.array = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+    def _detectFaces(self, img: numpy.array) -> numpy.array:
+        gray_image: numpy.array = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 
-    #     modelpath: Path = Path(cv2.__file__).parent / 'data'
-    #     frontalface: Path = modelpath / 'haarcascade_frontalface_default.xml'
-    #     face_cascade: cv2.CascadeClassifier = cv2.CascadeClassifier(
-    #         str(frontalface))
+        modelpath: Path = Path(cv2.__file__).parent / 'data'
+        frontalface: Path = modelpath / 'haarcascade_frontalface_default.xml'
+        face_cascade: cv2.CascadeClassifier = cv2.CascadeClassifier(
+            str(frontalface))
 
-        # faces: numpy.array = face_cascade.detectMultiScale(gray_image)
-        # return faces
+        faces: numpy.array = face_cascade.detectMultiScale(gray_image)
+        return faces
