@@ -43,7 +43,6 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 export class NewComponent implements OnInit {
   event: Event = {
-    pk: 1,
     title: '',
     start_date: new Date(),
     end_date: new Date(),

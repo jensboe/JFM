@@ -1,7 +1,7 @@
 import { Participant } from '../participant/participant';
 
 export interface Event {
-  pk: number;
+  pk?: number;
   title: string;
   start_date: Date;
   end_date: Date;
