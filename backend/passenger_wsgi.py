@@ -39,15 +39,16 @@ if sys.executable != INTERP:
         print("Use requirements.txt")
         import subprocess
         subprocess.call([INTERP, '-m', 'pip', 'install', "-r" , requirements_file])
-
-    if os.path.isfile(cur_dir + "/Pipfile"):
-        print("Use Pipfile")
-        import subprocess
-        print("Install pipenv")
-        subprocess.call([INTERP, '-m', 'pip', 'install', "pipenv" ])
-        print("pipenv installation done")
-        print("install pipfile dependencies via pipenv")
-        subprocess.call([INTERP, '-m', 'pipenv', 'install', "--system"])
+    
+    # pipenv doesn't work as a subprocess of python 3.7
+    # if os.path.isfile(cur_dir + "/Pipfile"):
+    #     print("Use Pipfile")
+    #     import subprocess
+    #     print("Install pipenv")
+    #     subprocess.call([INTERP, '-m', 'pip', 'install', "pipenv" ])
+    #     print("pipenv installation done")
+    #     print("install pipfile dependencies via pipenv")
+    #     subprocess.call([INTERP, '-m', 'pipenv', 'install', "--system"])
     # Let' start again with the right environment
     print("Start python with new interperter.")
     os.execl(INTERP, INTERP, *sys.argv)

@@ -47,6 +47,9 @@ jobs:
       - name: Move frontend files into httpdocs
         run: |
           mv -v frontend/dist/frontend/browser/de/* httpdocs
+      - name: create backend requirements file
+        run: pipenv requirements > requirements.txt
+        working-directory: backend
       - name: Deploy over FTP
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:

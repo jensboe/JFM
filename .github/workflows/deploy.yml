@@ -42,6 +42,9 @@ jobs:
           touch backend/tmp/restart.txt
           current_date=$(date +"%d.%m.%Y %T")
           echo "$current_date" > backend/tmp/restart.txt
+      - name: create backend requirements file
+        run: pipenv requirements > requirements.txt
+        working-directory: backend
       - name: Build Angular App
         run: npm run build
         working-directory: frontend
