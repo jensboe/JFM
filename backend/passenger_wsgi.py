@@ -28,20 +28,29 @@ INTERP = os.environ["HOME"]+MINICONDA_ROOT+"/envs/"+APP_SPECIFIC_VENV+"/bin/"+PY
 
 
 if sys.executable != INTERP:
-
+    print("Wrong interpreter detected.")
+    print("Will start the correct one after installing dependencies.")
+    print("Start installing dependencies.")
     # INTERP doesn't match. A perfect opertunity to check if an requirements file exits
     # We may sould install some packages
     cur_dir = os.path.dirname(os.path.abspath(__file__))
     requirements_file = cur_dir + "/requirements.txt"
     if os.path.isfile(requirements_file):
+        print("Use requirements.txt")
         import subprocess
         subprocess.call([INTERP, '-m', 'pip', 'install', "-r" , requirements_file])
-
-    if os.path.isfile(cur_dir + "/Pipfile"):
-        import subprocess
-        subprocess.call([INTERP, '-m', 'pip', 'install', "pipenv" ])
-        subprocess.call([INTERP, '-m', 'pipenv', 'install', "--system"])
+    
+    # pipenv doesn't work as a subprocess of python 3.7
+    # if os.path.isfile(cur_dir + "/Pipfile"):
+    #     print("Use Pipfile")
+    #     import subprocess
+    #     print("Install pipenv")
+    #     subprocess.call([INTERP, '-m', 'pip', 'install', "pipenv" ])
+    #     print("pipenv installation done")
+    #     print("install pipfile dependencies via pipenv")
+    #     subprocess.call([INTERP, '-m', 'pipenv', 'install', "--system"])
     # Let' start again with the right environment
+    print("Start python with new interperter.")
     os.execl(INTERP, INTERP, *sys.argv)
 
 
