@@ -26,5 +26,17 @@
         ]
       }
     }
+  ],
+  "dataGroups": [
+    {
+    "name": "events",
+    "urls": [ "/api/events"],
+    "cacheConfig": {
+      "maxAge": "24h",
+      "maxSize": 5,
+      "timeout": "10s",
+      "strategy": "freshness"
+    }
+    }
   ]
 }
