@@ -14,4 +14,5 @@ app_name = 'events'
 urlpatterns = [
     path ('api/', include(router.urls)),
     path('feed/calender.ics', EventFeed()),
+    path('events/feed/calender.ics', EventFeed()), # Path for legacy reasions
 ]
