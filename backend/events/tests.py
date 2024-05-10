@@ -15,7 +15,7 @@ class EventModelTest(TestCase):
         self.assertEqual(dut.note, "")
         self.assertEqual(dut.start_date, testdate)
         self.assertEqual(dut.end_date, testdate)
-        self.assertEqual(dut.get_absolute_url(), "/events/1/detail/")
+        self.assertEqual(dut.get_absolute_url(), "api/events/1")
 
     def test_add_participant(self):
         event_date = timezone.datetime(
