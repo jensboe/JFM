@@ -14,7 +14,7 @@ class ParticipantSerializer(serializers.ModelSerializer):
         fields = ['pk', 'member', 'participation']
     
 class ParticipantViewSet(viewsets.ModelViewSet):
-    queryset = Participant.objects.all()
+    queryset = Participant.objects.all().prefetch_related('member')
     serializer_class = ParticipantSerializer
 
 class EventSerializer(serializers.ModelSerializer):
