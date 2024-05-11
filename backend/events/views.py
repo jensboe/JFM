@@ -18,7 +18,7 @@ class ParticipantViewSet(viewsets.ModelViewSet):
     serializer_class = ParticipantSerializer
 
 class EventSerializer(serializers.ModelSerializer):
-    participants = ParticipantSerializer(many=True, read_only=True)
+    participants = serializers.PrimaryKeyRelatedField(many=True, read_only=True)
     class Meta:
         model = Event
         fields = ['pk', 'title', 'start_date', 'end_date', 'participants']
