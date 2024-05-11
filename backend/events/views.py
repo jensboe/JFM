@@ -8,10 +8,10 @@ from .models import Event, Participant
 
 
 class ParticipantSerializer(serializers.ModelSerializer):
-    member = MemberEventSerializer(many=False, read_only=True, )
+    member = MemberEventSerializer(many=False, read_only=True)
     class Meta:
         model = Participant
-        fields = ['pk', 'member', 'participation']
+        fields = [ 'member', 'participation']
     
 class ParticipantViewSet(viewsets.ModelViewSet):
     queryset = Participant.objects.all().prefetch_related('member')
