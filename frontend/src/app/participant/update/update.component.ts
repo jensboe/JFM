@@ -7,41 +7,39 @@ import {
   MatButtonToggleGroup,
   MatButtonToggle,
 } from '@angular/material/button-toggle';
+import { NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-participant-update',
   templateUrl: './update.component.html',
   styleUrl: './update.component.css',
   standalone: true,
-  imports: [MatButtonToggleGroup, FormsModule, MatButtonToggle],
+  imports: [
+    MatButtonToggleGroup,
+    FormsModule,
+    MatButtonToggle,
+    NgIf
+  ],
 })
 export class UpdateComponent implements OnInit, OnDestroy {
-  @Input() pk: number = 0;
+
   private participantService = inject(ParticipantService);
 
   alive: boolean = true;
 
-  participant: Participant = {
-    pk: 0,
-    event: 0,
-    member: {
-      pk: 0,
-      firstname: '',
-      lastname: '',
-      is_instructor: false
-    },
-    participation: '',
-  };
-
+  @Input() participant?: Participant;
 
   ngOnInit(): void {
     this.alive = true;
+    if(this.participant)
+    {
     this.participantService
-      .getParticipantWithRefresh(this.pk, 5000)
+      .getParticipantWithRefresh(this.participant.pk, 5000)
       .pipe(takeWhile(() => this.alive))
       .subscribe((participant) => {
         this.participant = participant
       });
+    }
   }
 
   ngOnDestroy(): void {

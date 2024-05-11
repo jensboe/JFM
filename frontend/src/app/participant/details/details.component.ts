@@ -3,6 +3,7 @@ import { ParticipantService } from '../participant.service';
 import { Participant } from '../participant';
 import { MatCard, MatCardActions, MatCardTitle } from '@angular/material/card';
 import { UpdateComponent } from '../update/update.component';
+import { NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-participant-details',
@@ -11,7 +12,8 @@ import { UpdateComponent } from '../update/update.component';
     MatCard,
     MatCardTitle,
     MatCardActions,
-    UpdateComponent
+    UpdateComponent,
+    NgIf
   ],
   templateUrl: './details.component.html',
   styleUrl: './details.component.css'
@@ -20,17 +22,7 @@ export class DetailsComponent {
   @Input() pk: number = 0;
   private participantService = inject(ParticipantService);
 
-  participant: Participant = {
-    pk: 0,
-    event: 0,
-    member: {
-      pk: 0,
-      firstname: 'S',
-      lastname: '',
-      is_instructor: false
-    },
-    participation: '',
-  };
+  participant?: Participant;
 
   ngOnInit(): void {
     this.participantService

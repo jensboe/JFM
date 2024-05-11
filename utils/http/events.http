@@ -1,1 +1,8 @@
 http://localhost:8000/api/events/
+Authorization: token b8531fa0195a2764410951be5438fffceb310dcc
+
+Klassisch: 448 bis 526
+Participant prefetch: 4.000
+Part u. Member prefetch: 400
+PK related prefetch: 65 bis 87
+PK related: 82 bis 107
