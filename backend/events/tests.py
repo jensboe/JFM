@@ -1,7 +1,8 @@
-from unittest import skipIf
+import json
+
+from django.contrib.auth.models import User
 from django.test import TestCase
 from django.utils import timezone
-
 from events.models import Event, Participant
 from members.models import Member
 
@@ -15,7 +16,7 @@ class EventModelTest(TestCase):
         self.assertEqual(dut.note, "")
         self.assertEqual(dut.start_date, testdate)
         self.assertEqual(dut.end_date, testdate)
-        self.assertEqual(dut.get_absolute_url(), "/events/1/detail/")
+        self.assertEqual(dut.get_absolute_url(), "api/events/1")
 
     def test_add_participant(self):
         event_date = timezone.datetime(
@@ -114,3 +115,86 @@ class ParticipantModelTest(TestCase):
         self.assertEqual(dut.participation, Participant.Participation.ABSENT)
         self.assertEqual(
             str(dut), "03.02.01 00:00 | Testevent-Dieter Degenhart: ABS")
+
+class EventUrlTest(TestCase):
+    def test_events_ical(self):
+        response = self.client.get('/feed/calender.ics')
+        self.assertEqual(response.status_code, 200)
+
+    def test_events_ical_legacy(self):
+        response = self.client.get('/events/feed/calender.ics')
+        self.assertEqual(response.status_code, 200)
+
+    def test_events_api_root(self):
+        user = User.objects.create_user('username', 'Pas$w0rd')
+        url = '/api/events/'
+        
+        # logged out
+        response = self.client.get(url)
+        self.assertEqual(response.status_code, 403)
+        
+        self.client.force_login(user)
+        # logged in
+        response = self.client.get(url)
+        self.assertEqual(response.status_code, 200)
+
+    def test_events_api_unknown_event(self):
+        user = User.objects.create_user('username', 'Pas$w0rd')
+        url = '/api/events/1/'
+        
+        # logged out
+        response = self.client.get(url)
+        self.assertEqual(response.status_code, 403)
+        
+        self.client.force_login(user)
+        # logged in
+        response = self.client.get(url)
+        self.assertEqual(response.status_code, 404)
+
+
+    def test_events_api_first_event(self):
+        user = User.objects.create_user('username', 'Pas$w0rd')
+        event_date = timezone.datetime(year=2, month=1, day=1)
+        Event.objects.create(start_date=event_date, end_date=event_date, title="Testevent")
+        url = '/api/events/1/'
+        
+        # logged out
+        response = self.client.get(url)
+        self.assertEqual(response.status_code, 403)
+        
+        self.client.force_login(user)
+        # logged in
+        response = self.client.get(url)
+        self.assertEqual(response.status_code, 200)
+
+        self.assertEqual(json.loads(response.content), {
+            'pk': 1,
+            'title': 'Testevent',
+            'start_date': '0002-01-01T00:00:00+01:00',
+            'end_date': '0002-01-01T00:00:00+01:00',
+            'participants' : []
+        })
+
+    def test_events_api_list_2_events(self):
+        user = User.objects.create_user('username', 'Pas$w0rd')
+        event_date = timezone.datetime(year=2, month=1, day=1)
+        Event.objects.create(start_date=event_date, end_date=event_date, title="Testevent 1")
+        url = '/api/events/'
+        
+        # logged out
+        response = self.client.get(url)
+        self.assertEqual(response.status_code, 403)
+        
+        self.client.force_login(user)
+        # logged in
+        response = self.client.get(url)
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(len(json.loads(response.content)), 1)
+
+        event_date = timezone.datetime(year=2, month=1, day=2)
+        Event.objects.create(start_date=event_date, end_date=event_date, title="Testevent 2")
+
+        response = self.client.get(url)
+        self.assertEqual(response.status_code, 200)
+
+        self.assertEqual(len(json.loads(response.content)), 2)
