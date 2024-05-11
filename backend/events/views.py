@@ -32,7 +32,7 @@ class EventFilter(django_filters.rest_framework.FilterSet):
 
 class EventViewSet(viewsets.ModelViewSet):
     # queryset = Event.objects.all()
-    queryset = Event.objects.all().prefetch_related('participants')
+    queryset = Event.objects.all()
     serializer_class = EventSerializer
     filter_backends = [django_filters.rest_framework.DjangoFilterBackend,
                        filters.OrderingFilter]
