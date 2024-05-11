@@ -1,5 +1,7 @@
-<mat-button-toggle-group [(ngModel)]="participant.participation" (change)="update()" appearance='legacy'>
-    <mat-button-toggle value="PRE" i18n class="present" primary>present</mat-button-toggle>
-    <mat-button-toggle value="EXC" i18n class="excused">excused</mat-button-toggle>
-    <mat-button-toggle value="ABS" i18n class="absent">absent</mat-button-toggle>
-</mat-button-toggle-group>  
+<div *ngIf="participant">
+    <mat-button-toggle-group [(ngModel)]="participant.participation" (change)="update()" appearance='legacy'>
+        <mat-button-toggle value="PRE" i18n class="present" primary>present</mat-button-toggle>
+        <mat-button-toggle value="EXC" i18n class="excused">excused</mat-button-toggle>
+        <mat-button-toggle value="ABS" i18n class="absent">absent</mat-button-toggle>
+    </mat-button-toggle-group>  
+</div>

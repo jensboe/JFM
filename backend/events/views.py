@@ -8,17 +8,17 @@ from .models import Event, Participant
 
 
 class ParticipantSerializer(serializers.ModelSerializer):
-    member = MemberEventSerializer(many=False, read_only=True, )
+    member = MemberEventSerializer(many=False, read_only=True)
     class Meta:
         model = Participant
         fields = ['pk', 'member', 'participation']
     
 class ParticipantViewSet(viewsets.ModelViewSet):
-    queryset = Participant.objects.all()
+    queryset = Participant.objects.all().prefetch_related('member')
     serializer_class = ParticipantSerializer
 
 class EventSerializer(serializers.ModelSerializer):
-    participants = ParticipantSerializer(many=True, read_only=True)
+    participants = serializers.PrimaryKeyRelatedField(many=True, read_only=True)
     class Meta:
         model = Event
         fields = ['pk', 'title', 'start_date', 'end_date', 'participants']
@@ -31,7 +31,7 @@ class EventFilter(django_filters.rest_framework.FilterSet):
         fields = ['start_date', 'end_date']
 
 class EventViewSet(viewsets.ModelViewSet):
-    queryset = Event.objects.all()
+    queryset = Event.objects.all().prefetch_related('participants')
     serializer_class = EventSerializer
     filter_backends = [django_filters.rest_framework.DjangoFilterBackend,
                        filters.OrderingFilter]
