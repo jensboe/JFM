@@ -31,8 +31,7 @@ class EventFilter(django_filters.rest_framework.FilterSet):
         fields = ['start_date', 'end_date']
 
 class EventViewSet(viewsets.ModelViewSet):
-    # queryset = Event.objects.all()
-    queryset = Event.objects.all()
+    queryset = Event.objects.all().articipants')
     serializer_class = EventSerializer
     filter_backends = [django_filters.rest_framework.DjangoFilterBackend,
                        filters.OrderingFilter]
