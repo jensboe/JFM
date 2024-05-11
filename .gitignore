@@ -2,3 +2,5 @@
 backend/static
 backend/jfm/deploysettings.py
 frontend/.nx/cache
+.coverage
+coverage.lcov
