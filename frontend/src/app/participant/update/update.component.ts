@@ -37,9 +37,11 @@ export class UpdateComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.alive = true;
     this.participantService
-      .getParticipant(this.pk)
+      .getParticipantWithRefresh(this.pk, 5000)
       .pipe(takeWhile(() => this.alive))
-      .subscribe((participant) => (this.participant = participant));
+      .subscribe((participant) => {
+        this.participant = participant
+      });
   }
 
   ngOnDestroy(): void {
