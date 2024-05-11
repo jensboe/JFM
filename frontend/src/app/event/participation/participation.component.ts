@@ -5,6 +5,7 @@ import { Event } from '../event';
 import { UpdateComponent } from '../../participant/update/update.component';
 import { MatCard, MatCardTitle, MatCardActions } from '@angular/material/card';
 import { NgFor, DatePipe } from '@angular/common';
+import { DetailsComponent } from '../../participant/details/details.component';
 
 @Component({
   selector: 'app-participation',
@@ -17,6 +18,7 @@ import { NgFor, DatePipe } from '@angular/common';
     MatCardTitle,
     MatCardActions,
     UpdateComponent,
+    DetailsComponent,
     DatePipe,
   ],
 })

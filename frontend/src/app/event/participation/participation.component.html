@@ -1,10 +1,5 @@
 <span>{{event.start_date | date: 'short' }}</span>
 <h1>{{event.title}}</h1>
 <mat-card *ngFor="let participant of event.participants">
-    <mat-card-title>
-        {{participant.member.firstname}} {{participant.member.lastname}}
-    </mat-card-title>
-    <mat-card-actions align="start">
-        <app-participant-update [pk]="participant.pk"></app-participant-update>
-    </mat-card-actions>
+    <app-participant-details [pk]="participant"></app-participant-details>
 </mat-card>

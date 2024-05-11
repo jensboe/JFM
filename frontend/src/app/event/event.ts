@@ -5,5 +5,5 @@ export interface Event {
   title: string;
   start_date: Date;
   end_date: Date;
-  participants?: Participant[];
+  participants?: number[];
 }
