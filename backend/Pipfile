@@ -4,7 +4,7 @@ verify_ssl = true
 name = 'pypi'
 
 [packages]
-django = '5.0.8'
+django = '5.0.9'
 django-cleanup = '8.1.0'
 django-browser-reload = '1.12.1'
 django-ical = '1.9.2'
