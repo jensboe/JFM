@@ -22,24 +22,23 @@ import { EventService } from '../event.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
-  selector: 'app-event-edit',
-  templateUrl: './edit.component.html',
-  styleUrl: './edit.component.css',
-  providers: [provideNativeDateAdapter()],
-  standalone: true,
-  imports: [
-    MatFormField,
-    MatLabel,
-    MatInput,
-    FormsModule,
-    MatDateRangeInput,
-    MatStartDate,
-    MatEndDate,
-    MatDatepickerToggle,
-    MatSuffix,
-    MatDateRangePicker,
-    MatButton,
-  ],
+    selector: 'app-event-edit',
+    templateUrl: './edit.component.html',
+    styleUrl: './edit.component.css',
+    providers: [provideNativeDateAdapter()],
+    imports: [
+        MatFormField,
+        MatLabel,
+        MatInput,
+        FormsModule,
+        MatDateRangeInput,
+        MatStartDate,
+        MatEndDate,
+        MatDatepickerToggle,
+        MatSuffix,
+        MatDateRangePicker,
+        MatButton,
+    ]
 })
 export class NewComponent implements OnInit {
   event: Event = {

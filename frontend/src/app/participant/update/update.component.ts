@@ -10,16 +10,15 @@ import {
 import { NgIf } from '@angular/common';
 
 @Component({
-  selector: 'app-participant-update',
-  templateUrl: './update.component.html',
-  styleUrl: './update.component.css',
-  standalone: true,
-  imports: [
-    MatButtonToggleGroup,
-    FormsModule,
-    MatButtonToggle,
-    NgIf
-  ],
+    selector: 'app-participant-update',
+    templateUrl: './update.component.html',
+    styleUrl: './update.component.css',
+    imports: [
+        MatButtonToggleGroup,
+        FormsModule,
+        MatButtonToggle,
+        NgIf
+    ]
 })
 export class UpdateComponent implements OnInit, OnDestroy {
 

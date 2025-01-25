@@ -8,21 +8,20 @@ import { NgFor, DatePipe } from '@angular/common';
 import { DetailsComponent } from '../../participant/details/details.component';
 
 @Component({
-  selector: 'app-participation',
-  templateUrl: './participation.component.html',
-  styleUrl: './participation.component.css',
-  standalone: true,
-  imports: [
-    NgFor,
-    MatCard,
-    MatCardTitle,
-    MatCardActions,
-    UpdateComponent,
-    DetailsComponent,
-    DatePipe,
-    MatCardSubtitle,
-    MatCardActions,
-  ],
+    selector: 'app-participation',
+    templateUrl: './participation.component.html',
+    styleUrl: './participation.component.css',
+    imports: [
+        NgFor,
+        MatCard,
+        MatCardTitle,
+        MatCardActions,
+        UpdateComponent,
+        DetailsComponent,
+        DatePipe,
+        MatCardSubtitle,
+        MatCardActions,
+    ]
 })
 export class ParticipationComponent implements OnInit {
   event: Event = {
