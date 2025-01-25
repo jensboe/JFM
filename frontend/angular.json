@@ -38,7 +38,8 @@
             "localize": true,
             "aot": true,
             "polyfills": [
-              "zone.js"
+              "zone.js",
+              "@angular/localize/init"
             ],
             "tsConfig": "tsconfig.app.json",
             "assets": [

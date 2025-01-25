@@ -12,11 +12,10 @@ import { MatInput } from '@angular/material/input';
 import { MatError, MatFormField, MatLabel } from '@angular/material/form-field';
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrl: './login.component.css',
-  standalone: true,
-  imports: [MatFormField, MatLabel, MatInput, FormsModule,ReactiveFormsModule , MatButton, MatError],
+    selector: 'app-login',
+    templateUrl: './login.component.html',
+    styleUrl: './login.component.css',
+    imports: [MatFormField, MatLabel, MatInput, FormsModule, ReactiveFormsModule, MatButton, MatError]
 })
 export class LoginComponent {
   loginForm = new FormGroup({

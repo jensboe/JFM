@@ -15,24 +15,23 @@ import { MatIcon } from '@angular/material/icon';
 import { MatNavList, MatListItem } from '@angular/material/list';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.css',
-  standalone: true,
-  imports: [
-    NgIf,
-    RouterLink,
-    RouterLinkActive,
-    RouterOutlet,
-    AsyncPipe,
-    MatSidenav,
-    MatSidenavContent,
-    MatSidenavContainer,
-    MatToolbar,
-    MatIcon,
-    MatNavList,
-    MatListItem,
-  ],
+    selector: 'app-root',
+    templateUrl: './app.component.html',
+    styleUrl: './app.component.css',
+    imports: [
+        NgIf,
+        RouterLink,
+        RouterLinkActive,
+        RouterOutlet,
+        AsyncPipe,
+        MatSidenav,
+        MatSidenavContent,
+        MatSidenavContainer,
+        MatToolbar,
+        MatIcon,
+        MatNavList,
+        MatListItem,
+    ]
 })
 export class AppComponent {
   title = 'Jugendfeuerwehr Anwesenheit';

@@ -6,17 +6,16 @@ import { UpdateComponent } from '../update/update.component';
 import { NgIf } from '@angular/common';
 
 @Component({
-  selector: 'app-participant-details',
-  standalone: true,
-  imports: [
-    MatCard,
-    MatCardTitle,
-    MatCardActions,
-    UpdateComponent,
-    NgIf
-  ],
-  templateUrl: './details.component.html',
-  styleUrl: './details.component.css'
+    selector: 'app-participant-details',
+    imports: [
+        MatCard,
+        MatCardTitle,
+        MatCardActions,
+        UpdateComponent,
+        NgIf
+    ],
+    templateUrl: './details.component.html',
+    styleUrl: './details.component.css'
 })
 export class DetailsComponent {
   @Input() pk: number = 0;
