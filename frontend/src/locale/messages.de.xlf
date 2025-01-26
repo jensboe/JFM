@@ -170,6 +170,26 @@
         <source>Edit member</source>
         <target state="new">Mitglied editieren</target>
       </trans-unit>
+      <trans-unit id="5731386674982741769" datatype="html">
+        <source>Requirement type</source>
+        <target state="new">Verpflichtung</target>
+      </trans-unit>
+      <trans-unit id="1764745039962678086" datatype="html">
+        <source>Mandatory</source>
+        <target state="new">Pflicht</target>
+      </trans-unit>
+      <trans-unit id="3761142554994491447" datatype="html">
+        <source>Voluntary</source>
+        <target state="new">Freiwillig</target>
+      </trans-unit>
+      <trans-unit id="2332815950113444124" datatype="html">
+        <source>Additional</source>
+        <target state="new">Zusatz</target>
+      </trans-unit>
+      <trans-unit id="113812946201100817" datatype="html">
+        <source>Instructor</source>
+        <target state="new">Ausbilder</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>
