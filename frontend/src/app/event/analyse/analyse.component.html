@@ -1,13 +1,4 @@
-<mat-card>
-  <mat-card-title>
-    {{ event.title }}
-  </mat-card-title>
-  <mat-card-subtitle
-    ><span i18n>Start</span>: {{ event.start_date | date : "short" }} |
-    <span i18n>End</span>:
-    {{ event.end_date | date : "short" }}</mat-card-subtitle
-  >
-</mat-card>
+<app-event-short [event]="event" />
 <mat-accordion [multi]="true">
   <mat-expansion-panel>
     <mat-expansion-panel-header>

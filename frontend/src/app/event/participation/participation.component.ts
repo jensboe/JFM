@@ -2,9 +2,9 @@ import { Component, OnInit, inject } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { EventService } from '../event.service';
 import { Event } from '../event';
-import { MatCard, MatCardTitle, MatCardActions, MatCardSubtitle } from '@angular/material/card';
-import { NgFor, DatePipe } from '@angular/common';
+import { NgFor } from '@angular/common';
 import { DetailsComponent } from '../../participant/details/details.component';
+import { ShortComponent } from '../short/short.component';
 
 @Component({
     selector: 'app-participation',
@@ -12,13 +12,8 @@ import { DetailsComponent } from '../../participant/details/details.component';
     styleUrl: './participation.component.css',
     imports: [
         NgFor,
-        MatCard,
-        MatCardTitle,
-        MatCardActions,
         DetailsComponent,
-        DatePipe,
-        MatCardSubtitle,
-        MatCardActions,
+        ShortComponent
     ]
 })
 export class ParticipationComponent implements OnInit {
