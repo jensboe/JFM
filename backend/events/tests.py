@@ -170,9 +170,10 @@ class EventUrlTest(TestCase):
         self.assertEqual(json.loads(response.content), {
             'pk': 1,
             'title': 'Testevent',
+            'requirement_type': 'MANDATORY',
             'start_date': '0002-01-01T00:00:00+01:00',
             'end_date': '0002-01-01T00:00:00+01:00',
-            'participants' : []
+            'participants' : [],
         })
 
     def test_events_api_list_2_events(self):
