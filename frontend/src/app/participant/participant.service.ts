@@ -18,6 +18,11 @@ export class ParticipantService extends RestService {
     const url = this.participantUrl + pk + '/';
     return this.get<Participant>(url);
   }
+
+  getParticipantsofEvent(event: number): Observable<Participant[]> {
+    const url = this.participantUrl + '?event='+ event;
+    return this.get<Participant[]>(url);
+  }
   getParticipantWithRefresh(pk: number, interval: number = 5000): Observable<Participant> {
     const url = this.participantUrl + pk + '/';
     return timer(0, interval).pipe(mergeMap(() => this.get<Participant>(url)));
