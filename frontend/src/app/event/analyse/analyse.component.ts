@@ -36,6 +36,7 @@ export class AnalyseComponent implements OnInit {
     title: '',
     start_date: new Date(),
     end_date: new Date(),
+    requirement_type: 'MANDATORY'
   };
   participations: Participant[] = [];
 

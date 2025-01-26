@@ -45,6 +45,7 @@ export class NewComponent implements OnInit {
     title: '',
     start_date: new Date(),
     end_date: new Date(),
+    requirement_type: 'MANDATORY',
   };
   starttime: string = '18:00';
   endtime: string = '20:00';
