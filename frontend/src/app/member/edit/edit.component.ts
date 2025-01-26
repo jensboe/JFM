@@ -21,25 +21,24 @@ import { Member } from '../member';
 import { MemberService } from '../member.service';
 
 @Component({
-  selector: 'app-member-edit',
-  templateUrl: './edit.component.html',
-  styleUrl: './edit.component.css',
-  providers: [provideNativeDateAdapter()],
-  standalone: true,
-  imports: [
-    MatFormField,
-    MatLabel,
-    MatInput,
-    FormsModule,
-    MatSlideToggle,
-    MatDatepickerInput,
-    MatHint,
-    MatDatepickerToggle,
-    MatSuffix,
-    MatDatepicker,
-    MatButton,
-    NgIf
-  ],
+    selector: 'app-member-edit',
+    templateUrl: './edit.component.html',
+    styleUrl: './edit.component.css',
+    providers: [provideNativeDateAdapter()],
+    imports: [
+        MatFormField,
+        MatLabel,
+        MatInput,
+        FormsModule,
+        MatSlideToggle,
+        MatDatepickerInput,
+        MatHint,
+        MatDatepickerToggle,
+        MatSuffix,
+        MatDatepicker,
+        MatButton,
+        NgIf
+    ]
 })
 export class NewComponent implements OnInit {
   member: Member = {

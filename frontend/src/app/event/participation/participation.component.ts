@@ -3,22 +3,25 @@ import { ActivatedRoute } from '@angular/router';
 import { EventService } from '../event.service';
 import { Event } from '../event';
 import { UpdateComponent } from '../../participant/update/update.component';
-import { MatCard, MatCardTitle, MatCardActions } from '@angular/material/card';
+import { MatCard, MatCardTitle, MatCardActions, MatCardSubtitle } from '@angular/material/card';
 import { NgFor, DatePipe } from '@angular/common';
+import { DetailsComponent } from '../../participant/details/details.component';
 
 @Component({
-  selector: 'app-participation',
-  templateUrl: './participation.component.html',
-  styleUrl: './participation.component.css',
-  standalone: true,
-  imports: [
-    NgFor,
-    MatCard,
-    MatCardTitle,
-    MatCardActions,
-    UpdateComponent,
-    DatePipe,
-  ],
+    selector: 'app-participation',
+    templateUrl: './participation.component.html',
+    styleUrl: './participation.component.css',
+    imports: [
+        NgFor,
+        MatCard,
+        MatCardTitle,
+        MatCardActions,
+        UpdateComponent,
+        DetailsComponent,
+        DatePipe,
+        MatCardSubtitle,
+        MatCardActions,
+    ]
 })
 export class ParticipationComponent implements OnInit {
   event: Event = {

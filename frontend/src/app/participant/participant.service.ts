@@ -16,7 +16,11 @@ export class ParticipantService extends RestService {
 
   getParticipant(pk: number): Observable<Participant> {
     const url = this.participantUrl + pk + '/';
-    return timer(0, 5000).pipe(mergeMap(() => this.get<Participant>(url)));
+    return this.get<Participant>(url);
+  }
+  getParticipantWithRefresh(pk: number, interval: number = 5000): Observable<Participant> {
+    const url = this.participantUrl + pk + '/';
+    return timer(0, interval).pipe(mergeMap(() => this.get<Participant>(url)));
   }
 
   updateParticipant(participant: Participant) {

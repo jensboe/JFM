@@ -14,21 +14,20 @@ import {
 import { NgFor, DatePipe } from '@angular/common';
 
 @Component({
-  selector: 'app-event-list',
-  templateUrl: './list.component.html',
-  styleUrl: './list.component.css',
-  standalone: true,
-  imports: [
-    NgFor,
-    MatCard,
-    MatCardTitle,
-    MatCardSubtitle,
-    MatCardActions,
-    MatButton,
-    RouterLink,
-    MatIcon,
-    DatePipe,
-  ],
+    selector: 'app-event-list',
+    templateUrl: './list.component.html',
+    styleUrl: './list.component.css',
+    imports: [
+        NgFor,
+        MatCard,
+        MatCardTitle,
+        MatCardSubtitle,
+        MatCardActions,
+        MatButton,
+        RouterLink,
+        MatIcon,
+        DatePipe,
+    ]
 })
 export class ListComponent implements OnInit {
   events: Event[] = [];

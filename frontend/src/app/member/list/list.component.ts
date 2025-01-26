@@ -6,11 +6,10 @@ import { Member } from '../member';
 import { MemberService } from '../member.service';
 
 @Component({
-  selector: 'app-list',
-  templateUrl: './list.component.html',
-  styleUrl: './list.component.css',
-  standalone: true,
-  imports: [MatActionList, NgFor, MatListItem, RouterLink],
+    selector: 'app-list',
+    templateUrl: './list.component.html',
+    styleUrl: './list.component.css',
+    imports: [MatActionList, NgFor, MatListItem, RouterLink]
 })
 export class ListComponent implements OnInit {
   members: Member[] = [];
