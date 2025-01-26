@@ -1,13 +1,4 @@
-
-<mat-card>
-    <mat-card-title>
-        {{event.title}}
-    </mat-card-title>
-    <mat-card-subtitle><span i18n>Start</span>: {{event.start_date | date: 'short' }} | <span i18n>End</span>: {{event.end_date | date: 'short' }}</mat-card-subtitle>
-    <mat-card-actions align="start">
-
-    </mat-card-actions>
-</mat-card>
+<app-event-short [event]="event" />
 <app-participant-details *ngFor="let participant of event.participants" [pk]="participant"></app-participant-details>
 
 

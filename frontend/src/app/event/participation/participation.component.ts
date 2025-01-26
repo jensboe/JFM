@@ -5,6 +5,7 @@ import { Event } from '../event';
 import { MatCard, MatCardTitle, MatCardActions, MatCardSubtitle } from '@angular/material/card';
 import { NgFor, DatePipe } from '@angular/common';
 import { DetailsComponent } from '../../participant/details/details.component';
+import { ShortComponent } from '../short/short.component';
 
 @Component({
     selector: 'app-participation',
@@ -19,6 +20,7 @@ import { DetailsComponent } from '../../participant/details/details.component';
         DatePipe,
         MatCardSubtitle,
         MatCardActions,
+        ShortComponent
     ]
 })
 export class ParticipationComponent implements OnInit {
