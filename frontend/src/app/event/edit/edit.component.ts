@@ -18,6 +18,8 @@ import { MatInput } from '@angular/material/input';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Event } from '../event';
 import { EventService } from '../event.service';
+import {MatSelectModule} from '@angular/material/select';
+
 
 import { MatSnackBar } from '@angular/material/snack-bar';
 
@@ -38,6 +40,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
         MatSuffix,
         MatDateRangePicker,
         MatButton,
+        MatSelectModule
     ]
 })
 export class NewComponent implements OnInit {
