@@ -27,6 +27,7 @@ export class ParticipationComponent implements OnInit {
     start_date: new Date(),
     end_date: new Date(),
     title: 'Loading',
+    requirement_type: 'MANDATORY'
   };
   
   private eventService = inject(EventService);

@@ -6,4 +6,5 @@ export interface Event {
   start_date: Date;
   end_date: Date;
   participants?: number[];
+  requirement_type: string;
 }

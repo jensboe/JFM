@@ -5,6 +5,12 @@ from django.utils.translation import gettext_lazy as _
 from members.models import Member
 
 class Event(models.Model):
+    class RequirementTypeEnum(models.TextChoices):
+        MANDATORY = 'MANDATORY', _('Mandatory Event')
+        VOLUNTARY = 'VOLUNTARY', _('Voluntary Event')
+        ADDITIONAL = 'ADDITIONAL', _('Additional Event')
+        INSTRUCTOR = 'INSTRUCTOR', _('Instructor Event')
+
     title = models.CharField(max_length=200, verbose_name=_('title'))
     start_date = models.DateTimeField(
         default=timezone.now,
@@ -13,6 +19,10 @@ class Event(models.Model):
         default=timezone.now,
         verbose_name=_('end time'))
     note = models.TextField(verbose_name=_('note'), default='', blank=True)
+
+    requirement_type = models.CharField(max_length=255,choices=RequirementTypeEnum.choices, default=RequirementTypeEnum.MANDATORY)
+
+
 
     class Meta:
         ordering = ['-start_date']

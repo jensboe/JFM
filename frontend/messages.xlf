@@ -128,6 +128,21 @@
       <trans-unit id="5083628523244142865" datatype="html">
         <source>Edit member</source>
       </trans-unit>
+      <trans-unit id="113812946201100817" datatype="html">
+        <source>Instructor</source>
+      </trans-unit>
+      <trans-unit id="1764745039962678086" datatype="html">
+        <source>Mandatory</source>
+      </trans-unit>
+      <trans-unit id="2332815950113444124" datatype="html">
+        <source>Additional</source>
+      </trans-unit>
+      <trans-unit id="3761142554994491447" datatype="html">
+        <source>Voluntary</source>
+      </trans-unit>
+      <trans-unit id="5731386674982741769" datatype="html">
+        <source>Requirement type</source>
+      </trans-unit>
     </body>
   </file>
 </xliff>
