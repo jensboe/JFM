@@ -30,7 +30,7 @@ class EventFilter(django_filters.rest_framework.FilterSet):
     start_before = django_filters.rest_framework.IsoDateTimeFilter(field_name="start_date", lookup_expr='lte')
     class Meta:
         model = Event
-        fields = ['start_date', 'end_date']
+        fields = ['start_date', 'end_date', 'requirement_type']
 
 class EventViewSet(viewsets.ModelViewSet):
     queryset = Event.objects.all().prefetch_related('participants')
