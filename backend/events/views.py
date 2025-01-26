@@ -23,7 +23,7 @@ class EventSerializer(serializers.ModelSerializer):
     participants = serializers.PrimaryKeyRelatedField(many=True, read_only=True)
     class Meta:
         model = Event
-        fields = ['pk', 'title', 'start_date', 'end_date', 'participants']
+        fields = ['pk', 'title', 'start_date', 'end_date', 'requirement_type', 'participants']
 
 class EventFilter(django_filters.rest_framework.FilterSet):
     end_after = django_filters.rest_framework.IsoDateTimeFilter(field_name="end_date", lookup_expr='gte')
