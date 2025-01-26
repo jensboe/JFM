@@ -12,6 +12,11 @@ const routeConfig: Routes = [
   {
     path: 'event',
     loadChildren: () => import('./event/routes').then(m => m.eventRoutes )
+  },
+  {
+    path: '',
+    redirectTo: 'event/list/upcomming',
+    pathMatch: 'full'
   }
 ];
 
