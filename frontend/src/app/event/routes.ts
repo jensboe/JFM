@@ -3,6 +3,7 @@ import { ListComponent } from './list/list.component';
 import { NewComponent as EditComponent } from './edit/edit.component';
 import { ParticipationComponent } from './participation/participation.component';
 import { loggedinGuard } from '../auth.guard';
+import { AnalyseComponent } from './analyse/analyse.component';
 
 export const eventRoutes: Routes = [
   {
@@ -27,6 +28,12 @@ export const eventRoutes: Routes = [
     path: ':id/participation',
     component: ParticipationComponent,
     title: 'Check participation',
+    canActivate: [loggedinGuard],
+  },
+  {
+    path: ':id/analyse',
+    component: AnalyseComponent,
+    title: 'Analyse event',
     canActivate: [loggedinGuard],
   },
 ];
