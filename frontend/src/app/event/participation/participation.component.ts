@@ -2,7 +2,6 @@ import { Component, OnInit, inject } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { EventService } from '../event.service';
 import { Event } from '../event';
-import { UpdateComponent } from '../../participant/update/update.component';
 import { MatCard, MatCardTitle, MatCardActions, MatCardSubtitle } from '@angular/material/card';
 import { NgFor, DatePipe } from '@angular/common';
 import { DetailsComponent } from '../../participant/details/details.component';
@@ -16,7 +15,6 @@ import { DetailsComponent } from '../../participant/details/details.component';
         MatCard,
         MatCardTitle,
         MatCardActions,
-        UpdateComponent,
         DetailsComponent,
         DatePipe,
         MatCardSubtitle,

@@ -1,0 +1,51 @@
+<mat-card>
+  <mat-card-title>
+    {{ event.title }}
+  </mat-card-title>
+  <mat-card-subtitle
+    ><span i18n>Start</span>: {{ event.start_date | date : "short" }} |
+    <span i18n>End</span>:
+    {{ event.end_date | date : "short" }}</mat-card-subtitle
+  >
+</mat-card>
+<mat-accordion [multi]="true">
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Anwesend ({{ getPresent(participations).length }})
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <mat-list>
+      <mat-list-item *ngFor="let participant of getPresent(participations)"
+        >{{ participant.member.firstname }}
+        {{ participant.member.lastname }}</mat-list-item
+      >
+    </mat-list>
+  </mat-expansion-panel>
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Entschuldigt ({{ getExcused(participations).length }})
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <mat-list>
+      <mat-list-item *ngFor="let participant of getExcused(participations)"
+        >{{ participant.member.firstname }}
+        {{ participant.member.lastname }}</mat-list-item
+      >
+    </mat-list>
+  </mat-expansion-panel>
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Unentschuldigt ({{ getAbsent(participations).length }})
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <mat-list>
+      <mat-list-item *ngFor="let participant of getAbsent(participations)"
+        >{{ participant.member.firstname }}
+        {{ participant.member.lastname }}</mat-list-item
+      >
+    </mat-list>
+  </mat-expansion-panel>
+</mat-accordion>
