@@ -48,5 +48,8 @@
         "strategy": "freshness"
       }
       }
+  ],
+  "navigationUrls": [
+    "!api/admin/**"
   ]
 }
