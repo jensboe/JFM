@@ -16,6 +16,8 @@ class ParticipantSerializer(serializers.ModelSerializer):
 class ParticipantViewSet(viewsets.ModelViewSet):
     queryset = Participant.objects.all().prefetch_related('member')
     serializer_class = ParticipantSerializer
+    filter_backends = [django_filters.rest_framework.DjangoFilterBackend]
+    filterset_fields = ['event']
 
 class EventSerializer(serializers.ModelSerializer):
     participants = serializers.PrimaryKeyRelatedField(many=True, read_only=True)
