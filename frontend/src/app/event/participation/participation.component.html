@@ -1,5 +1,7 @@
 <app-event-short [event]="event" />
-<app-participant-details *ngFor="let participant of event.participants" [pk]="participant"></app-participant-details>
+@for (participant of event.participants; track participant) {
+  <app-participant-details [pk]="participant"></app-participant-details>
+}
 
 
 

@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
 import { AuthService } from './auth.service';
 import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
-import { NgIf, AsyncPipe } from '@angular/common';
+import { AsyncPipe } from '@angular/common';
 import {
   MatSidenav,
   MatSidenavContent,
@@ -19,19 +19,18 @@ import { MatNavList, MatListItem } from '@angular/material/list';
     templateUrl: './app.component.html',
     styleUrl: './app.component.css',
     imports: [
-        NgIf,
-        RouterLink,
-        RouterLinkActive,
-        RouterOutlet,
-        AsyncPipe,
-        MatSidenav,
-        MatSidenavContent,
-        MatSidenavContainer,
-        MatToolbar,
-        MatIcon,
-        MatNavList,
-        MatListItem,
-    ]
+    RouterLink,
+    RouterLinkActive,
+    RouterOutlet,
+    AsyncPipe,
+    MatSidenav,
+    MatSidenavContent,
+    MatSidenavContainer,
+    MatToolbar,
+    MatIcon,
+    MatNavList,
+    MatListItem
+]
 })
 export class AppComponent {
   title = 'Jugendfeuerwehr Anwesenheit';

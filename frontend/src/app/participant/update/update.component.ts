@@ -7,18 +7,17 @@ import {
   MatButtonToggleGroup,
   MatButtonToggle,
 } from '@angular/material/button-toggle';
-import { NgIf } from '@angular/common';
+
 
 @Component({
     selector: 'app-participant-update',
     templateUrl: './update.component.html',
     styleUrl: './update.component.css',
     imports: [
-        MatButtonToggleGroup,
-        FormsModule,
-        MatButtonToggle,
-        NgIf
-    ]
+    MatButtonToggleGroup,
+    FormsModule,
+    MatButtonToggle
+]
 })
 export class UpdateComponent implements OnInit, OnDestroy {
 

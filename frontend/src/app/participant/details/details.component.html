@@ -1,8 +1,10 @@
-<mat-card *ngIf="participant">
+@if (participant) {
+  <mat-card>
     <mat-card-title>
-        {{participant.member.firstname}} {{participant.member.lastname}}
+      {{participant.member.firstname}} {{participant.member.lastname}}
     </mat-card-title>
     <mat-card-actions align="start">
-        <app-participant-update [participant]="participant"></app-participant-update>
+      <app-participant-update [participant]="participant"></app-participant-update>
     </mat-card-actions>
-</mat-card>
+  </mat-card>
+}

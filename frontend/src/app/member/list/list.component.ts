@@ -1,4 +1,4 @@
-import { NgFor } from '@angular/common';
+
 import { Component, OnInit, inject } from '@angular/core';
 import { MatActionList, MatListItem } from '@angular/material/list';
 import { RouterLink } from '@angular/router';
@@ -9,7 +9,7 @@ import { MemberService } from '../member.service';
     selector: 'app-list',
     templateUrl: './list.component.html',
     styleUrl: './list.component.css',
-    imports: [MatActionList, NgFor, MatListItem, RouterLink]
+    imports: [MatActionList, MatListItem, RouterLink]
 })
 export class ListComponent implements OnInit {
   members: Member[] = [];

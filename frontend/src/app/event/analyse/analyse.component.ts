@@ -7,10 +7,10 @@ import { ParticipantService } from '../../participant/participant.service';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatList, MatListItem } from '@angular/material/list';
 import { ShortComponent } from '../short/short.component';
-import { NgFor } from '@angular/common';
+
 @Component({
   selector: 'app-event-edit',
-  imports: [NgFor, MatListItem, MatList, MatExpansionModule, ShortComponent],
+  imports: [MatListItem, MatList, MatExpansionModule, ShortComponent],
   templateUrl: './analyse.component.html',
   styleUrl: './analyse.component.css',
 })

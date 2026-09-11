@@ -1,4 +1,4 @@
-import { NgIf, formatDate } from '@angular/common';
+import { formatDate } from '@angular/common';
 import { Component, OnInit, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MatButton } from '@angular/material/button';
@@ -26,19 +26,18 @@ import { MemberService } from '../member.service';
     styleUrl: './edit.component.css',
     providers: [provideNativeDateAdapter()],
     imports: [
-        MatFormField,
-        MatLabel,
-        MatInput,
-        FormsModule,
-        MatSlideToggle,
-        MatDatepickerInput,
-        MatHint,
-        MatDatepickerToggle,
-        MatSuffix,
-        MatDatepicker,
-        MatButton,
-        NgIf
-    ]
+    MatFormField,
+    MatLabel,
+    MatInput,
+    FormsModule,
+    MatSlideToggle,
+    MatDatepickerInput,
+    MatHint,
+    MatDatepickerToggle,
+    MatSuffix,
+    MatDatepicker,
+    MatButton
+]
 })
 export class NewComponent implements OnInit {
   member: Member = {

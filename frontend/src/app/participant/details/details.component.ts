@@ -3,17 +3,16 @@ import { ParticipantService } from '../participant.service';
 import { Participant } from '../participant';
 import { MatCard, MatCardActions, MatCardTitle } from '@angular/material/card';
 import { UpdateComponent } from '../update/update.component';
-import { NgIf } from '@angular/common';
+
 
 @Component({
     selector: 'app-participant-details',
     imports: [
-        MatCard,
-        MatCardTitle,
-        MatCardActions,
-        UpdateComponent,
-        NgIf
-    ],
+    MatCard,
+    MatCardTitle,
+    MatCardActions,
+    UpdateComponent
+],
     templateUrl: './details.component.html',
     styleUrl: './details.component.css'
 })

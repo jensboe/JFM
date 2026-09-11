@@ -7,36 +7,38 @@
     [(ngModel)]="member.firstname"
     placeholder="First Name"
     i18n-placeholder
-  />
-</mat-form-field>
-<mat-form-field>
-  <mat-label i18n>Last Name</mat-label>
-  <input
-    matInput
-    id="lastname"
-    [(ngModel)]="member.lastname"
-    placeholder="Last Name"
-    i18n-placeholder
-  />
-</mat-form-field>
-<p>
+    />
+  </mat-form-field>
   <mat-form-field>
-    <mat-label i18n>Choose entry date</mat-label>
-    <input matInput [matDatepicker]="entrypicker" [(ngModel)]="member.entry_date" />
-    <mat-hint i18n>MM/DD/YYYY</mat-hint>
-    <mat-datepicker-toggle matIconSuffix [for]="entrypicker"></mat-datepicker-toggle>
-    <mat-datepicker #entrypicker></mat-datepicker>
-  </mat-form-field>
-  <mat-form-field *ngIf="member.pk">
-    <mat-label i18n>Choose exit date</mat-label>
-    <input matInput [matDatepicker]="exitpicker" [(ngModel)]="member.exit_date" />
-    <mat-hint i18n>MM/DD/YYYY</mat-hint>
-    <mat-datepicker-toggle matIconSuffix [for]="exitpicker"></mat-datepicker-toggle>
-    <mat-datepicker #exitpicker></mat-datepicker>
-  </mat-form-field>
-</p>
-  <mat-slide-toggle [(ngModel)]="member.is_instructor" i18n>is Instructor</mat-slide-toggle>
-<p>
-  <button mat-raised-button color="primary" (click)="save()" i18n>Save</button>
-  <button mat-raised-button (click)="backToMemberList()" i18n>Back to member list</button>
-</p>
+    <mat-label i18n>Last Name</mat-label>
+    <input
+      matInput
+      id="lastname"
+      [(ngModel)]="member.lastname"
+      placeholder="Last Name"
+      i18n-placeholder
+      />
+    </mat-form-field>
+    <p>
+      <mat-form-field>
+        <mat-label i18n>Choose entry date</mat-label>
+        <input matInput [matDatepicker]="entrypicker" [(ngModel)]="member.entry_date" />
+        <mat-hint i18n>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle matIconSuffix [for]="entrypicker"></mat-datepicker-toggle>
+        <mat-datepicker #entrypicker></mat-datepicker>
+      </mat-form-field>
+      @if (member.pk) {
+        <mat-form-field>
+          <mat-label i18n>Choose exit date</mat-label>
+          <input matInput [matDatepicker]="exitpicker" [(ngModel)]="member.exit_date" />
+          <mat-hint i18n>MM/DD/YYYY</mat-hint>
+          <mat-datepicker-toggle matIconSuffix [for]="exitpicker"></mat-datepicker-toggle>
+          <mat-datepicker #exitpicker></mat-datepicker>
+        </mat-form-field>
+      }
+    </p>
+    <mat-slide-toggle [(ngModel)]="member.is_instructor" i18n>is Instructor</mat-slide-toggle>
+    <p>
+      <button mat-raised-button color="primary" (click)="save()" i18n>Save</button>
+      <button mat-raised-button (click)="backToMemberList()" i18n>Back to member list</button>
+    </p>

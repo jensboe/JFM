@@ -7,36 +7,42 @@
       </mat-panel-title>
     </mat-expansion-panel-header>
     <mat-list>
-      <mat-list-item *ngFor="let participant of getPresent(participations)"
-        >{{ participant.member.firstname }}
-        {{ participant.member.lastname }}</mat-list-item
-      >
-    </mat-list>
-  </mat-expansion-panel>
-  <mat-expansion-panel>
-    <mat-expansion-panel-header>
-      <mat-panel-title>
-        Entschuldigt ({{ getExcused(participations).length }})
-      </mat-panel-title>
-    </mat-expansion-panel-header>
-    <mat-list>
-      <mat-list-item *ngFor="let participant of getExcused(participations)"
-        >{{ participant.member.firstname }}
-        {{ participant.member.lastname }}</mat-list-item
-      >
-    </mat-list>
-  </mat-expansion-panel>
-  <mat-expansion-panel>
-    <mat-expansion-panel-header>
-      <mat-panel-title>
-        Unentschuldigt ({{ getAbsent(participations).length }})
-      </mat-panel-title>
-    </mat-expansion-panel-header>
-    <mat-list>
-      <mat-list-item *ngFor="let participant of getAbsent(participations)"
-        >{{ participant.member.firstname }}
-        {{ participant.member.lastname }}</mat-list-item
-      >
-    </mat-list>
-  </mat-expansion-panel>
-</mat-accordion>
+      @for (participant of getPresent(participations); track participant) {
+        <mat-list-item
+          >{{ participant.member.firstname }}
+          {{ participant.member.lastname }}</mat-list-item
+          >
+        }
+      </mat-list>
+    </mat-expansion-panel>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Entschuldigt ({{ getExcused(participations).length }})
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <mat-list>
+        @for (participant of getExcused(participations); track participant) {
+          <mat-list-item
+            >{{ participant.member.firstname }}
+            {{ participant.member.lastname }}</mat-list-item
+            >
+          }
+        </mat-list>
+      </mat-expansion-panel>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Unentschuldigt ({{ getAbsent(participations).length }})
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <mat-list>
+          @for (participant of getAbsent(participations); track participant) {
+            <mat-list-item
+              >{{ participant.member.firstname }}
+              {{ participant.member.lastname }}</mat-list-item
+              >
+            }
+          </mat-list>
+        </mat-expansion-panel>
+      </mat-accordion>

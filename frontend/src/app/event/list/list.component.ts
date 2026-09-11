@@ -4,14 +4,14 @@ import { Event } from '../event';
 import { Participant } from '../../participant/participant';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { MatCard } from '@angular/material/card';
-import { NgFor } from '@angular/common';
+
 import { ShortComponent } from '../short/short.component';
 
 @Component({
   selector: 'app-event-list',
   templateUrl: './list.component.html',
   styleUrl: './list.component.css',
-  imports: [NgFor, MatCard, ShortComponent],
+  imports: [MatCard, ShortComponent],
 })
 export class ListComponent implements OnInit {
   events: Event[] = [];

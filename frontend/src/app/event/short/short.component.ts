@@ -1,7 +1,7 @@
 import { Component, inject, Input } from '@angular/core';
 import { Event } from '../event';
 import { MatCardModule } from '@angular/material/card';
-import { DatePipe, NgIf } from '@angular/common';
+import { DatePipe } from '@angular/common';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIcon } from '@angular/material/icon';
@@ -10,12 +10,11 @@ import { MatIcon } from '@angular/material/icon';
   selector: 'app-event-short',
   imports: [
     MatCardModule,
-    NgIf,
     DatePipe,
     MatButtonModule,
     MatIcon,
-    RouterLink,
-  ],
+    RouterLink
+],
   templateUrl: './short.component.html',
   styleUrl: './short.component.css',
 })
