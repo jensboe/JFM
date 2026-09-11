@@ -1,3 +1,5 @@
-<mat-card *ngFor="let event of events">
-  <app-event-short [event]="event" [showaction]="true" />
-</mat-card>
+@for (event of events; track event) {
+  <mat-card>
+    <app-event-short [event]="event" [showaction]="true" />
+  </mat-card>
+}

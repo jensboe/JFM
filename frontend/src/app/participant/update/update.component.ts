@@ -1,4 +1,4 @@
-import { Component, Input, OnDestroy, OnInit, inject } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit, inject, ChangeDetectionStrategy } from '@angular/core';
 import { ParticipantService } from '../participant.service';
 import { Participant } from '../participant';
 import { takeWhile } from 'rxjs';
@@ -7,18 +7,18 @@ import {
   MatButtonToggleGroup,
   MatButtonToggle,
 } from '@angular/material/button-toggle';
-import { NgIf } from '@angular/common';
+
 
 @Component({
     selector: 'app-participant-update',
     templateUrl: './update.component.html',
     styleUrl: './update.component.css',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
-        MatButtonToggleGroup,
-        FormsModule,
-        MatButtonToggle,
-        NgIf
-    ]
+    MatButtonToggleGroup,
+    FormsModule,
+    MatButtonToggle
+]
 })
 export class UpdateComponent implements OnInit, OnDestroy {
 

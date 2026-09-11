@@ -1,4 +1,4 @@
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, OnInit, inject, ChangeDetectionStrategy } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MatButton } from '@angular/material/button';
 import { DateAdapter, provideNativeDateAdapter } from '@angular/material/core';
@@ -28,6 +28,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
     templateUrl: './edit.component.html',
     styleUrl: './edit.component.css',
     providers: [provideNativeDateAdapter()],
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
         MatFormField,
         MatLabel,

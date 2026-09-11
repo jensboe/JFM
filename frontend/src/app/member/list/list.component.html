@@ -1,3 +1,5 @@
 <mat-action-list>
-    <button mat-list-item *ngFor="let member of members" routerLink="../{{member.pk}}/edit">{{member.firstname}} {{member.lastname}}</button>
+  @for (member of members; track member) {
+    <button mat-list-item routerLink="../{{member.pk}}/edit">{{member.firstname}} {{member.lastname}}</button>
+  }
 </mat-action-list>

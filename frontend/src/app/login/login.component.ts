@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
 import { AuthService } from '../auth.service';
 import { MatButton } from '@angular/material/button';
 import {
@@ -15,6 +15,7 @@ import { MatError, MatFormField, MatLabel } from '@angular/material/form-field';
     selector: 'app-login',
     templateUrl: './login.component.html',
     styleUrl: './login.component.css',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [MatFormField, MatLabel, MatInput, FormsModule, ReactiveFormsModule, MatButton, MatError]
 })
 export class LoginComponent {

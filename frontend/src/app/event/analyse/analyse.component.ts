@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { EventService } from '../event.service';
 import { Event } from '../event';
@@ -7,11 +7,12 @@ import { ParticipantService } from '../../participant/participant.service';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatList, MatListItem } from '@angular/material/list';
 import { ShortComponent } from '../short/short.component';
-import { NgFor } from '@angular/common';
+
 @Component({
   selector: 'app-event-edit',
-  imports: [NgFor, MatListItem, MatList, MatExpansionModule, ShortComponent],
+  imports: [MatListItem, MatList, MatExpansionModule, ShortComponent],
   templateUrl: './analyse.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './analyse.component.css',
 })
 export class AnalyseComponent implements OnInit {

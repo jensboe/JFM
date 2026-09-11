@@ -1,10 +1,10 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
 import { AuthService } from './auth.service';
 import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
-import { NgIf, AsyncPipe } from '@angular/common';
+import { AsyncPipe } from '@angular/common';
 import {
   MatSidenav,
   MatSidenavContent,
@@ -18,20 +18,20 @@ import { MatNavList, MatListItem } from '@angular/material/list';
     selector: 'app-root',
     templateUrl: './app.component.html',
     styleUrl: './app.component.css',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
-        NgIf,
-        RouterLink,
-        RouterLinkActive,
-        RouterOutlet,
-        AsyncPipe,
-        MatSidenav,
-        MatSidenavContent,
-        MatSidenavContainer,
-        MatToolbar,
-        MatIcon,
-        MatNavList,
-        MatListItem,
-    ]
+    RouterLink,
+    RouterLinkActive,
+    RouterOutlet,
+    AsyncPipe,
+    MatSidenav,
+    MatSidenavContent,
+    MatSidenavContainer,
+    MatToolbar,
+    MatIcon,
+    MatNavList,
+    MatListItem
+]
 })
 export class AppComponent {
   title = 'Jugendfeuerwehr Anwesenheit';

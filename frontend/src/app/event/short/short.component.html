@@ -1,14 +1,16 @@
-<mat-card *ngIf="event">
-  <mat-card-title>
-    {{ event.title }}
-  </mat-card-title>
-  <mat-card-subtitle>
-    <span i18n>Start</span>: {{ event.start_date | date : "short" }} |
-    <span i18n>End</span>:
-    {{ event.end_date | date : "short" }}</mat-card-subtitle
-  >
-  <mat-card-actions align="start" *ngIf="showaction">
-    <button mat-button routerLink="../../{{ event.pk }}/participation" i18n>
+@if (event) {
+  <mat-card>
+    <mat-card-title>
+      {{ event.title }}
+    </mat-card-title>
+    <mat-card-subtitle>
+      <span i18n>Start</span>: {{ event.start_date | date : "short" }} |
+      <span i18n>End</span>:
+      {{ event.end_date | date : "short" }}</mat-card-subtitle
+      >
+      @if (showaction) {
+        <mat-card-actions align="start">
+          <button mat-button routerLink="../../{{ event.pk }}/participation" i18n>
       <mat-icon
         aria-hidden="false"
         aria-label="participation check list"
@@ -16,7 +18,7 @@
       ></mat-icon
       >Participation
     </button>
-    <button mat-button routerLink="../../{{ event.pk }}/edit" i18n>
+            <button mat-button routerLink="../../{{ event.pk }}/edit" i18n>
       <mat-icon
         aria-hidden="false"
         aria-label="edit event"
@@ -24,7 +26,7 @@
       ></mat-icon
       >Edit
     </button>
-    <button mat-button routerLink="../../{{ event.pk }}/analyse" i18n>
+              <button mat-button routerLink="../../{{ event.pk }}/analyse" i18n>
       <mat-icon
         aria-hidden="false"
         aria-label="analyse"
@@ -32,5 +34,7 @@
       ></mat-icon
       >Analyse
     </button>
-  </mat-card-actions>
-</mat-card>
+              </mat-card-actions>
+            }
+          </mat-card>
+        }
