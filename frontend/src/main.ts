@@ -3,7 +3,7 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import { PreloadAllModules, provideRouter, withPreloading } from '@angular/router';
 import { AppComponent } from './app/app.component';
 import routeConfig from './app/routes';
-import { provideHttpClient } from '@angular/common/http';
+import { provideHttpClient, withXhr } from '@angular/common/http';
 import { provideServiceWorker } from '@angular/service-worker';
 import { isDevMode, provideZoneChangeDetection } from '@angular/core';
 
@@ -11,7 +11,7 @@ bootstrapApplication(AppComponent, {
     providers: [
     provideZoneChangeDetection(),provideAnimationsAsync(),
     provideRouter(routeConfig, withPreloading(PreloadAllModules)),
-    provideHttpClient(),
+    provideHttpClient(withXhr()),
     provideServiceWorker('ngsw-worker.js', {
         enabled: !isDevMode(),
         registrationStrategy: 'registerWhenStable:30000'

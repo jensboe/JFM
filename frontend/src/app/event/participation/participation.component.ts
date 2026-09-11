@@ -1,4 +1,4 @@
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, OnInit, inject, ChangeDetectionStrategy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { EventService } from '../event.service';
 import { Event } from '../event';
@@ -10,6 +10,7 @@ import { ShortComponent } from '../short/short.component';
     selector: 'app-participation',
     templateUrl: './participation.component.html',
     styleUrl: './participation.component.css',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
     DetailsComponent,
     ShortComponent

@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { EventService } from '../event.service';
 import { Event } from '../event';
@@ -12,6 +12,7 @@ import { ShortComponent } from '../short/short.component';
   selector: 'app-event-edit',
   imports: [MatListItem, MatList, MatExpansionModule, ShortComponent],
   templateUrl: './analyse.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './analyse.component.css',
 })
 export class AnalyseComponent implements OnInit {

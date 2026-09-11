@@ -1,4 +1,4 @@
-import { Component, Input, inject } from '@angular/core';
+import { Component, Input, inject, ChangeDetectionStrategy } from '@angular/core';
 import { ParticipantService } from '../participant.service';
 import { Participant } from '../participant';
 import { MatCard, MatCardActions, MatCardTitle } from '@angular/material/card';
@@ -14,6 +14,7 @@ import { UpdateComponent } from '../update/update.component';
     UpdateComponent
 ],
     templateUrl: './details.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrl: './details.component.css'
 })
 export class DetailsComponent {

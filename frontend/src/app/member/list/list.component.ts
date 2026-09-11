@@ -1,5 +1,5 @@
 
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, OnInit, inject, ChangeDetectionStrategy } from '@angular/core';
 import { MatActionList, MatListItem } from '@angular/material/list';
 import { RouterLink } from '@angular/router';
 import { Member } from '../member';
@@ -9,6 +9,7 @@ import { MemberService } from '../member.service';
     selector: 'app-list',
     templateUrl: './list.component.html',
     styleUrl: './list.component.css',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [MatActionList, MatListItem, RouterLink]
 })
 export class ListComponent implements OnInit {

@@ -1,4 +1,4 @@
-import { Component, inject, Input } from '@angular/core';
+import { Component, inject, Input, ChangeDetectionStrategy } from '@angular/core';
 import { Event } from '../event';
 import { MatCardModule } from '@angular/material/card';
 import { DatePipe } from '@angular/common';
@@ -16,6 +16,7 @@ import { MatIcon } from '@angular/material/icon';
     RouterLink
 ],
   templateUrl: './short.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './short.component.css',
 })
 export class ShortComponent {

@@ -1,4 +1,4 @@
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, OnInit, inject, ChangeDetectionStrategy } from '@angular/core';
 import { EventService } from '../event.service';
 import { Event } from '../event';
 import { Participant } from '../../participant/participant';
@@ -11,6 +11,7 @@ import { ShortComponent } from '../short/short.component';
   selector: 'app-event-list',
   templateUrl: './list.component.html',
   styleUrl: './list.component.css',
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [MatCard, ShortComponent],
 })
 export class ListComponent implements OnInit {
