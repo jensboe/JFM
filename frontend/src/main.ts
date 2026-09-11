@@ -5,11 +5,11 @@ import { AppComponent } from './app/app.component';
 import routeConfig from './app/routes';
 import { provideHttpClient } from '@angular/common/http';
 import { provideServiceWorker } from '@angular/service-worker';
-import { isDevMode } from '@angular/core';
+import { isDevMode, provideZoneChangeDetection } from '@angular/core';
 
 bootstrapApplication(AppComponent, {
     providers: [
-    provideAnimationsAsync(),
+    provideZoneChangeDetection(),provideAnimationsAsync(),
     provideRouter(routeConfig, withPreloading(PreloadAllModules)),
     provideHttpClient(),
     provideServiceWorker('ngsw-worker.js', {
