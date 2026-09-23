@@ -5,4 +5,7 @@ export interface Member {
   entry_date?: Date;
   exit_date?: Date;
   is_instructor: boolean;
+  image?: string;
+  image_passport?: string;
+  image_square?: string;
 }

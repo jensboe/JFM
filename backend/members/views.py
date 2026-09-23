@@ -18,7 +18,7 @@ class MemberSerializer(serializers.ModelSerializer):
     # participations = serializers.PrimaryKeyRelatedField(many=True, read_only=True)
     class Meta:
         model = Member
-        fields = ['pk', 'firstname', 'lastname', 'entry_date', 'exit_date', 'is_instructor']
+        fields = ['pk', 'firstname', 'lastname', 'entry_date', 'exit_date', 'is_instructor', 'image', 'image_passport', 'image_square']
 
 class MemberViewSet(viewsets.ModelViewSet):
     queryset = Member.objects.all()
